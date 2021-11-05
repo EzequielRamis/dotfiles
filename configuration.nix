@@ -35,12 +35,12 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  fonts = with pkgs; [
+  fonts = {
     fontconfig.defaultFonts = {
-      monospace = "Fira Code";
+      monospace = [ "Fira Code" ];
     };
-    fonts = (nerdfonts.override { fonts = [ "FiraCode" ]; })
-  ]; 
+    fonts = with pkgs; [(nerdfonts.override { fonts = [ "FiraCode" ]; })];
+  }; 
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -49,19 +49,22 @@
     keyMap = "es";
   };
 
-  programs.xwayland.enable = true;
-  programs.sway.enable = true;
+  # Enable the X11 windowing system.
+  services.xserver = {
+    enable = true;
+    videoDrivers = [ "nvidia" ];
+    windowManager.bspwm.enable = true;
+    layout = "es";
+  };
 
-  # Configure keymap in X11
-  # services.xserver.layout = "us";
-  # services.xserver.xkbOptions = "eurosign:e";
+  hardware.nvidia.modesetting.enable = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
   # Enable sound.
   sound.enable = true;
-  hardware.pulseaudio.enable = true;
+  services.pipewire.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
