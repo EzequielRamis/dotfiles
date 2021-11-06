@@ -17,9 +17,9 @@
   # boot.loader.grub.efiInstallAsRemovable = true;
   # boot.loader.efi.efiSysMountPoint = "/boot/efi";
   # Define on which hard drive you want to install Grub.
-  # boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
+  boot.loader.grub.device = "/dev/vda"; # or "nodev" for efi only
 
-  networking.hostName = "eramis"; # Define your hostname.
+  networking.hostName = "ramis"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Set your time zone.
@@ -35,58 +35,50 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  fonts = {
-    fontconfig.defaultFonts = {
-      monospace = [ "Fira Code" ];
-    };
-    fonts = with pkgs; [(nerdfonts.override { fonts = [ "FiraCode" ]; })];
-  }; 
-
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
-    font = "Fira Code";
+    font = "Lat2-Terminus16";
     keyMap = "es";
   };
 
   # Enable the X11 windowing system.
-  services.xserver = {
-    enable = true;
-    videoDrivers = [ "nvidia" ];
-    windowManager.bspwm.enable = true;
-    layout = "es";
-  };
+  services.xserver.enable = true;
 
-  hardware.nvidia.modesetting.enable = true;
+
+  # Enable the Plasma 5 Desktop Environment.
+  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.desktopManager.plasma5.enable = true;
+  
+
+  # Configure keymap in X11
+  services.xserver.layout = "es";
+  # services.xserver.xkbOptions = "eurosign:e";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
   # Enable sound.
   sound.enable = true;
-  services.pipewire.enable = true;
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  hardware.pulseaudio.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.eramis = {
+  users.users.ezequiel = {
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     initialHashedPassword = "";
   };
 
   users.defaultUserShell = pkgs.zsh;
-
+  
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    neovim
-    vscode
-    firefox
-    kitty
-    steam
+    neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     curl
+    firefox
+    vscode
+    kitty
     git
   ];
 
@@ -103,7 +95,7 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
