@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, lib, ... }:
 with builtins;
 let
   dirsFrom = 
@@ -9,12 +9,6 @@ let
     filter (d: pathExists "${d}/default.nix") (dirsFrom ./.);
 in
 {
-  imports = home-modules;
-
-  home.packages = with pkgs; [
-    steam
-    vscode
-  ];
-
   programs.home-manager.enable = true; 
+  imports = home-modules;
 }
