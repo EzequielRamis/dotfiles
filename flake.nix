@@ -20,14 +20,6 @@
         config = { allowUnfree = true; };
         localSystem = { inherit system; };
       };
-
-      dirsFrom = 
-        with pkgs.lib builtins;
-        dir: map (m: "${dir}/${m}") (attrNames (filterAttrs (_: type: type == "directory") (readDir dir)));
-
-      home-modules = 
-        with builtins;
-        filter (d: pathExists "${d}/default.nix") (dirsFrom ./home);
     in
     {
       nixosConfigurations."${hostname}" = 
@@ -43,9 +35,7 @@
       homeManagerConfigurations = home-manager.lib.homeManagerConfiguration {
         inherit pkgs system username;
         homeDirectory = "/home/${username}";
-        configuration = {
-          imports = home-modules;
-        };
+        configuration.imports = ./home;
       };
     };
 }
