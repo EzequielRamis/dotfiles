@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+DOTPATH=$(realpath "$(dirname "$BASH_SOURCE")")
+
+nixos-rebuild switch --flake "$DOTPATH"
