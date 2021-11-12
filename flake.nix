@@ -31,13 +31,14 @@
     in
     {
       nixosConfigurations."${hostname}" = 
-      let config = import .nixos/configuration.nix {
-        inherit hostname username;
+      let nixConfig = import ./nixos/configuration.nix {
+        inherit pkgs hostname username;
+        config = pkgs.config;
       };
       in
       nixpkgs.lib.nixosSystem {
         inherit system;
-        modules = [ config ];
+        modules = [ nixConfig ];
       };
 
       homeManagerConfigurations = home-manager.lib.homeManagerConfiguration {
