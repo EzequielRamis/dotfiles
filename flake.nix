@@ -12,7 +12,7 @@
   outputs = { self, home-manager, nixpkgs }:
     let
       system = "x86_64-linux";
-      
+
       username = "ezequiel";
       hostname = "ramis";
 
@@ -30,9 +30,14 @@
         filter (d: pathExists "${d}/default.nix") (dirsFrom ./home);
     in
     {
-      nixosConfigurations."${hostname}" = nixpkgs.lib.nixosSystem {
+      nixosConfigurations."${hostname}" = 
+      let config = import .nixos/configuration.nix {
+        inherit hostname username;
+      };
+      in
+      nixpkgs.lib.nixosSystem {
         inherit system;
-        modules = [ ./nixos/configuration.nix ];
+        modules = [ config ];
       };
 
       homeManagerConfigurations = home-manager.lib.homeManagerConfiguration {
