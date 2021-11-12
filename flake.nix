@@ -20,14 +20,13 @@
         config = { allowUnfree = true; };
         localSystem = { inherit system; };
       };
+
+      nixConfig = with pkgs; import ./nixos/configuration.nix {
+        inherit pkgs hostname username;
+      };
     in
     {
-      nixosConfigurations."${hostname}" = 
-      let nixConfig = with pkgs; import ./nixos/configuration.nix {
-        inherit config pkgs hostname username;
-      };
-      in
-      nixpkgs.lib.nixosSystem {
+      nixosConfigurations."${hostname}" = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [ nixConfig ];
       };

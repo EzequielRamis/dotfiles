@@ -1,4 +1,4 @@
-{ config, pkgs, hostname, username, ... }:
+{ pkgs, hostname, username, ... }:
 {
   imports = [ ./hardware-configuration.nix ];
 
@@ -67,6 +67,7 @@
     neovim
     curl
     firefox
+    vscode
     kitty
     git
   ];
