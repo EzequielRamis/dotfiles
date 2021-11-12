@@ -13,6 +13,7 @@ in
 
   home.packages = with pkgs; [
     steam
+    vscode
   ];
 
   programs.home-manager.enable = true; 
