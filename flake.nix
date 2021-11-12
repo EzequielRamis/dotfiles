@@ -31,9 +31,8 @@
     in
     {
       nixosConfigurations."${hostname}" = 
-      let nixConfig = import ./nixos/configuration.nix {
-        inherit pkgs hostname username;
-        config = pkgs.config;
+      let nixConfig = with pkgs; import ./nixos/configuration.nix {
+        inherit config pkgs hostname username;
       };
       in
       nixpkgs.lib.nixosSystem {
