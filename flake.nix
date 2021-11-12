@@ -3,16 +3,16 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, home-manager, nixpkgs }:
+  outputs = { self, home-manager, nixpkgs, flake-utils }:
     let
       system = "x86_64-linux";
-
       username = "ezequiel";
       hostname = "ramis";
 
@@ -21,20 +21,22 @@
         localSystem = { inherit system; };
       };
 
-      nixConfig = with pkgs; import ./nixos/configuration.nix {
+      nixConfig = with pkgs; import ./nixos/configuration.nix { 
         inherit pkgs hostname username;
       };
     in
     {
       nixosConfigurations."${hostname}" = nixpkgs.lib.nixosSystem {
         inherit system;
-        modules = [ nixConfig ];
-      };
-
-      homeManagerConfigurations = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs system username;
-        homeDirectory = "/home/${username}";
-        configuration.imports = ./home;
+        modules = [
+          nixConfig
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users."${username}" = import ./home.nix;
+          }
+        ];
       };
     };
 }

@@ -2,4 +2,4 @@
 
 DOTPATH=$(realpath "$(dirname "$BASH_SOURCE")")
 
-nixos-rebuild switch --flake "$DOTPATH"
+nixos-rebuild switch --flake "$DOTPATH#ramis"
