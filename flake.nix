@@ -23,14 +23,17 @@
       nixConfig = with pkgs; import ./nixos/configuration.nix { 
         inherit pkgs hostname username;
       };
+
+      commonConfig = import ./common.nix;
     in
     {
       nixosConfigurations."${hostname}" = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
           nixConfig
-          home-manager.nixosModules.home-manager
-          {
+          commonConfig
+          
+          home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users."${username}" = import ./home.nix;
