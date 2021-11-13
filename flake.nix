@@ -3,14 +3,13 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, home-manager, nixpkgs, flake-utils }:
+  outputs = { self, home-manager, nixpkgs }:
     let
       system = "x86_64-linux";
       username = "ezequiel";
