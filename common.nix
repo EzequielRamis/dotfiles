@@ -1,5 +1,5 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }@inputs:
 with (import ./helpers.nix);
 {
-  imports = modulesFrom ./common;
+  imports = map (m: import m inputs) (modulesFrom ./common);
 }

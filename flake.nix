@@ -7,9 +7,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
   };
 
-  outputs = { self, home-manager, nixpkgs }:
+  outputs = { self, home-manager, nixpkgs, ... }@inputs:
     let
       system = "x86_64-linux";
       username = "ezequiel";
@@ -24,7 +25,7 @@
         inherit pkgs hostname username;
       };
 
-      commonConfig = import ./common.nix;
+      commonConfig = import ./common.nix (inputs // { inherit pkgs; });
     in
     {
       nixosConfigurations."${hostname}" = nixpkgs.lib.nixosSystem {
