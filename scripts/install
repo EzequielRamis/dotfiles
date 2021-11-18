@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+pushd /mnt/home/ezequiel/dotfiles || exit
+
+nix-shell -p nixFlakes --run nixos-install --impure --flake .#
+
+popd || exit
