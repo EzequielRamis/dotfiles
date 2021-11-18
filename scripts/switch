@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
-DOTPATH=$(realpath "$(dirname "$BASH_SOURCE")")
+pushd /home/ezequiel/.dotfiles || exit
 
-nixos-rebuild switch --flake "$DOTPATH#"
+nixos-rebuild switch --flake .#ramis
+
+popd || exit

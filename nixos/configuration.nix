@@ -13,7 +13,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # vbox
-  boot.loader.grub.device = "nodev"; # or "nodev" for efi only
+  boot.loader.grub.device = "nodev";
   boot.initrd.checkJournalingFS = false;
 
   networking.hostName = "${hostname}"; # Define your hostname.

@@ -2,8 +2,7 @@
 
 pushd /mnt/home/ezequiel/.dotfiles || exit
 
-nix-shell -p nixFlakes
-nixos-install --impure --flake .#ramis
-exit
+git add .
+nix-shell -p nixFlakes --run "nixos-install --impure --flake .#ramis"
 
 popd || exit
