@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-pushd /mnt/home/ezequiel/dotfiles || exit
+pushd /mnt/home/ezequiel/.dotfiles || exit
 
 nixos-generate-config --show-hardware-config > ./nixos/hardware-configuration.nix
 
