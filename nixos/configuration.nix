@@ -9,12 +9,12 @@
     '';
   };
 
-  boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
-  # vbox
-  boot.loader.grub.device = "nodev";
-  boot.initrd.checkJournalingFS = false;
+  boot.loader.grub.enable = true;
+  boot.loader.grub.devices = [ "nodev" ];
+  boot.loader.grub.efiInstallAsRemovable = true;
+  boot.loader.grub.efiSupport = true;
+  boot.loader.grub.useOSProber = true;
 
   networking.hostName = "${hostname}"; # Define your hostname.
 
