@@ -2,7 +2,10 @@
 
 pushd /mnt/home/ezequiel/.dotfiles || exit
 
-git add .
-nix-shell -p nixFlakes --run "nixos-install --root /mnt --flake .#ramis"
+nix-shell -p nixUnstable git --run "
+    git add . &&
+    nix flake update --impure .#ramis &&
+    nixos-install --impure --root /mnt --flake .#ramis
+"
 
 popd || exit
