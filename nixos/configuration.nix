@@ -21,8 +21,7 @@
   # Set your time zone.
   time.timeZone = "America/Argentina/Buenos_Aires";
 
-  networking.useDHCP = false;
-  networking.interfaces.enp1s0.useDHCP = true;
+  networking.networkmanager.enable = true;
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -41,7 +40,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users."${username}" = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
     initialHashedPassword = "";
   };
   
