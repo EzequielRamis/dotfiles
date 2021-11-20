@@ -1,10 +1,6 @@
 { pkgs, hostname, username, ... }:
 {
-  imports = [ 
-    ./hardware-configuration.nix
-    # VirtualBox testing
-    ./vbox.nix
-  ];
+  imports = [ ./hardware-configuration.nix ];
 
   nix = {
     package = pkgs.nixFlakes;

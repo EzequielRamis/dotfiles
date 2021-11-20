@@ -2,6 +2,6 @@
 
 pushd /mnt/home/ezequiel/.dotfiles || exit
 
-nixos-generate-config --show-hardware-config > ./nixos/hardware-configuration.nix
+nixos-generate-config --show-hardware-config --root /mnt > ./nixos/hardware-configuration.nix
 
 popd || exit

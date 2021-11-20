@@ -5,7 +5,7 @@ pushd /mnt/home/ezequiel/.dotfiles || exit
 nix-shell -p nixUnstable git --run "
     rm flake.lock &&
     git add . &&
-    nixos-install --root /mnt --flake .#ramis
+    nixos-install --impure --root /mnt --flake .#ramis
 "
 
 popd || exit
