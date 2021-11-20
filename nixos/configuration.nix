@@ -1,6 +1,10 @@
 { pkgs, hostname, username, ... }:
 {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [ 
+    ./hardware-configuration.nix
+    # VirtualBox testing
+    ./vbox.nix
+  ];
 
   nix = {
     package = pkgs.nixFlakes;
@@ -57,12 +61,6 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-
-  manual = {
-    html.enable = false;
-    json.enable = false;
-    manpages.enable = false;
-  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
