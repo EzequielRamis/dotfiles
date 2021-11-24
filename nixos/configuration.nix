@@ -41,7 +41,7 @@
   users.users."${username}" = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
-    initialHashedPassword = "";
+    initialPassword = "";
   };
   
   users.defaultUserShell = pkgs.zsh;

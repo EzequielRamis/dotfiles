@@ -1,4 +1,4 @@
 { ... }:
 {
-  xdg.configFile."wayfire.conf".source = ./wayfire.conf;
+  xdg.configFile."wayfire.ini".source = ./wayfire.ini;
 }

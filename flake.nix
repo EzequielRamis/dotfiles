@@ -25,7 +25,10 @@
         inherit pkgs hostname username;
       };
 
-      commonConfig = import ./common.nix (inputs // { inherit pkgs; });
+      commonConfig = import ./common.nix (inputs // { 
+        inherit pkgs username;
+        lib = nixpkgs.lib;
+      });
     in
     {
       nixosConfigurations."${hostname}" = nixpkgs.lib.nixosSystem {
