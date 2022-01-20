@@ -16,4 +16,4 @@ mount /dev/disk/by-label/boot /mnt/boot
 parted /dev/sda print
 
 mkdir -p /mnt/home/ezequiel
-mv /.dotfiles /mnt/home/ezequiel/
+mv /home/nixos/.dotfiles /mnt/home/ezequiel/
