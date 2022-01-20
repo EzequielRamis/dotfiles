@@ -4,7 +4,7 @@
     ./hardware-configuration.nix
     (import ./common.nix {
       inherit pkgs hostname username;
-      inherit (nixpkgs) lib;
+      inherit (pkgs) lib;
     })
   ];
 

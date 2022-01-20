@@ -6,7 +6,7 @@ rm -f flake.lock
 git add .
 
 nix-shell -p nixUnstable git --run "
-    nixos-install --impure --root /mnt --flake .#ramis
+    nixos-install --root /mnt --flake .#ramis
 "
 
 popd || exit
