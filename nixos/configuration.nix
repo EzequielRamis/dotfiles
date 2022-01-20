@@ -1,18 +1,26 @@
-{ pkgs, hostname, username, ... }:
+{ pkgs, system, hostname, username, ... }:
 {
   imports = [
     ./hardware-configuration.nix
     (import ./common.nix {
-      inherit pkgs hostname username;
+      inherit pkgs system hostname username;
       inherit (pkgs) lib;
     })
   ];
 
   nix = {
-    package = pkgs.nixFlakes;
+    package = pkgs.nixUnstable;
     extraOptions = ''
     experimental-features = nix-command flakes
     '';
+    binaryCachePublicKeys = [
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+      "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
+    ];
+    binaryCaches = [
+      "https://cache.nixos.org"
+      "https://nixpkgs-wayland.cachix.org"
+    ];
   };
 
   # boot.loader.efi.canTouchEfiVariables = true;
@@ -22,7 +30,7 @@
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.useOSProber = true;
 
-  networking.hostName = "${hostname}"; # Define your hostname.
+  networking.hostName = ${hostname}; # Define your hostname.
 
   # Set your time zone.
   time.timeZone = "America/Argentina/Buenos_Aires";
@@ -44,7 +52,7 @@
   hardware.pulseaudio.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users."${username}" = {
+  users.users.${username} = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
     initialPassword = "";
