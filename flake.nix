@@ -8,41 +8,38 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
+    flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, home-manager, nixpkgs, ... }@inputs:
-    let
-      system = "x86_64-linux";
-      username = "ezequiel";
-      hostname = "ramis";
+  outputs = { self, home-manager, nixpkgs, flake-utils, ... }@inputs:
+    flake-utils.lib.eachDefaultSystem (system:
+      let
+        username = "ezequiel";
+        hostname = "ramis";
 
-      pkgs = import nixpkgs {
-        config = { allowUnfree = true; };
-        localSystem = { inherit system; };
-      };
+        pkgs = import nixpkgs {
+          config = { allowUnfree = true; };
+          localSystem = { inherit system; };
+          overlays = [ inputs.nixpkgs-wayland.overlay ];
+        };
 
-      nixConfig = with pkgs; import ./nixos/configuration.nix { 
-        inherit pkgs hostname username;
-      };
+        nixConfig = with pkgs; import ./nixos/configuration.nix {
+          inherit pkgs hostname username;
+        };
 
-      commonConfig = import ./common.nix (inputs // { 
-        inherit pkgs username;
-        lib = nixpkgs.lib;
-      });
-    in
-    {
-      nixosConfigurations."${hostname}" = nixpkgs.lib.nixosSystem {
-        inherit system;
-        modules = [
-          nixConfig
-          commonConfig
-          
-          home-manager.nixosModules.home-manager {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users."${username}" = import ./home.nix;
-          }
-        ];
+      in
+      {
+        nixosConfigurations."${hostname}" = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [
+            nixConfig
+            home-manager.nixosModules.home-manager {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users."${username}" = import ./home.nix;
+            }
+          ];
+        };
       };
-    };
+    );
 }

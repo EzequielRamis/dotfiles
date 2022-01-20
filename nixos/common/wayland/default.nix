@@ -1,4 +1,4 @@
-{ pkgs, lib, nixpkgs-wayland, username, ... }: 
+{ pkgs, lib, username, ... }:
 let user = username; in
 {
   nix = {
@@ -15,15 +15,12 @@ let user = username; in
     ];
   };
 
-  # use it as an overlay
-  nixpkgs.overlays = [ nixpkgs-wayland.overlay ];
-
   hardware.opengl.enable = true;
 
   # pull specific packages (built against inputs.nixpkgs, usually `nixos-unstable`)
   environment.systemPackages = with pkgs; [
-      nixpkgs-wayland.packages.${system}.wayfire
-      nixpkgs-wayland.packages.${system}.wlr-randr
+      wayfire
+      wlr-randr
   ];
 
   # https://github.com/WayfireWM/wayfire/wiki/FAQ#2-the-mouse-cursor-is-invisible
