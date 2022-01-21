@@ -1,11 +1,10 @@
-{ pkgs, system, hostname, username, ... }:
+{ pkgs, hostname, username, ... }@inputs:
 {
   imports = [
     ./hardware-configuration.nix
-    (import ./common.nix {
-      inherit pkgs system hostname username;
+    (import ./common.nix (inputs // {
       inherit (pkgs) lib;
-    })
+    )})
   ];
 
   nix = {
@@ -30,7 +29,7 @@
   boot.loader.grub.efiSupport = true;
   boot.loader.grub.useOSProber = true;
 
-  networking.hostName = ${hostname}; # Define your hostname.
+  networking.hostName = "${hostname}"; # Define your hostname.
 
   # Set your time zone.
   time.timeZone = "America/Argentina/Buenos_Aires";

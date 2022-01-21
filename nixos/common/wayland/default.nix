@@ -1,12 +1,12 @@
-{ pkgs, lib, system, username, ... }:
+{ pkgs, lib, system, username, nixpkgs-wayland, ... }:
 let user = username; in
 {
   hardware.opengl.enable = true;
 
   # pull specific packages (built against inputs.nixpkgs, usually `nixos-unstable`)
   environment.systemPackages = with pkgs; [
-    inputs.nixpkgs-wayland.packages.${system}.wayfire
-    inputs.nixpkgs-wayland.packages.${system}.wlr-randr
+    nixpkgs-wayland.packages.${system}.wayfire
+    nixpkgs-wayland.packages.${system}.wlr-randr
   ];
 
   # https://github.com/WayfireWM/wayfire/wiki/FAQ#2-the-mouse-cursor-is-invisible

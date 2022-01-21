@@ -5,7 +5,7 @@ pushd /mnt/home/ezequiel/.dotfiles || exit
 rm -f flake.lock
 git add .
 
-nix-shell -p nixUnstable --run "nix build .#nixosConfigurations.ramis.config.system.build.toplevel"
+nix-shell -p nixUnstable --run "nix build .#ramis --extra-experimental-features 'nix-command flakes'"
 nixos-install --root /mnt --system result
 
 popd || exit

@@ -19,11 +19,12 @@
       pkgs = import nixpkgs {
         config = { allowUnfree = true; };
         localSystem = { inherit system; };
-        overlays = [ inputs.nixpkgs-wayland.overlay ];
+        overlays = with inputs; [ nixpkgs-wayland.overlay ];
       };
 
       nixConfig = with pkgs; import ./nixos/configuration.nix {
         inherit pkgs system hostname username;
+        inherit (inputs) nixpkgs-wayland;
       };
 
     in
@@ -39,5 +40,6 @@
           }
         ];
       };
+      ${hostname} = self.nixosConfigurations.${hostname}.config.system.build.toplevel;
     };
 }
