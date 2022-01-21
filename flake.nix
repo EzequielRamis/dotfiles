@@ -27,17 +27,17 @@
         inherit (inputs) nixpkgs-wayland;
       };
 
+      hmConfig = import ./home.nix {
+        inherit pkgs home-manager hostname username;
+      };
+
     in
     {
       nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
           nixConfig
-          home-manager.nixosModules.home-manager {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.${username} = import ./home.nix;
-          }
+          hmConfig
         ];
       };
     };

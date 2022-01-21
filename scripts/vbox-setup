@@ -17,4 +17,3 @@ parted /dev/sda print
 
 mkdir -p /mnt/home/ezequiel
 mv /home/nixos/.dotfiles /mnt/home/ezequiel/
-cd /mnt/home/ezequiel
