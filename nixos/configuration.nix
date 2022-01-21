@@ -4,7 +4,7 @@
     ./hardware-configuration.nix
     (import ./common.nix (inputs // {
       inherit (pkgs) lib;
-    )})
+    }))
   ];
 
   nix = {

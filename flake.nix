@@ -40,6 +40,5 @@
           }
         ];
       };
-      ${hostname} = self.nixosConfigurations.${hostname}.config.system.build.toplevel;
     };
 }
