@@ -1,10 +1,11 @@
 { pkgs, hostname, username, ... }@inputs:
 {
-  imports = [
+  imports = with (import ../helpers.nix); [
     ./hardware-configuration.nix
-    (import ./common.nix (inputs // {
+    (map (m: import m inputs // {
       inherit (pkgs) lib;
-    }))
+     })
+     (modulesFrom ./modules))
   ];
 
   nix = {

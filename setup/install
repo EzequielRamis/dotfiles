@@ -5,6 +5,6 @@ pushd /mnt/home/ezequiel/.dotfiles || exit
 rm -f flake.lock
 git add .
 
-nix-shell -p nixUnstable --run "nixos-install --no-root-passwd --root /mnt --flake .#ramis"
+nix-shell -p nixUnstable --run "nixos-install --verbose --no-root-passwd --root /mnt --flake .#ramis"
 
 popd || exit

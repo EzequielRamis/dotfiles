@@ -8,6 +8,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
+    emacs-overlay.url = "github:nix-community/emacs-overlay/5e7af7d4bda485bb65a353d16a1ca38d9b73b178";
+    nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
   };
 
   outputs = { self, home-manager, nixpkgs, ... }@inputs:
@@ -19,7 +21,10 @@
       pkgs = import nixpkgs {
         config = { allowUnfree = true; };
         localSystem = { inherit system; };
-        overlays = with inputs; [ nixpkgs-wayland.overlay ];
+        overlays = with inputs; [
+          nixpkgs-wayland.overlay
+          emacs-overlay.overlay
+        ];
       };
 
       nixConfig = with pkgs; import ./nixos/configuration.nix {
@@ -34,14 +39,15 @@
         modules = [
           nixConfig
           home-manager.nixosModules.home-manager {
-            home-manager.useGlobalPkgs = false;
+            home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+            home-manager.verbose = true;
             home-manager.users.${username} = {
-              nixpkgs = pkgs;
               programs.home-manager.enable = true;
               imports = with (import ./helpers.nix); modulesFrom ./home;
             };
-          };
+            home-manager.extraSpecialArgs = [ inputs hostname username ];
+          }
         ];
       };
     };
