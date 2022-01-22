@@ -9,7 +9,10 @@
     };
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
     emacs-overlay.url = "github:nix-community/emacs-overlay";
-    nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
+    doom-emacs = {
+      url = "github:hlissner/doom-emacs";
+      flake = false;
+    };
   };
 
   outputs = { self, home-manager, nixpkgs, ... }@inputs:
@@ -24,6 +27,9 @@
         overlays = with inputs; [
           nixpkgs-wayland.overlay
           emacs-overlay.overlay
+          (final: prev: {
+            doomEmacsRevision = inputs.doom-emacs.rev;
+          })
         ];
       };
 
@@ -43,9 +49,7 @@
             home-manager.useUserPackages = true;
             home-manager.users.${username} = {
               programs.home-manager.enable = true;
-              imports = with (import ./helpers.nix);
-                [ inputs.nix-doom-emacs.hmModule ]
-                ++ (modulesFrom ./home);
+              imports = with (import ./helpers.nix); modulesFrom ./home;
             };
             home-manager.extraSpecialArgs = {
               inherit pkgs system hostname username;

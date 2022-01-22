@@ -3,6 +3,9 @@ let user = username; in
 {
   hardware.opengl.enable = true;
 
+  # https://github.com/WayfireWM/wayfire/wiki/FAQ#2-the-mouse-cursor-is-invisible
+  environment.variables.WLR_NO_HARDWARE_CURSORS = "1";
+
   services.greetd = {
     enable = true;
     settings = {

@@ -6,6 +6,7 @@
         fonts = [ "FiraCode" ];
       })
       twitter-color-emoji
+      emacs-all-the-icons-fonts
     ];
     fontconfig = {
       defaultFonts = {

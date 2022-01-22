@@ -6,7 +6,5 @@
     nixpkgs-wayland.packages.${system}.wlr-randr
   ];
 
-  # https://github.com/WayfireWM/wayfire/wiki/FAQ#2-the-mouse-cursor-is-invisible
-  home.sessionVariables.WLR_NO_HARDWARE_CURSORS = "1";
   xdg.configFile."wayfire.ini".source = ./wayfire.ini;
 }
