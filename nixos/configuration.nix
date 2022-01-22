@@ -2,11 +2,12 @@
 {
   imports = with (import ../helpers.nix); [
     ./hardware-configuration.nix
-    (map (m: import m inputs // {
-      inherit (pkgs) lib;
-     })
-     (modulesFrom ./modules))
-  ];
+  ] ++
+  (map (m: import m (inputs // {
+        inherit (pkgs) lib;
+      }))
+      (modulesFrom ./modules)
+    );
 
   nix = {
     package = pkgs.nixUnstable;

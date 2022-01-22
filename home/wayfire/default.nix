@@ -1,4 +1,4 @@
-{ pkgs, system, ... }:
+{ pkgs, system, nixpkgs-wayland, ... }:
 {
   # pull specific packages (built against inputs.nixpkgs, usually `nixos-unstable`)
   home.packages = with pkgs; [

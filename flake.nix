@@ -2,13 +2,13 @@
   description = "My NixOS Configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
-    emacs-overlay.url = "github:nix-community/emacs-overlay/5e7af7d4bda485bb65a353d16a1ca38d9b73b178";
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
     nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
   };
 
@@ -41,12 +41,16 @@
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.verbose = true;
             home-manager.users.${username} = {
               programs.home-manager.enable = true;
-              imports = with (import ./helpers.nix); modulesFrom ./home;
+              imports = with (import ./helpers.nix);
+                [ inputs.nix-doom-emacs.hmModule ]
+                ++ (modulesFrom ./home);
             };
-            home-manager.extraSpecialArgs = [ inputs hostname username ];
+            home-manager.extraSpecialArgs = {
+              inherit pkgs system hostname username;
+              inherit (inputs) nixpkgs-wayland;
+            };
           }
         ];
       };

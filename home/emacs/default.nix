@@ -1,14 +1,8 @@
-{ config, lib, pkgs, inputs, ... }:
-
+{ config, lib, pkgs, ... }:
 {
-  imports = [ inputs.nix-doom-emacs.hmModule ];
-
-  programs.emacs.enable = true;
-  programs.emacs.package = pkgs.emacsPgtkGcc; # remove if controlled by nix-doom-emacs; cf. in flakes.nix
-  services.emacs.enable = true;
-
   programs.doom-emacs = {
-    enable = true;
+    enable = false;
     doomPrivateDir = ./doom;
+    emacsPackage = pkgs.emacsPgtkGcc;
   };
 }
