@@ -1,11 +1,12 @@
 { config, lib, pkgs, ... }:
 let
   emacsDir = "$HOME/.emacs.d";
-  DOOMDIR = builtins.toString ./doom;
+  DOOMDIR = "$HOME/.dotfiles/home/emacs/doom";
+  enable = true;
 in
 {
   programs.emacs = {
-    enable = false;
+    inherit enable;
     package = pkgs.emacsPgtkGcc;
   };
 
@@ -25,7 +26,8 @@ in
       mkdir -p "${emacsDir}"
       git -C ${emacsDir} init
       git -C ${emacsDir} pull https://github.com/hlissner/doom-emacs.git
-      ${emacsDir}/bin/doom --doomdir ${DOOMDIR} sync
     '';
+      # Due to time-outs it is better to doom upgrade manually
+      # ${emacsDir}/bin/doom --doomdir ${DOOMDIR} sync
   };
 }

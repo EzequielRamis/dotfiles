@@ -41,7 +41,7 @@
 
       userData = {
         inherit pkgs system hostname username;
-      }
+      };
 
       nixConfig = with pkgs; import ./nixos/configuration.nix userData;
 
