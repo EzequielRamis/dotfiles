@@ -3,7 +3,7 @@
   imports = with (import ../helpers.nix); [
     ./hardware-configuration.nix
   ] ++
-  (map (m: import m (inputs // {
+    (map (m: import m (inputs // {
         inherit (pkgs) lib;
       }))
       (modulesFrom ./modules)
@@ -12,7 +12,7 @@
   nix = {
     package = pkgs.nixUnstable;
     extraOptions = ''
-    experimental-features = nix-command flakes
+      experimental-features = nix-command flakes
     '';
     binaryCachePublicKeys = [
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
@@ -68,8 +68,6 @@
   environment.systemPackages = with pkgs; [
     neovim curl wget git
   ];
-
-  nixpkgs.config.allowUnfree = true;
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;

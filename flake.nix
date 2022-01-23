@@ -7,8 +7,12 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
-    emacs-overlay.url = "github:nix-community/emacs-overlay";
+    nixpkgs-wayland = {
+      url = "github:nix-community/nixpkgs-wayland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    # pin emacs-overlay until emacs 29 is stable
+    emacs-overlay.url = "github:nix-community/emacs-overlay/4c0dfcbfdff6beb283bb8889239d604c3e504187";
     doom-emacs = {
       url = "github:hlissner/doom-emacs";
       flake = false;
@@ -27,16 +31,19 @@
         overlays = with inputs; [
           nixpkgs-wayland.overlay
           emacs-overlay.overlay
-          (final: prev: {
+          (final: prev: ({
             doomEmacsRevision = inputs.doom-emacs.rev;
-          })
+          } //
+            inputs.nixpkgs-wayland.packages.${system}
+          ))
         ];
       };
 
-      nixConfig = with pkgs; import ./nixos/configuration.nix {
+      userData = {
         inherit pkgs system hostname username;
-        inherit (inputs) nixpkgs-wayland;
-      };
+      }
+
+      nixConfig = with pkgs; import ./nixos/configuration.nix userData;
 
     in
     {
@@ -51,10 +58,7 @@
               programs.home-manager.enable = true;
               imports = with (import ./helpers.nix); modulesFrom ./home;
             };
-            home-manager.extraSpecialArgs = {
-              inherit pkgs system hostname username;
-              inherit (inputs) nixpkgs-wayland;
-            };
+            home-manager.extraSpecialArgs = userData;
           }
         ];
       };
