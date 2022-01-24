@@ -2,6 +2,6 @@
 
 pushd /home/ezequiel/.dotfiles || exit
 
-nixos-rebuild switch --flake .#ramis
+nixos-rebuild switch --verbose --flake .#ramis
 
 popd || exit

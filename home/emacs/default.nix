@@ -1,17 +1,18 @@
+# For now the best way to manage doom emacs is to only use bin/doom and nix the
+# least possible
 { config, lib, pkgs, ... }:
 let
   emacsDir = "$HOME/.emacs.d";
-  DOOMDIR = "$HOME/.dotfiles/home/emacs/doom";
-  enable = true;
 in
 {
   programs.emacs = {
-    inherit enable;
+    enable = true;
     package = pkgs.emacsPgtkGcc;
   };
 
-  home.sessionVariables = {
-    inherit DOOMDIR;
+  home.file.".doom.d" = {
+    source = ./doom;
+    recursive = true;
   };
 
   home.sessionPath = [ "${emacsDir}/bin" ];
@@ -22,12 +23,11 @@ in
   ];
 
   home.activation = {
-    doom-sync = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      mkdir -p "${emacsDir}"
-      git -C ${emacsDir} init
-      git -C ${emacsDir} pull https://github.com/hlissner/doom-emacs.git
+    doom-clone = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      if [ ! -d ${emacsDir} ]; then
+        mkdir -p "${emacsDir}"
+        git -C ${emacsDir} clone https://github.com/hlissner/doom-emacs.git
+      fi
     '';
-      # Due to time-outs it is better to doom upgrade manually
-      # ${emacsDir}/bin/doom --doomdir ${DOOMDIR} sync
   };
 }

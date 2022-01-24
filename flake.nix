@@ -11,12 +11,8 @@
       url = "github:nix-community/nixpkgs-wayland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # pin emacs-overlay until emacs 29 is stable
+    # pin emacs-overlay to v29 until it is stable
     emacs-overlay.url = "github:nix-community/emacs-overlay/4c0dfcbfdff6beb283bb8889239d604c3e504187";
-    doom-emacs = {
-      url = "github:hlissner/doom-emacs";
-      flake = false;
-    };
   };
 
   outputs = { self, home-manager, nixpkgs, ... }@inputs:
@@ -31,11 +27,9 @@
         overlays = with inputs; [
           nixpkgs-wayland.overlay
           emacs-overlay.overlay
-          (final: prev: ({
-            doomEmacsRevision = inputs.doom-emacs.rev;
-          } //
+          (final: prev:
             inputs.nixpkgs-wayland.packages.${system}
-          ))
+          )
         ];
       };
 
