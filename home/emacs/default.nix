@@ -20,6 +20,7 @@ in
   home.packages = with pkgs; [
     fd
     sqlite
+    ripgrep
   ];
 
   home.activation = {

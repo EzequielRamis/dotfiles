@@ -66,11 +66,19 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    neovim curl wget git
+    neovim
+    curl
+    wget
+    git
   ];
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+
+  programs.gnupg.agent = {
+    enable = true;
+    pinentryFlavor = "tty";
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
