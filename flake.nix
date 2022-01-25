@@ -11,8 +11,8 @@
       url = "github:nix-community/nixpkgs-wayland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # pin emacs-overlay to v29 until it is stable
-    emacs-overlay.url = "github:nix-community/emacs-overlay/4c0dfcbfdff6beb283bb8889239d604c3e504187";
+    # pin emacs-overlay to v28 until it is stable
+    emacs-overlay.url = "github:nix-community/emacs-overlay/5e7af7d4bda485bb65a353d16a1ca38d9b73b178";
   };
 
   outputs = { self, home-manager, nixpkgs, ... }@inputs:
