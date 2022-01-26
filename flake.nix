@@ -50,6 +50,7 @@
             home-manager.useUserPackages = true;
             home-manager.users.${username} = {
               programs.home-manager.enable = true;
+              xdg.enable = true;
               imports = with (import ./helpers.nix); modulesFrom ./home;
             };
             home-manager.extraSpecialArgs = userData;

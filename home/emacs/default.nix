@@ -10,16 +10,17 @@ in
     package = pkgs.emacsPgtkGcc;
   };
 
-  home.file.".doom.d" = {
+  xdg.configFile."doom" = {
     source = ./doom;
     recursive = true;
   };
+
+  home.sessionVariables.DOOMDIR = "${config.xdg.configHome}/doom";
 
   home.sessionPath = [ "${emacsDir}/bin" ];
 
   home.packages = with pkgs; [
     fd
-    sqlite
     ripgrep
   ];
 
