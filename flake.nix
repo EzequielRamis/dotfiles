@@ -33,11 +33,15 @@
         ];
       };
 
+      lib = nixpkgs.lib.extend
+        (final: prev: { my = import ./lib { inherit pkgs inputs; lib = final; }; });
+
       userData = {
         inherit pkgs system hostname username;
       };
 
-      nixConfig = with pkgs; import ./nixos/configuration.nix userData;
+      nixConfig = with pkgs; import ./nixos/configuration.nix
+        (userData // { inherit lib; });
 
     in
     {
@@ -51,7 +55,7 @@
             home-manager.users.${username} = {
               programs.home-manager.enable = true;
               xdg.enable = true;
-              imports = with (import ./helpers.nix); modulesFrom ./home;
+              imports = lib.my.importFrom ./home;
             };
             home-manager.extraSpecialArgs = userData;
           }
