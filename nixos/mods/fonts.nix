@@ -1,10 +1,7 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   fonts = {
     fonts = with pkgs; [
-      (nerdfonts.override {
-        fonts = [ "FiraCode" ];
-      })
+      (nerdfonts.override { fonts = [ "FiraCode" ]; })
       twitter-color-emoji
       emacs-all-the-icons-fonts
     ];

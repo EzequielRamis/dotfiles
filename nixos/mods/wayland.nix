@@ -1,6 +1,6 @@
 { pkgs, lib, username, ... }:
-let user = username; in
-{
+let user = username;
+in {
   hardware.opengl.enable = true;
 
   # https://github.com/WayfireWM/wayfire/wiki/FAQ#2-the-mouse-cursor-is-invisible
@@ -11,7 +11,9 @@ let user = username; in
     settings = {
       default_session = {
         inherit user;
-        command = "${lib.makeBinPath [pkgs.greetd.tuigreet] }/tuigreet --time --cmd wayfire";
+        command = "${
+            lib.makeBinPath [ pkgs.greetd.tuigreet ]
+          }/tuigreet --time --cmd wayfire";
       };
       initial_session = {
         inherit user;

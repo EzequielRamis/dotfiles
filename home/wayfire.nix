@@ -9,19 +9,18 @@ let
   super-h = super + "KEY_H ";
   super-l = super + "KEY_L ";
   vswitchN = n:
-    let s = builtins.toString n; key = "KEY_${s}"; in {
-    "binding_${s}" = super + key;
-    "send_win_${s}" = shift + super + key;
-    "with_win_${s}" = ctrl + shift + super + key;
-  };
-in
-{
-  home.packages = with pkgs; [
-    wayfire
-    wlr-randr
-  ];
+    let
+      s = builtins.toString n;
+      key = "KEY_${s}";
+    in {
+      "binding_${s}" = super + key;
+      "send_win_${s}" = shift + super + key;
+      "with_win_${s}" = ctrl + shift + super + key;
+    };
+in {
+  home.packages = with pkgs; [ wayfire wlr-randr ];
 
-  xdg.configFile."wayfire.ini".text = lib.generators.toINI {} {
+  xdg.configFile."wayfire.ini".text = lib.generators.toINI { } {
     input.xkb_layout = "es";
     # Change the output when it's ready
     # "output:eDP-1" = {
@@ -72,7 +71,7 @@ in
       select_workspace_4 = "KEY_4";
     };
     vswitch = {
-      binding_up =  super-k;
+      binding_up = super-k;
       binding_down = super-j;
       binding_left = super-h;
       binding_right = super-l;
@@ -87,11 +86,7 @@ in
       with_win_down = ctrl + shift + super-j;
       with_win_left = ctrl + shift + super-h;
       with_win_right = ctrl + shift + super-l;
-    } //
-      vswitchN 1 //
-      vswitchN 2 //
-      vswitchN 3 //
-      vswitchN 4;
+    } // vswitchN 1 // vswitchN 2 // vswitchN 3 // vswitchN 4;
     # Makes Caps Lcok an additional Esc, but with Shift + Caps Lock is the
     # regular Caps Lock. From xkeyboard-config man.
     input.xkb_options = "caps:escape_shifted_capslock";

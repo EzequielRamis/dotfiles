@@ -1,8 +1,7 @@
-{ config, pkgs, lib, ... }:
-{
+{ config, pkgs, lib, ... }: {
   programs.git = {
     enable = true;
-    userName  = "Ezequiel Ramis";
+    userName = "Ezequiel Ramis";
     userEmail = "ezequielramis.hello@gmail.com";
     signing = {
       # Change this 2 lines when it's finally installed

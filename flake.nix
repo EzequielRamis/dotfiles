@@ -12,7 +12,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # pin emacs-overlay to v28 until it is stable
-    emacs-overlay.url = "github:nix-community/emacs-overlay/5e7af7d4bda485bb65a353d16a1ca38d9b73b178";
+    emacs-overlay.url =
+      "github:nix-community/emacs-overlay/5e7af7d4bda485bb65a353d16a1ca38d9b73b178";
   };
 
   outputs = { self, home-manager, nixpkgs, ... }@inputs:
@@ -27,29 +28,29 @@
         overlays = with inputs; [
           nixpkgs-wayland.overlay
           emacs-overlay.overlay
-          (final: prev:
-            inputs.nixpkgs-wayland.packages.${system}
-          )
+          (final: prev: inputs.nixpkgs-wayland.packages.${system})
         ];
       };
 
-      lib = nixpkgs.lib.extend
-        (final: prev: { my = import ./lib { inherit pkgs inputs; lib = final; }; });
+      lib = nixpkgs.lib.extend (final: prev: {
+        my = import ./lib {
+          inherit pkgs inputs;
+          lib = final;
+        };
+      });
 
-      userData = {
-        inherit pkgs system hostname username;
-      };
+      userData = { inherit pkgs system hostname username; };
 
-      nixConfig = with pkgs; import ./nixos/configuration.nix
-        (userData // { inherit lib; });
+      nixConfig = with pkgs;
+        import ./nixos/configuration.nix (userData // { inherit lib; });
 
-    in
-    {
+    in {
       nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
           nixConfig
-          home-manager.nixosModules.home-manager {
+          home-manager.nixosModules.home-manager
+          {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.${username} = {

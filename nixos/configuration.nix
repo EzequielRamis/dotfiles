@@ -1,9 +1,6 @@
-{ pkgs, lib, hostname, username, ... }@inputs:
-{
-  imports = [ ./hardware-configuration.nix ] ++
-    lib.my.importFromWith ./mods (inputs // {
-      inherit (pkgs) lib;
-  });
+{ pkgs, lib, hostname, username, ... }@inputs: {
+  imports = [ ./hardware-configuration.nix ]
+    ++ lib.my.importFromWith ./mods (inputs // { inherit (pkgs) lib; });
 
   nix = {
     package = pkgs.nixUnstable;
@@ -42,7 +39,7 @@
     font = "Lat2-Terminus16";
     keyMap = "es";
   };
-  
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
@@ -56,17 +53,12 @@
     extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
     initialPassword = "";
   };
-  
+
   users.defaultUserShell = pkgs.zsh;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    neovim
-    curl
-    wget
-    git
-  ];
+  environment.systemPackages = with pkgs; [ neovim curl wget git ];
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
