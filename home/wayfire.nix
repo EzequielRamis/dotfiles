@@ -53,10 +53,10 @@ in {
       button_move = "<super> BTN_LEFT";
       button_resize = "<super> BTN_RIGHT";
       key_toggle = "<super> KEY_T";
-      key_focus_above = "KEY_CAPSLOCK" + super-k;
-      key_focus_below = "KEY_CAPSLOCK" + super-j;
-      key_focus_left = "KEY_CAPSLOCK" + super-h;
-      key_focus_right = "KEY_CAPSLOCK" + super-l;
+      key_focus_above = ctrl + super-k;
+      key_focus_below = ctrl + super-j;
+      key_focus_left = ctrl + super-h;
+      key_focus_right = ctrl + super-l;
     };
     command = {
       binding_terminal = "<super> KEY_Z";
@@ -77,10 +77,10 @@ in {
       binding_right = super-l;
       binding_last = "<super> KEY_U";
 
-      send_win_up = ctrl + super-k;
-      send_win_down = ctrl + super-j;
-      send_win_left = ctrl + super-h;
-      send_win_right = ctrl + super-l;
+      send_win_up = shift + super-k;
+      send_win_down = shift + super-j;
+      send_win_left = shift + super-h;
+      send_win_right = shift + super-l;
 
       with_win_up = ctrl + shift + super-k;
       with_win_down = ctrl + shift + super-j;
