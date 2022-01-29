@@ -17,6 +17,8 @@ let
       "send_win_${s}" = shift + super + key;
       "with_win_${s}" = ctrl + shift + super + key;
     };
+  button_move = ctrl + super + "BTN_LEFT";
+  button_resize = ctrl + super + "BTN_RIGHT";
 in {
   home.packages = with pkgs; [ wayfire wlr-randr ];
 
@@ -47,11 +49,10 @@ in {
       vheight = 2;
       preferred_decoration_mode = "server";
     };
-    # move.activate = "<super> BTN_LEFT";
-    # resize.activate = "<super> BTN_RIGHT";
+    move.activate = button_move;
+    resize.activate = button_resize;
     simple-tile = {
-      button_move = "<super> BTN_LEFT";
-      button_resize = "<super> BTN_RIGHT";
+      inherit button_move button_resize;
       key_toggle = "<super> KEY_T";
       key_focus_above = ctrl + super-k;
       key_focus_below = ctrl + super-j;
