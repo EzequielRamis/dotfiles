@@ -22,13 +22,13 @@ in
   home.packages = with pkgs; [
     fd
     ripgrep
+    nixfmt
   ];
 
   home.activation = {
     doom-clone = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       if [ ! -d ${emacsDir} ]; then
-        mkdir -p "${emacsDir}"
-        git -C ${emacsDir} clone https://github.com/hlissner/doom-emacs.git
+        git clone https://github.com/hlissner/doom-emacs.git ${emacsDir}
       fi
     '';
   };

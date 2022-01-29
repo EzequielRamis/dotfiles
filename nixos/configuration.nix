@@ -1,7 +1,8 @@
 { pkgs, lib, hostname, username, ... }@inputs:
 {
-  imports = lib.my.importFromWith ./mods (inputs // {
-    inherit (pkgs) lib;
+  imports = [ ./hardware-configuration.nix ] ++
+    lib.my.importFromWith ./mods (inputs // {
+      inherit (pkgs) lib;
   });
 
   nix = {

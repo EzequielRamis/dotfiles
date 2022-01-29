@@ -8,7 +8,7 @@ in
 rec {
   mapModules = dir: fn:
     filterMapAttrs'
-      (v: v != null)
+      (_: v: v != null)
       (n: v:
         let path = "${toString dir}/${n}"; in
         if v == "directory" && pathExists "${path}/default.nix"
@@ -27,7 +27,7 @@ rec {
 
   mapModulesRec = dir: fn:
     filterMapAttrs'
-      (v: v != null)
+      (_: v: v != null)
       (n: v:
         let path = "${toString dir}/${n}"; in
         if v == "directory"
