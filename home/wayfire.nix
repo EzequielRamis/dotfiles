@@ -42,9 +42,10 @@ in {
         vswitch \
         move \
         resize \
-        input
+        input \
+        wm-actions
       '';
-      close_top_view = "<super> KEY_X | <alt> KEY_F4";
+      close_top_view = "<super> KEY_D | <alt> KEY_F4";
       vwidth = 2;
       vheight = 2;
       preferred_decoration_mode = "server";
@@ -58,10 +59,14 @@ in {
       key_focus_below = ctrl + super-j;
       key_focus_left = ctrl + super-h;
       key_focus_right = ctrl + super-l;
+      keep_fullscreen_on_adjacent = true;
     };
     command = {
       binding_terminal = "<super> KEY_Z";
       command_terminal = "foot";
+
+      binding_launcher = "<super> KEY_SPACE";
+      command_launcher = "rofi -show run";
     };
     fast-switcher.activate = "<alt> KEY_TAB";
     expo = {
@@ -91,5 +96,6 @@ in {
     # Makes Caps Lcok an additional Esc, but with Shift + Caps Lock is the
     # regular Caps Lock. From xkeyboard-config man.
     input.xkb_options = "caps:escape_shifted_capslock";
+    wm-actions.toggle_fullscreen = "<super> KEY_F";
   };
 }

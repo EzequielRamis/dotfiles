@@ -28,7 +28,10 @@
         overlays = with inputs; [
           nixpkgs-wayland.overlay
           emacs-overlay.overlay
-          (final: prev: inputs.nixpkgs-wayland.packages.${system})
+          (final: prev:
+            inputs.nixpkgs-wayland.packages.${system} // {
+              my = lib.my.mapModules ./pkgs (p: prev.callPackage p { });
+            })
         ];
       };
 

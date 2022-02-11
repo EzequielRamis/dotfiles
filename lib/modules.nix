@@ -8,7 +8,7 @@ let
   inherit (self.attrs) filterMapAttrs';
 in rec {
   mapModules = dir: fn:
-    filterMapAttrs' (_: v: v != null) (n: v:
+    filterMapAttrs' (n: v: v != null && !(hasPrefix "_" n)) (n: v:
       let path = "${toString dir}/${n}";
       in if v == "directory" && pathExists "${path}/default.nix" then
         nameValuePair n (fn path)
@@ -23,7 +23,7 @@ in rec {
   importFromWith = dir: s: mapModules' dir (m: import m s);
 
   mapModulesRec = dir: fn:
-    filterMapAttrs' (_: v: v != null) (n: v:
+    filterMapAttrs' (n: v: v != null && !(hasPrefix "_" n)) (n: v:
       let path = "${toString dir}/${n}";
       in if v == "directory" then
         nameValuePair n (mapModulesRec path fn)
@@ -35,7 +35,8 @@ in rec {
   mapModulesRec' = dir: fn:
     let
       dirs = mapAttrsToList (k: _: "${dir}/${k}")
-        (filterAttrs (_: v: v == "directory") (readDir dir));
+        (filterAttrs (n: v: v == "directory" && !(hasPrefix "_" n))
+          (readDir dir));
       files = attrValues (mapModules dir id);
       paths = files ++ concatLists (map (d: mapModulesRec' d id) dirs);
     in map fn paths;

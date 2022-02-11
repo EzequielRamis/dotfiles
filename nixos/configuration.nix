@@ -55,6 +55,7 @@
   };
 
   users.defaultUserShell = pkgs.zsh;
+  environment.pathsToLink = [ "/share/zsh" ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
