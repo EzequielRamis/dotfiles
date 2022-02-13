@@ -22,25 +22,30 @@
       username = "ezequiel";
       hostname = "ramis";
 
-      pkgs = import nixpkgs {
-        config = { allowUnfree = true; };
-        localSystem = { inherit system; };
-        overlays = with inputs; [
-          nixpkgs-wayland.overlay
-          emacs-overlay.overlay
-          (final: prev:
-            inputs.nixpkgs-wayland.packages.${system} // {
-              my = lib.my.mapModules ./pkgs (p: prev.callPackage p { });
-            })
-        ];
-      };
-
       lib = nixpkgs.lib.extend (final: prev: {
         my = import ./lib {
           inherit pkgs inputs;
           lib = final;
         };
       });
+
+      mkPkgs = ow:
+        import nixpkgs ({
+          config = { allowUnfree = true; };
+          localSystem = { inherit system; };
+        } // ow);
+
+      pkgs = mkPkgs {
+        overlays = with inputs; [
+          nixpkgs-wayland.overlay
+          emacs-overlay.overlay
+          (final: prev:
+            inputs.nixpkgs-wayland.packages.${system} // {
+              my = lib.my.mapModulesRec ./pkgs (p: prev.callPackage p { });
+              unstable = mkPkgs { };
+            })
+        ];
+      };
 
       userData = { inherit pkgs system hostname username; };
 
