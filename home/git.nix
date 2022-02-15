@@ -15,5 +15,6 @@
       };
       diff.algorithm = "histogram";
     };
+    delta.enable = true;
   };
 }

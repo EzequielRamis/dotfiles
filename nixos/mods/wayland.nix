@@ -23,7 +23,7 @@ in {
         inherit user;
         command = "${
             lib.makeBinPath [ pkgs.greetd.tuigreet ]
-          }/tuigreet --time --cmd wayfire &> .wayfire.txt";
+          }/tuigreet --time --cmd 'wayfire &> .wayfire.txt'";
       };
       initial_session = {
         inherit user;

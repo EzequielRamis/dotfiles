@@ -14,7 +14,10 @@
       setopt nobanghist
     '';
     initExtra = ''
-      PROMPT=$'\n'"𝝘, %(4~|%-1~/.../%2~|%~)"''$'\n'"𝝺. "
+      PROMPT=$'\n'"%BΓ,%b %(4~|%-1~/.../%2~|%~)"$'\n'"%Bλ.%b "
     '';
+    shellAliases = {
+      cat = "bat";
+    };
   };
 }
