@@ -7,24 +7,20 @@
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
-    binaryCachePublicKeys = [
+    settings.trusted-public-keys = [
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-      "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
-    binaryCaches = [
+    settings.substituters = [
       "https://cache.nixos.org"
-      "https://nixpkgs-wayland.cachix.org"
       "https://nix-community.cachix.org"
     ];
   };
 
-  # boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.enable = true;
-  boot.loader.grub.devices = [ "nodev" ];
-  boot.loader.grub.efiInstallAsRemovable = true;
+  boot.loader.grub.device = "nodev";
   boot.loader.grub.efiSupport = true;
-  boot.loader.grub.useOSProber = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "${hostname}"; # Define your hostname.
 
@@ -42,6 +38,12 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+
+  services.xserver.enable = true;
+  services.xserver.displayManager.defaultSession = "none+bspwm";
+  services.xserver.displayManager.startx.enable = true;
+  services.xserver.displayManager.autoLogin.enable = true;
+  services.xserver.displayManager.autoLogin.user = username;
 
   # Enable sound.
   sound.enable = true;

@@ -4,7 +4,7 @@
   programs.bat = {
     enable = true;
     config = {
-      map-syntax = [ "*.conf:INI" ];
+      map-syntax = [ "*.conf:XML" ];
     };
   };
 }

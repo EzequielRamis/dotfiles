@@ -1,11 +1,4 @@
 { config, pkgs, lib, ... }:
 {
-  programs.foot = {
-    enable = true;
-    settings = {
-      main = {
-        font = "monospace:size=16";
-      };
-    };
-  };
+  home.packages = with pkgs; [ konsole ];
 }

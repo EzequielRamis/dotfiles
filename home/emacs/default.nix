@@ -5,7 +5,6 @@ let emacsDir = "$HOME/.emacs.d";
 in {
   programs.emacs = {
     enable = true;
-    package = pkgs.emacsPgtkGcc;
   };
 
   xdg.configFile."doom" = {

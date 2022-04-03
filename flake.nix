@@ -7,13 +7,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixpkgs-wayland = {
-      url = "github:nix-community/nixpkgs-wayland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    # pin emacs-overlay to v28 until it is stable
-    emacs-overlay.url =
-      "github:nix-community/emacs-overlay/5e7af7d4bda485bb65a353d16a1ca38d9b73b178";
   };
 
   outputs = { self, home-manager, nixpkgs, ... }@inputs:
@@ -29,18 +22,16 @@
         };
       });
 
-      mkPkgs = ow:
+      mkPkgs = o:
         import nixpkgs ({
           config = { allowUnfree = true; };
           localSystem = { inherit system; };
-        } // ow);
+        } // o);
 
       pkgs = mkPkgs {
         overlays = with inputs; [
-          nixpkgs-wayland.overlay
-          emacs-overlay.overlay
           (final: prev:
-            inputs.nixpkgs-wayland.packages.${system} // {
+            {
               my = lib.my.mapModulesRec ./pkgs (p: prev.callPackage p { });
               unstable = mkPkgs { };
             })
