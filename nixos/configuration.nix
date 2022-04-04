@@ -40,10 +40,25 @@
   services.printing.enable = true;
 
   services.xserver.enable = true;
-  services.xserver.displayManager.defaultSession = "none+bspwm";
-  services.xserver.displayManager.startx.enable = true;
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = username;
+  services.greetd = {
+    enable = true;
+    settings =
+      let
+        x = "startx";
+        user = username;
+      in {
+        default_session = {
+          inherit user;
+          command = "${
+              lib.makeBinPath [ pkgs.greetd.tuigreet ]
+          }/tuigreet --time --cmd '${x}'";
+        };
+        initial_session = {
+          inherit user;
+          command = x;
+        };
+      };
+  };
 
   # Enable sound.
   sound.enable = true;
