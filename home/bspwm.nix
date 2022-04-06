@@ -4,7 +4,7 @@
     enable = true;
     settings = {
       "border_width" = 2;
-      "split_ratio" = 0.52;
+      "split_ratio" = 0.5;
       "gapless_monocle" = true;
     };
     monitors = {

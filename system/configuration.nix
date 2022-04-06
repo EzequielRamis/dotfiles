@@ -39,23 +39,30 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  services.xserver.enable = true;
+  services.xserver = {
+    enable = true;
+    autorun = false;
+    resolutions = [{ x = 1920; y = 1080 }];
+    layout = "es";
+    displayManager.startx.enable = true;
+  };
+
   services.greetd = {
     enable = true;
     settings =
       let
-        x = "startx";
+        startx = "startx -x .xinitrc";
         user = username;
       in {
         default_session = {
           inherit user;
           command = "${
               lib.makeBinPath [ pkgs.greetd.tuigreet ]
-          }/tuigreet --time --cmd '${x}'";
+          }/tuigreet --time --cmd '${startx}'";
         };
         initial_session = {
           inherit user;
-          command = x;
+          command = startx;
         };
       };
   };
