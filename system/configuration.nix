@@ -11,10 +11,8 @@
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
-    settings.substituters = [
-      "https://cache.nixos.org"
-      "https://nix-community.cachix.org"
-    ];
+    settings.substituters =
+      [ "https://cache.nixos.org" "https://nix-community.cachix.org" ];
   };
 
   boot.loader.grub.enable = true;
@@ -42,29 +40,31 @@
   services.xserver = {
     enable = true;
     autorun = false;
-    resolutions = [{ x = 1920; y = 1080 }];
+    resolutions = [{
+      x = 1920;
+      y = 1080;
+    }];
     layout = "es";
     displayManager.startx.enable = true;
   };
 
   services.greetd = {
     enable = true;
-    settings =
-      let
-        startx = "startx -x .xinitrc";
-        user = username;
-      in {
-        default_session = {
-          inherit user;
-          command = "${
-              lib.makeBinPath [ pkgs.greetd.tuigreet ]
+    settings = let
+      startx = "startx -x .xinitrc";
+      user = username;
+    in {
+      default_session = {
+        inherit user;
+        command = "${
+            lib.makeBinPath [ pkgs.greetd.tuigreet ]
           }/tuigreet --time --cmd '${startx}'";
-        };
-        initial_session = {
-          inherit user;
-          command = startx;
-        };
       };
+      initial_session = {
+        inherit user;
+        command = startx;
+      };
+    };
   };
 
   # Enable sound.

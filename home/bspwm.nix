@@ -1,5 +1,4 @@
-{ config, lib, pkgs, ... }:
-{
+{ config, lib, pkgs, ... }: {
   xsession.windowManager.bspwm = {
     enable = true;
     settings = {
@@ -7,8 +6,7 @@
       "split_ratio" = 0.5;
       "gapless_monocle" = true;
     };
-    monitors = {
-      "HDMI-0" = [ "web" "terminal" "III" "IV" ];
-    };
+    monitors = { "HDMI-0" = [ "web" "terminal" "III" "IV" ]; };
+    rules = { "Emacs" = { state = "tiled"; }; };
   };
 }

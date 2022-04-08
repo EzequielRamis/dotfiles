@@ -29,13 +29,13 @@
         } // o);
 
       pkgs = mkPkgs {
-        overlays = with inputs; [
-          (final: prev:
-            {
+        overlays = with inputs;
+          [
+            (final: prev: {
               my = lib.my.mapModulesRec ./pkgs (p: prev.callPackage p { });
               unstable = mkPkgs { };
             })
-        ];
+          ];
       };
 
       userData = { inherit pkgs system hostname username; };
