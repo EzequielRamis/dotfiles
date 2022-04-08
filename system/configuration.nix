@@ -1,6 +1,6 @@
 { pkgs, lib, hostname, username, ... }@inputs: {
   imports = [ ./hardware-configuration.nix ]
-    ++ lib.my.importFromWith ./mods (inputs // { inherit (pkgs) lib; });
+    ++ lib.my.importFromWith ./modules (inputs // { inherit (pkgs) lib; });
 
   nix = {
     package = pkgs.nixUnstable;
