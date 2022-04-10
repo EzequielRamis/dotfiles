@@ -45,6 +45,7 @@
       y = 1080;
     }];
     layout = "es";
+    xkbOptions = "caps:super";
     displayManager.startx.enable = true;
   };
 

@@ -1,0 +1,6 @@
+{ ... }:
+{
+  home.sessionVariables = {
+    TERMINAL = "konsole";
+  };
+}

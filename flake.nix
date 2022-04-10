@@ -43,7 +43,7 @@
       nixConfig = with pkgs;
         import ./system/configuration.nix (userData // { inherit lib; });
 
-    in {
+    in rec {
       nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
@@ -61,5 +61,6 @@
           }
         ];
       };
+      defaultPackage = nixosConfigurations.${hostname};
     };
 }
