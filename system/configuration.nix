@@ -45,6 +45,7 @@
       y = 1080;
     }];
     layout = "es";
+    # xkbModel = "pc104alt";
     xkbOptions = "caps:super";
     displayManager.startx.enable = true;
   };

@@ -12,6 +12,7 @@ let
   plus = prefix " + ";
   chord = prefix " ; ";
   chord' = prefix " : ";
+  none = prefix " ";
 
   step = "10";
   desks' = 4;
@@ -34,20 +35,23 @@ in {
       "alt + {_,shift + }Tab" = "bspc node -f {next,prev}.leaf.local";
 
       super = plus {
+        # reload sxhkd
+        Escape = "pkill -USR1 -x sxhkd; bspc wm -r";
         Return = "$TERMINAL";
-        space = "rofi -show run";
         f = "bspc desktop -l next";
-        p = "bspc node -g sticky";
         m = "bspc node @/first -f";
-        k = "bspc node -c";
+        t = "bspc node -t {floating,tiled}";
+        p = "bspc node -g sticky";
+        x = "bspc node -c";
+        b = "bspc node @parent -B";
+        g = "bspc node @parent -E";
         "{q,e}" = "bspc node @parent -F {horizontal,vertical}";
         "{w,a,s,d}" = "bspc node -f {north,west,south,east}.leaf";
         "${desks}" = "bspc desktop -f ${desks}";
 
         shift = plus {
-          # reload sxhkd
-          Escape = "pkill -USR1 -x sxhkd";
           f = "bspc node -t {fullscreen,tiled}";
+          x = "bspc node -k";
           "{q,e}" = "bspc node @parent -R {270,90}";
           # from https://www.reddit.com/r/bspwm/comments/r5stxu/resizing_windows_nicely_in_my_opinion/
           "{w,a,s,d}" = ''
@@ -61,13 +65,41 @@ in {
               bspc node @parent/first  -z right  +${step} 0; \
               bspc node @parent/second -z left   +${step} 0  \
               }'';
+          "{1-9}" = "bspc node @parent -r 0.{1-9}";
         };
 
         alt = plus {
-          k = "bspc node -k";
+          m = "bspc node -s biggest.window";
           "{q,e}" = "bspc node @parent -C {backward,forward}";
-          "{w,a,s,d}" = "bspc node -s {north,west,south,east}.leaf";
+          "{w,a,s,d}" = ''
+            {\
+              bspc node focused.tiled    -s north.leaf; \
+              bspc node focused.floating -v 0 -${step}, \
+              bspc node focused.tiled    -s west.leaf;  \
+              bspc node focused.floating -v -${step} 0, \
+              bspc node focused.tiled    -s south.leaf; \
+              bspc node focused.floating -v 0 +${step}, \
+              bspc node focused.tiled    -s east.leaf;  \
+              bspc node focused.floating -v +${step} 0, \
+              }'';
           "${desks}" = "bspc node -d ${desks}";
+          shift = plus {
+            q = "bspc node -p {north,south}";
+            e = "bspc node -p {west,east}";
+            w = "bspc node -g marked";
+            a = "bspc node -n last.!automatic.local";
+            s = "bspc node -s last.marked";
+            d = "bspc node -p cancel; bspc node -g marked=off";
+            "${desks}" = "bspc node -d ${desks} -f";
+          };
+        };
+
+        space = chord {
+          "{_,super + }" = none {
+            space = "rofi -show run";
+            f = "firefox";
+            e = "emacs";
+          };
         };
       };
     };
