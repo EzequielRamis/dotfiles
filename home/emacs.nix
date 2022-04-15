@@ -7,15 +7,8 @@ in {
     enable = true;
   };
 
-  xdg.configFile."doom" = {
-    source = ./doom;
-    recursive = true;
-  };
-
-  home.sessionVariables.DOOMDIR = "${config.xdg.configHome}/doom";
-
+  home.sessionVariables.DOOMDIR = "~/.doom.d";
   home.sessionPath = [ "${emacsDir}/bin" ];
-
   home.packages = with pkgs; [ fd ripgrep nixfmt ];
 
   home.activation = {
