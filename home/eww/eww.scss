@@ -1,0 +1,27 @@
+* {
+    all: unset;
+    font-family: "SF Pro Text";
+    font-size: 14px;
+}
+.bar {
+    background-color: black;
+}
+
+.time {
+    font-weight: 500;
+    color: white;
+    padding: 16px 0px;
+}
+
+.ws {
+    padding: 16px 0px;
+}
+
+.w {
+    font-weight: 900;
+    padding-bottom: 4px;
+    color: white;
+    &.focused {
+        color: red;
+    }
+}

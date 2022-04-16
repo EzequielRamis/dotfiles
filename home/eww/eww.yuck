@@ -1,0 +1,30 @@
+(defwidget workspaces []
+    (literal :content workspace))
+(deflisten workspace "scripts/workspace")
+
+(defwindow bar
+    :monitor 0
+    :geometry (geometry :x "8px"
+                        :y "8px"
+                        :width "48px"
+                        :height "1064px"
+                        :anchor "top left"
+                        :class "bar")
+    :stacking "bg"
+    :windowtype "dock"
+    :wm-ignore true
+    (centerbox
+        :orientation "v"
+        (workspaces)
+        (box :orientation "v"
+             :valign "center"
+             :class "time"
+             "")
+        (box :orientation "v"
+             :valign "end"
+             :class "time"
+             hour
+             minute)))
+
+(defpoll hour :interval "1s" "date '+%H'")
+(defpoll minute :interval "1s" "date '+%M'")

@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+workspaces() {
+    local c1="○"
+    local c2="○"
+    local c3="○"
+    local c4="○"
+    while read w; do eval "local o$w"="occupied"; eval "c$w"="●"; done < <(bspc query -D -d .occupied --names)
+    while read w; do eval "local f$w"="focused"; done < <(bspc query -D -d focused --names)
+
+    echo "(box :class 'ws'\
+               :orientation 'v'\
+               :halign 'center'\
+               :valign 'start'\
+               (button :onclick 'bspc desktop -f 1' :class 'w $o1 $f1' '$c1')\
+               (button :onclick 'bspc desktop -f 2' :class 'w $o2 $f2' '$c2')\
+               (button :onclick 'bspc desktop -f 3' :class 'w $o3 $f3' '$c3')\
+               (button :onclick 'bspc desktop -f 4' :class 'w $o4 $f4' '$c4'))"
+}
+
+workspaces
+bspc subscribe desktop_focus node_add node_remove node_transfer | while read -r _ ; do
+workspaces
+done

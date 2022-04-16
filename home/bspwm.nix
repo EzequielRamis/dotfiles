@@ -25,6 +25,7 @@ in {
       split_ratio = 0.5;
       gapless_monocle = false;
       borderless_monocle = true;
+      left_padding = 60;
     };
     rules = { Emacs = { state = "tiled"; }; };
     monitors = { Virtual1 = map toString (lib.lists.range 1 desks'); };
@@ -96,7 +97,8 @@ in {
 
         space = chord {
           "{_,super + }" = none {
-            space = "rofi -show run";
+            space = "rofi -show drun";
+            u = "rofi -show emoji";
             f = "firefox";
             e = "emacs";
           };
