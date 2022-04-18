@@ -1,6 +1,9 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, username, ... }:
 {
-  home.packages = with pkgs; [
-    firefox
-  ];
+  programs.firefox = {
+    enable = true;
+    profiles."${username}" = {
+      isDefault = true;
+    };
+  };
 }

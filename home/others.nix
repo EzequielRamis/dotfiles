@@ -6,5 +6,7 @@
     jless
     xorg.xev
     feh
+    fontforge-gtk
+    fzf
   ];
 }

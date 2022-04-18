@@ -1,30 +1,82 @@
+(deflisten workspace "scripts/workspace")
+
+(defpoll hour :interval "1s" "date '+%H'")
+(defpoll minute :interval "1s" "date '+%M'")
+
+(defpoll day_name :interval "1s" "date '+%a' | tr a-z A-Z")
+(defpoll day_nro :interval "1s" "date '+%d'")
+(defpoll month :interval "1s" "date '+%b' | tr a-z A-Z")
+
+(defwidget metric [text value class]
+    (box
+        :orientation "v"
+        :class class
+        :space-evenly false
+        :halign "center"
+        ;; (progress
+        ;;     :orientation "v"
+        ;;     :value value
+        ;;     :flipped true
+        ;;     :class "progress")
+        (label :class "value" :text value)
+        (label :class "label" :text text)))
+
 (defwidget workspaces []
     (literal :content workspace))
-(deflisten workspace "scripts/workspace")
+
+(defwidget pc-status []
+    (box
+        :class "pc-status"
+        :orientation "v"
+        :space-evenly false
+        :halign "center"
+        (metric
+            :text ""
+            :class "metric cpu"
+            :value {round(EWW_CPU.avg, 0)})
+        (metric
+            :text ""
+            :class "metric ram"
+            :value {round(EWW_RAM.used_mem_perc, 0)})))
+
+(defwidget day-status []
+    (centerbox
+        :class "day-status"
+        :orientation "v"
+        :valign "end"
+        :halign "center"
+        (centerbox
+            :class "day"
+            :orientation "v"
+            (label :class "day-name" :text day_name)
+            (label :class "day-nro" :text day_nro)
+            (label :class "month" :text month))
+        (label :class "sep" :text "|")
+        (box
+            :orientation "v"
+            :class "time"
+            (label :class "hour" :text hour)
+            (label :class "minute" :text minute))))
 
 (defwindow bar
     :monitor 0
-    :geometry (geometry :x "8px"
-                        :y "8px"
-                        :width "48px"
-                        :height "1064px"
-                        :anchor "top left"
-                        :class "bar")
+    :geometry (geometry
+                :x "16px"
+                :y "16px"
+                :width "48px"
+                :height "1048px"
+                :anchor "top left"
+                :class "bar")
     :stacking "bg"
     :windowtype "dock"
     :wm-ignore true
     (centerbox
         :orientation "v"
         (workspaces)
-        (box :orientation "v"
-             :valign "center"
-             :class "time"
-             "")
-        (box :orientation "v"
-             :valign "end"
-             :class "time"
-             hour
-             minute)))
-
-(defpoll hour :interval "1s" "date '+%H'")
-(defpoll minute :interval "1s" "date '+%M'")
+        (box "")
+        (centerbox
+            :orientation "v"
+            :valign "end"
+            (box "")
+            (pc-status)
+            (day-status))))

@@ -17,15 +17,18 @@ let
   step = "10";
   desks' = 4;
   desks = "{1-${toString desks'}}";
+  left_padding = 64;
 in {
   xsession.windowManager.bspwm = {
     enable = true;
     settings = {
+      inherit left_padding;
+      window_gap = 16;
       border_width = 2;
       split_ratio = 0.5;
       gapless_monocle = false;
       borderless_monocle = true;
-      left_padding = 60;
+      single_monocle = true;
     };
     rules = { Emacs = { state = "tiled"; }; };
     monitors = { Virtual1 = map toString (lib.lists.range 1 desks'); };
@@ -51,7 +54,11 @@ in {
         "${desks}" = "bspc desktop -f ${desks}";
 
         shift = plus {
-          f = "bspc node -t {fullscreen,tiled}";
+          f = ''
+            {\
+              eww close bar; bspc config left_padding 0,\
+              bspc config left_padding ${toString left_padding}; eww open bar\
+              }'';
           x = "bspc node -k";
           "{q,e}" = "bspc node @parent -R {270,90}";
           # from https://www.reddit.com/r/bspwm/comments/r5stxu/resizing_windows_nicely_in_my_opinion/
@@ -70,6 +77,7 @@ in {
         };
 
         alt = plus {
+          f = "bspc node -t {fullscreen,tiled}";
           m = "bspc node -s biggest.window";
           "{q,e}" = "bspc node @parent -C {backward,forward}";
           "{w,a,s,d}" = ''

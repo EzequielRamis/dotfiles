@@ -1,27 +1,74 @@
-* {
-    all: unset;
-    font-family: "SF Pro Text";
-    font-size: 14px;
-}
-.bar {
-    background-color: black;
-}
+// .bar {
+//     background-color: black;
+//     font-family: "SF Pro Text";
+//     font-size: 14px;
+//     color: white;
+// }
 
-.time {
-    font-weight: 500;
-    color: white;
-    padding: 16px 0px;
-}
+// .day-status {
+//     background: #222222;
+//     border-radius: 8px;
+//     font-weight: 500;
+//     min-width: 32px;
+//     margin: 8px 0;
+//     padding: 8px 0;
+//     .sep {
+//         padding: 8px 0;
+//     }
+//     .day-name, .month {
+//         font-size: 8px;
+//     }
+//     .day-nro {
+//         font-size: 16px;
+//     }
+// }
 
-.ws {
-    padding: 16px 0px;
-}
+// .pc-status {
+//     background: #222222;
+//     border-radius: 8px;
+//     min-width: 32px;
+//     padding: 8px 0;
+//     .metric {
+//         padding: 2px;
+//         .label {
+//             all: unset;
+//             font-family: "LigaSF Mono Nerd Font";
+//         }
+//         &.cpu .label {
+//             font-size: 18px;
+//         }
+//         &.ram .label {
+//             margin-top: 2px;
+//             font-size: 14px;
+//         }
+//     }
+// }
 
-.w {
-    font-weight: 900;
-    padding-bottom: 4px;
-    color: white;
-    &.focused {
-        color: red;
-    }
-}
+// .ws {
+//     padding: 16px 0;
+// }
+
+// .w {
+//     all: unset;
+//     font-weight: 900;
+//     padding-bottom: 4px;
+//     &.focused {
+//         color: red;
+//     }
+// }
+
+// .progress {
+//     all: unset;
+//     trough {
+//         all: unset;
+//         min-height: 48px;
+//         background: grey;
+//         border-radius: 8px;
+//         margin: 0 3px;
+//         progress {
+//             all: unset;
+//             background: white;
+//             border-radius: 8px;
+//         }
+//     }
+// }
