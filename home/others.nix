@@ -8,5 +8,6 @@
     feh
     fontforge-gtk
     fzf
+    lxappearance
   ];
 }
