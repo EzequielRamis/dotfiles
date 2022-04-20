@@ -52,7 +52,24 @@
       "inputs": {
         "apple-nerd-fonts": "apple-nerd-fonts",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "whitesur-firefox": "whitesur-firefox"
+      }
+    },
+    "whitesur-firefox": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1650285186,
+        "narHash": "sha256-qVMZ+QZOXeUlM1QeTvy26PnXhmqhiqYAHKerAwhUwLA=",
+        "owner": "vinceliuice",
+        "repo": "WhiteSur-gtk-theme",
+        "rev": "4625fc2715e30d1a98a88ab7a9781912dbe5e294",
+        "type": "github"
+      },
+      "original": {
+        "owner": "vinceliuice",
+        "repo": "WhiteSur-gtk-theme",
+        "type": "github"
       }
     }
   },

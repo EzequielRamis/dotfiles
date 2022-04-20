@@ -11,6 +11,10 @@
       flake = false;
       url = "https://github.com/EzequielRamis/apple-nerd-fonts/releases/download/1.0/apple-nerd.tar.gz";
     };
+    whitesur-firefox = {
+      flake = false;
+      url = "github:vinceliuice/WhiteSur-gtk-theme";
+    };
   };
 
   outputs = { self, home-manager, nixpkgs, ... }@inputs:

@@ -11,7 +11,7 @@
     };
     font = {
       name = "SF Pro Text";
-      size = 12;
+      size = 11;
     };
     cursorTheme = {
       name = "Capitaine Cursors";
