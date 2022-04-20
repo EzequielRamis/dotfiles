@@ -9,5 +9,6 @@
     fontforge-gtk
     fzf
     lxappearance
+    brave
   ];
 }
