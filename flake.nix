@@ -7,6 +7,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    apple-nerd-fonts = {
+      flake = false;
+      url = "https://github.com/EzequielRamis/apple-nerd-fonts/releases/download/1.0/apple-nerd.tar.gz";
+    };
   };
 
   outputs = { self, home-manager, nixpkgs, ... }@inputs:
@@ -32,7 +36,7 @@
         overlays = with inputs;
           [
             (final: prev: {
-              my = lib.my.mapModulesRec ./pkgs (p: prev.callPackage p { });
+              my = lib.my.mapModulesRec ./pkgs (p: prev.callPackage p { inherit inputs; });
               unstable = mkPkgs { };
             })
           ];
