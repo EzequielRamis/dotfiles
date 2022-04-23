@@ -108,7 +108,7 @@ in {
             space = "rofi -show drun";
             u = "rofi -show emoji";
             f = "firefox";
-            e = "emacs";
+            e = "emacsclient -c";
           };
         };
       };

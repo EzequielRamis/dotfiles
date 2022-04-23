@@ -9,7 +9,8 @@
     };
     apple-nerd-fonts = {
       flake = false;
-      url = "https://github.com/EzequielRamis/apple-nerd-fonts/releases/download/1.0/apple-nerd.tar.gz";
+      url =
+        "https://github.com/EzequielRamis/apple-nerd-fonts/releases/download/1.0/apple-nerd.tar.gz";
     };
     whitesur-firefox = {
       flake = false;
@@ -37,13 +38,13 @@
         } // o);
 
       pkgs = mkPkgs {
-        overlays = with inputs;
-          [
-            (final: prev: {
-              my = lib.my.mapModulesRec ./pkgs (p: prev.callPackage p { inherit inputs; });
-              unstable = mkPkgs { };
-            })
-          ];
+        overlays = [
+          (final: prev: {
+            my = lib.my.mapModulesRec ./pkgs
+              (p: prev.callPackage p { inherit inputs; });
+            unstable = mkPkgs { };
+          })
+        ];
       };
 
       userData = { inherit pkgs system hostname username; };

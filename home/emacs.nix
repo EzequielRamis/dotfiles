@@ -6,10 +6,14 @@ in {
   programs.emacs = {
     enable = true;
   };
+  services.emacs = {
+    enable = true;
+    defaultEditor = true;
+  };
 
   home.sessionVariables.DOOMDIR = "~/.doom.d";
   home.sessionPath = [ "${emacsDir}/bin" ];
-  home.packages = with pkgs; [ fd ripgrep nixfmt ];
+  home.packages = with pkgs; [ fd ripgrep nixfmt python3Minimal ];
 
   home.activation = {
     doom-clone = lib.hm.dag.entryAfter [ "writeBoundary" ] ''

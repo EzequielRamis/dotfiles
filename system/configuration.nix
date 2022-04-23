@@ -62,7 +62,7 @@
   services.greetd = {
     enable = true;
     settings = let
-      startx = "startx -x .xinitrc";
+      startx = "startx -x .xinitrc &> /dev/null";
       user = username;
     in {
       default_session = {
