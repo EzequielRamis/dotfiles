@@ -47,7 +47,10 @@
         ];
       };
 
-      userData = { inherit pkgs system hostname username; };
+      userData = {
+        inherit pkgs system hostname username;
+        inherit (lib) my;
+      };
 
       nixConfig = with pkgs;
         import ./system/configuration.nix (userData // { inherit lib; });
@@ -59,14 +62,16 @@
           nixConfig
           home-manager.nixosModules.home-manager
           {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.${username} = {
-              programs.home-manager.enable = true;
-              xdg.enable = true;
-              imports = lib.my.importFrom ./home;
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.${username} = {
+                programs.home-manager.enable = true;
+                xdg.enable = true;
+                imports = lib.my.importFrom ./home;
+              };
+              extraSpecialArgs = userData;
             };
-            home-manager.extraSpecialArgs = userData;
           }
         ];
       };

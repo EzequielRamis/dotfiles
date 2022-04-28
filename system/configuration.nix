@@ -1,6 +1,5 @@
-{ pkgs, lib, hostname, username, ... }@inputs: {
-  imports = [ ./hardware-configuration.nix ]
-    ++ lib.my.importFromWith ./modules (inputs // { inherit (pkgs) lib; });
+{ pkgs, lib, hostname, username, ... }: {
+  imports = [ ./hardware-configuration.nix ];
 
   nix = {
     package = pkgs.nixUnstable;
@@ -45,7 +44,6 @@
       y = 1080;
     }];
     layout = "es";
-    # xkbModel = "pc104alt";
     xkbOptions = "caps:super";
     displayManager.startx.enable = true;
     # videoDrivers = [ "nvidia" ];
@@ -74,6 +72,28 @@
       initial_session = {
         inherit user;
         command = startx;
+      };
+    };
+  };
+
+  fonts = {
+    fonts = with pkgs; [
+      fira-code
+      twitter-color-emoji
+      emacs-all-the-icons-fonts
+      my.apple-nerd-fonts
+    ];
+    fontconfig = {
+      defaultFonts = {
+        emoji = [ "Twitter Color Emoji" ];
+        monospace = [ "LigaSF Mono Nerd Font" "FiraCode" ];
+        serif = [
+          "New York Small"
+          "New York Medium"
+          "New York Large"
+          "New York Extra Large"
+        ];
+        sansSerif = [ "SF Pro Text" "SF Pro Display" ];
       };
     };
   };
