@@ -1,16 +1,15 @@
 # For now the best way to manage doom emacs is to only use bin/doom and nix the
 # least possible
 { config, lib, pkgs, ... }:
-let emacsDir = "~/.emacs.d";
+let emacsDir = "$HOME/.emacs.d";
 in {
   programs.emacs = { enable = true; };
   services.emacs = {
     enable = true;
     defaultEditor = true;
-    socketActivation.enable = true;
   };
 
-  home.sessionVariables.DOOMDIR = "~/.dotfiles/doom";
+  home.sessionVariables.DOOMDIR = "~/.doom.d";
   home.sessionPath = [ "${emacsDir}/bin" ];
   home.packages = with pkgs; [ fd ripgrep nixfmt python3Minimal ];
 
