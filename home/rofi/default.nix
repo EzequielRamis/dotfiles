@@ -4,7 +4,7 @@
     plugins = with pkgs; [ rofi-emoji ];
     extraConfig = {
       modi = "drun,emoji";
-      font = "sans 14";
+      font = "sans 16px";
       display-drun = "Applications";
       drun-display-format = "{name}";
       cycle = false;

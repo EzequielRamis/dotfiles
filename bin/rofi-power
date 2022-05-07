@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# from https://github.com/jluttine/rofi-power-menu
+
 # This script defines just a mode for rofi instead of being a self-contained
 # executable that launches rofi by itself. This makes it more flexible than
 # running rofi inside this script as now the user can call rofi as one pleases.
@@ -47,7 +49,7 @@ actions[reboot]="systemctl reboot"
 actions[shutdown]="systemctl poweroff"
 
 # By default, ask for confirmation for actions that are irreversible
-confirmations=(reboot shutdown logout)
+confirmations=()
 
 # By default, no dry run
 dryrun=false
@@ -156,7 +158,7 @@ function write_message {
     text="<span font_size=\"medium\">$2</span>"
     if [ "$showsymbols" = "true" ]
     then
-        echo -n "\u200e$icon \u2068$text\u2069"
+        echo -n "$icon"
     else
         echo -n "$text"
     fi

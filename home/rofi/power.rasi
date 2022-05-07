@@ -6,18 +6,22 @@
 }
 
 window {
-    /* width: 4.5em; */
-    width: 10em;
-    y-offset: -5em;
+    width: 13.5em;
 }
 
 inputbar {
     children: [ prompt ];
 }
 
+prompt {
+    padding: 0.5em;
+    font: "sans 16px";
+    text-color: @t-prompt;
+}
+
 listview {
     lines: 3;
-    fixed-height: false;
+    layout: horizontal;
 }
 
 element {
