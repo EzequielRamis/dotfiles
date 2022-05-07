@@ -17,12 +17,12 @@ let
   step = "10";
   desks' = 4;
   desks = "{1-${toString desks'}}";
-  left_padding = 64;
+  bottom_padding = 32;
 in {
   xsession.windowManager.bspwm = {
     enable = true;
     settings = {
-      inherit left_padding;
+      inherit bottom_padding;
       window_gap = 16;
       border_width = 2;
       split_ratio = 0.5;
@@ -56,8 +56,10 @@ in {
         shift = plus {
           f = ''
             {\
-              eww close bar; bspc config left_padding 0,\
-              bspc config left_padding ${toString left_padding}; eww open bar\
+              eww close bar; bspc config bottom_padding 0,\
+              bspc config bottom_padding ${
+                toString bottom_padding
+              }; eww open bar\
               }'';
           x = "bspc node -k";
           "{q,e}" = "bspc node @parent -R {270,90}";
@@ -106,6 +108,8 @@ in {
         space = chord {
           "{_,super + }" = none {
             space = "rofi -show drun";
+            q = ''
+              rofi -show p -modi "p:rofi-power --choices=shutdown/reboot/logout" -theme power'';
             u = "rofi -show emoji";
             f = "firefox";
             e = "emacsclient -c -a ''";

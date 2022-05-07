@@ -7,6 +7,7 @@
 
     eww open bar &
     sxhkd &
+    thunar --daemon &
     exec bspwm
   '';
 }

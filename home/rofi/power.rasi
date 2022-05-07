@@ -1,0 +1,25 @@
+@theme "index"
+
+* {
+    font: "sans 24px";
+    horizontal-align: 0.5;
+}
+
+window {
+    /* width: 4.5em; */
+    width: 10em;
+    y-offset: -5em;
+}
+
+inputbar {
+    children: [ prompt ];
+}
+
+listview {
+    lines: 3;
+    fixed-height: false;
+}
+
+element {
+    padding: 1em;
+}

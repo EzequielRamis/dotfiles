@@ -19,11 +19,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1650413050,
-        "narHash": "sha256-e4Ajk6n+xQnF4CmqZf42OaLxsqm4LpJHkofRh5wwad0=",
+        "lastModified": 1651800560,
+        "narHash": "sha256-LUfR0/Fv8DA0uu8Uex2S1QcLiE4B5ylplbXmMs6/YoM=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "8ec13d33b17f246e03ddfea100b7c3a143255bea",
+        "rev": "538343be863cb0b9e9f1471e6dc09e0e140c7b3d",
         "type": "github"
       },
       "original": {
@@ -34,11 +34,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1650161686,
-        "narHash": "sha256-70ZWAlOQ9nAZ08OU6WY7n4Ij2kOO199dLfNlvO/+pf8=",
+        "lastModified": 1651726670,
+        "narHash": "sha256-dSGdzB49SEvdOJvrQWfQYkAefewXraHIV08Vz6iDXWQ=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "1ffba9f2f683063c2b14c9f4d12c55ad5f4ed887",
+        "rev": "c777cdf5c564015d5f63b09cc93bef4178b19b01",
         "type": "github"
       },
       "original": {
@@ -59,11 +59,11 @@
     "whitesur-firefox": {
       "flake": false,
       "locked": {
-        "lastModified": 1650285186,
-        "narHash": "sha256-qVMZ+QZOXeUlM1QeTvy26PnXhmqhiqYAHKerAwhUwLA=",
+        "lastModified": 1651761735,
+        "narHash": "sha256-smyzTP+XJCuswjf221ErNo7HiWiK/8phudvQFWZwiYA=",
         "owner": "vinceliuice",
         "repo": "WhiteSur-gtk-theme",
-        "rev": "4625fc2715e30d1a98a88ab7a9781912dbe5e294",
+        "rev": "1880427e81af1130a3b204fe419b340b045a4121",
         "type": "github"
       },
       "original": {

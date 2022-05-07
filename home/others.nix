@@ -11,5 +11,7 @@
     xfce.thunar
     chromium
     neofetch
+    fontforge-gtk
+    gucharmap
   ];
 }

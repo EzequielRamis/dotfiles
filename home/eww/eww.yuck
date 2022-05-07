@@ -9,17 +9,16 @@
 
 (defwidget metric [text value class]
     (box
-        :orientation "v"
+        :orientation "h"
         :class class
-        :space-evenly false
-        :halign "center"
+        :space-evenly true
         ;; (progress
         ;;     :orientation "v"
         ;;     :value value
         ;;     :flipped true
         ;;     :class "progress")
-        (label :class "value" :text value)
-        (label :class "label" :text text)))
+        (label :class "label" :text text)
+        (label :class "value" :text value)))
 
 (defwidget workspaces []
     (literal :content workspace))
@@ -27,9 +26,8 @@
 (defwidget pc-status []
     (box
         :class "pc-status"
-        :orientation "v"
+        :orientation "h"
         :space-evenly false
-        :halign "center"
         (metric
             :text ""
             :class "metric cpu"
@@ -42,41 +40,40 @@
 (defwidget day-status []
     (centerbox
         :class "day-status"
-        :orientation "v"
-        :valign "end"
-        :halign "center"
+        :orientation "h"
         (centerbox
             :class "day"
-            :orientation "v"
+            :orientation "h"
             (label :class "day-name" :text day_name)
             (label :class "day-nro" :text day_nro)
             (label :class "month" :text month))
-        (label :class "sep" :text "|")
+        (label :class "sep" :text "·")
         (box
-            :orientation "v"
+            :orientation "h"
             :class "time"
             (label :class "hour" :text hour)
+            (label :class "sep" :text ":")
             (label :class "minute" :text minute))))
 
 (defwindow bar
     :monitor 0
     :geometry (geometry
                 :x "16px"
-                :y "16px"
-                :width "48px"
-                :height "1048px"
-                :anchor "top left"
+                :y "0px"
+                :width "1888px"
+                :height "32px"
+                :anchor "bottom left"
                 :class "bar")
     :stacking "bg"
     :windowtype "dock"
     :wm-ignore true
     (centerbox
-        :orientation "v"
+        :orientation "h"
         (workspaces)
-        (box "")
+        (box :halign "center" "")
         (centerbox
-            :orientation "v"
-            :valign "end"
+            :orientation "h"
+            :halign "end"
             (box "")
             (pc-status)
             (day-status))))
