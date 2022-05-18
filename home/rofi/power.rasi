@@ -1,7 +1,6 @@
 @theme "index"
 
 * {
-    font: "sans 24px";
     horizontal-align: 0.5;
 }
 
@@ -14,7 +13,7 @@ inputbar {
 }
 
 prompt {
-    padding: 0.5em;
+    padding: 0.5em 0.75em;
     font: "sans 16px";
     text-color: @t-prompt;
 }
@@ -22,8 +21,15 @@ prompt {
 listview {
     lines: 3;
     layout: horizontal;
+    margin: 0.5em 0.5em 0.75em;
 }
 
 element {
-    padding: 1em;
+    padding: 1em 0em;
+    margin: 0 0.25em;
+    width: 4em;
+}
+
+element-text {
+    font: "SF Pro Text Semibold 24px";
 }

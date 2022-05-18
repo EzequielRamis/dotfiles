@@ -47,4 +47,5 @@ element.selected {
 
 element-text {
     highlight: bold;
+    font: "SF Pro Text Medium 16px";
 }

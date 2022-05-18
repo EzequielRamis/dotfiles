@@ -16,13 +16,12 @@
   xdg.configFile."rofi/theme.rasi".text = let t = my.theme;
   in ''
     * {
-      t-bg: ${t."0BF"}CC;
-      t-fg: ${t."0BF"};
-      t-border: ${t."0BC"};
-      t-prompt: ${t."0B5"};
-      t-text: ${t."0B0"};
-      t-enter: ${t."0BD"};
-      t-select: ${t."0BE"};
+      t-bg: ${t."0C0"}CC;
+      t-fg: ${t."0C0"};
+      t-border: ${t."0C2"};
+      t-prompt: ${t."0C5"};
+      t-text: ${t."0CE"};
+      t-select: ${t."0C0"};
     }
   '';
 }

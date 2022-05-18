@@ -6,12 +6,13 @@
     jless
     fzf
     xorg.xev
-    xdo # devour
+    xdo # for devour
     feh
     xfce.thunar
     chromium
     neofetch
     fontforge-gtk
     gucharmap
+    lxappearance
   ];
 }
