@@ -3,7 +3,10 @@
 { config, lib, pkgs, ... }:
 let emacsDir = "$HOME/.emacs.d";
 in {
-  programs.emacs = { enable = true; };
+  programs.emacs = {
+    enable = true;
+    extraPackages = epkgs: [ epkgs.vterm ];
+  };
   services.emacs = {
     enable = true;
     defaultEditor = true;
@@ -11,7 +14,17 @@ in {
 
   home.sessionVariables.DOOMDIR = "~/.doom.d";
   home.sessionPath = [ "${emacsDir}/bin" ];
-  home.packages = with pkgs; [ fd ripgrep nixfmt python3Minimal ];
+  home.packages = with pkgs; [
+    fd
+    ripgrep
+    nixfmt
+    python3Minimal
+    cmake
+    gnumake
+    gcc
+    libtool
+    libvterm-neovim
+  ];
 
   home.activation = {
     doom-clone = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
