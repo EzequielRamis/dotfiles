@@ -1,0 +1,100 @@
+#!/bin/sh
+#   ____ _   _ _____
+#  / ___| | | | ____|
+# | |   | |_| |  _|
+# | |___|  _  | |___
+#  \____|_| |_|_____|
+#
+# CLI Helper
+
+b=$(tput bold)
+n=$(tput sgr0)
+i=$(tput sitm)
+u=$(tput smul)
+d="\e[9m"
+
+help="\
+  ${b}Usage: che [COMMAND]
+
+  ${n}A command line interface to help me manage my ${d}porteño${n} system.
+
+  ${b}Commands:${n}
+    sync\t\tSync NixOS' configuration
+    update|upgrade\tUpdate the system with latest packages/changes
+    gc\t\t\tClean up the system and delete older generations
+    help\t\tPrint this help list
+"
+
+update_help="\
+  ${b}Usage: che update|upgrade [COMMAND]
+
+  ${n}Update the system with latest packages/changes.
+
+  ${b}Commands:${n}
+    flake|lock\t\tUpdate only flake's inputs
+    emacs|doom\t\tUpdate only Doom Emacs
+    all\t\t\tUpdate and sync the whole system
+    help\t\tPrint this help list
+"
+
+gc_help="\
+  ${b}Usage: che gc all|${u}period${n}
+
+  ${n}Clean up the system and delete older generations.
+
+  ${b}Options:${n}
+    ${u}period${n}\t\tDelete generations older than the specified number of days
+    all\t\t\tDelete all generations but current one
+    help\t\tPrint this help list
+"
+
+pushd () {
+    command pushd "$@" > /dev/null
+}
+
+popd () {
+    command popd "$@" > /dev/null
+}
+
+not_found () {
+    echo "Command '$@' not found."
+}
+
+case "$1" in
+    sync)
+        pushd ~/.dotfiles
+        git add .
+        nixos-rebuild switch --verbose --use-remote-sudo --flake .#
+        popd;;
+    update|upgrade)
+        case "$2" in
+            flake|lock)
+                nix flake update ~/.dotfiles;;
+            emacs|doom)
+                doom -y upgrade;;
+            all)
+                pushd ~/.dotfiles
+                git add .
+                nix flake update
+                nixos-rebuild switch --verbose --use-remote-sudo --flake .#
+                doom -y upgrade
+                popd;;
+            ''|help)
+                printf "$update_help";;
+            *)
+                not_found "$2";;
+        esac;;
+    gc)
+        case "$2" in
+            all)
+                sudo nix-collect-garbage -d;;
+            ''|help)
+                printf "$gc_help";;
+            *)
+                sudo nix-collect-garbage --delete-older-than "$2";;
+        esac;;
+    ''|help)
+        printf "$help";;
+    *)
+        not_found "$@";;
+esac
