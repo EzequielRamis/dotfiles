@@ -20,7 +20,7 @@ help="\
 
   ${b}Commands:${n}
     sync\t\tSync NixOS' configuration
-    update|upgrade\tUpdate the system with latest packages/changes
+    update|upgrade\tUpdate the system with latest features
     gc\t\t\tClean up the system and delete older generations
     help\t\tPrint this help list
 "
@@ -31,8 +31,9 @@ update_help="\
   ${n}Update the system with latest packages/changes.
 
   ${b}Commands:${n}
-    flake|lock\t\tUpdate only flake's inputs
-    emacs|doom\t\tUpdate only Doom Emacs
+    flake|lock\t\tUpdate flake's inputs
+    nix|nixos\t\tUpdate and sync NixOS
+    emacs|doom\t\tUpdate Doom Emacs
     all\t\t\tUpdate and sync the whole system
     help\t\tPrint this help list
 "
@@ -70,6 +71,12 @@ case "$1" in
         case "$2" in
             flake|lock)
                 nix flake update ~/.dotfiles;;
+            nix|nixos)
+                pushd ~/.dotfiles
+                git add .
+                nix flake update
+                nixos-rebuild switch --verbose --use-remote-sudo --flake .#
+                popd;;
             emacs|doom)
                 doom -y upgrade;;
             all)
