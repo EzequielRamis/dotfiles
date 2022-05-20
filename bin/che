@@ -16,26 +16,26 @@ d="\e[9m"
 help="\
   ${b}Usage: che [COMMAND]
 
-  ${n}A command line interface to help me manage my ${d}porteño${n} system.
+  ${n}A command line interface to help me manage my system.
 
   ${b}Commands:${n}
-    sync\t\tSync NixOS' configuration
-    update|upgrade\tUpdate the system with latest features
-    gc\t\t\tClean up the system and delete older generations
-    help\t\tPrint this help list
+    sync\tSync NixOS' configuration
+    update\tUpdate the system with latest features
+    gc\t\tClean up the system and delete older generations
+    help\tPrint this help list
 "
 
 update_help="\
-  ${b}Usage: che update|upgrade [COMMAND]
+  ${b}Usage: che update [COMMAND]
 
-  ${n}Update the system with latest packages/changes.
+  ${n}Update the system with latest features.
 
   ${b}Commands:${n}
-    flake|lock\t\tUpdate flake's inputs
-    nix|nixos\t\tUpdate and sync NixOS
-    emacs|doom\t\tUpdate Doom Emacs
-    all\t\t\tUpdate and sync the whole system
-    help\t\tPrint this help list
+    flake\tUpdate flake's inputs of the system
+    nix\t\tUpdate and sync NixOS
+    emacs\tUpdate Doom Emacs
+    all\t\tUpdate and sync the whole system
+    help\tPrint this help list
 "
 
 gc_help="\
@@ -44,9 +44,9 @@ gc_help="\
   ${n}Clean up the system and delete older generations.
 
   ${b}Options:${n}
-    ${u}period${n}\t\tDelete generations older than the specified number of days
-    all\t\t\tDelete all generations but current one
-    help\t\tPrint this help list
+    ${u}period${n}\tDelete generations older than the specified number of days
+    all\t\tDelete all generations but current one
+    help\tPrint this help list
 "
 
 pushd () {
@@ -67,17 +67,17 @@ case "$1" in
         git add .
         nixos-rebuild switch --verbose --use-remote-sudo --flake .#
         popd;;
-    update|upgrade)
+    update)
         case "$2" in
-            flake|lock)
+            flake)
                 nix flake update ~/.dotfiles;;
-            nix|nixos)
+            nix)
                 pushd ~/.dotfiles
                 git add .
                 nix flake update
                 nixos-rebuild switch --verbose --use-remote-sudo --flake .#
                 popd;;
-            emacs|doom)
+            emacs)
                 doom -y upgrade;;
             all)
                 pushd ~/.dotfiles
