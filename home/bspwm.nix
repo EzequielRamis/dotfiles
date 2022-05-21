@@ -51,6 +51,7 @@ in {
         g = "bspc node @parent -E";
         "{q,e}" = "bspc node @parent -F {horizontal,vertical}";
         "{w,a,s,d}" = "bspc node -f {north,west,south,east}.leaf";
+        "{j,k}" = "bspc node {last.descendant_of,@parent} -f";
         "${desks}" = "bspc desktop -f ${desks}";
 
         shift = plus {
@@ -98,7 +99,7 @@ in {
             q = "bspc node -p {north,south}";
             e = "bspc node -p {west,east}";
             w = "bspc node -g marked";
-            a = "bspc node -n last.!automatic.local";
+            a = "bspc node -n last.!automatic";
             s = "bspc node -s last.marked";
             d = "bspc node -p cancel; bspc node -g marked=off";
             "${desks}" = "bspc node -d ${desks} -f";

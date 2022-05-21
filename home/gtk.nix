@@ -13,12 +13,16 @@
       name = "SF Pro Text";
       size = 11;
     };
+    cursorTheme = {
+      name = "capitaine-cursors-white";
+      package = pkgs.capitaine-cursors;
+      size = 30;
+    };
   };
   home.pointerCursor = {
-    name = "Capitaine Cursors - White";
+    name = "capitaine-cursors-white";
     package = pkgs.capitaine-cursors;
     size = 30;
     x11.enable = true;
-    gtk.enable = true;
   };
 }

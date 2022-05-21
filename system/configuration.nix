@@ -3,6 +3,7 @@
 
   nix = {
     package = pkgs.nixUnstable;
+    # the keep-* options are set due to nix-direnv
     extraOptions = ''
       experimental-features = nix-command flakes
       keep-outputs = true

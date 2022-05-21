@@ -13,7 +13,6 @@
     initExtra = builtins.readFile ./initExtra.zsh;
     shellAliases = {
       cat = "bat";
-      ee = "emacs &";
       e = ''devour emacsclient -c -a \"\"'';
     };
   };
