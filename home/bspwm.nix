@@ -114,6 +114,7 @@ in {
             u = "rofi -show emoji";
             f = "firefox";
             e = my.vars.emacsclient;
+            t = "che theme toggle";
           };
         };
       };

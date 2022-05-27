@@ -14,6 +14,7 @@
     shellAliases = {
       cat = "bat";
       e = ''devour emacsclient -c -a \"\"'';
+      qrclip = "xclip -o | qrencode -t utf8";
     };
   };
 }

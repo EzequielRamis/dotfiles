@@ -24,6 +24,7 @@ in {
     gcc
     libtool
     libvterm-neovim
+    pandoc
   ];
 
   home.activation = {

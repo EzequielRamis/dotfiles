@@ -19,10 +19,11 @@
       size = 30;
     };
   };
-  home.pointerCursor = {
-    name = "capitaine-cursors-white";
-    package = pkgs.capitaine-cursors;
-    size = 30;
-    x11.enable = true;
-  };
+  home.packages = [ pkgs.xsettingsd ];
+  home.file.".xsettingsd-light.conf".text = ''
+    Net/ThemeName "WhiteSur-light"
+  '';
+  home.file.".xsettingsd-dark.conf".text = ''
+    Net/ThemeName "WhiteSur-dark"
+  '';
 }

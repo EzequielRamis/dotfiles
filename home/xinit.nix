@@ -2,6 +2,7 @@
 let c = "${pkgs.capitaine-cursors}/share/icons/capitaine-cursors-white";
 in {
   home.file.".xinitrc".text = ''
+    xsettingsd -c ~/.xsettingsd-light.conf &
     feh --bg-fill --no-fehbg --randomize ~/Pictures/Wallpapers/* &
 
     picom -b
@@ -17,4 +18,10 @@ in {
 
     exec bspwm
   '';
+  home.pointerCursor = {
+    name = "capitaine-cursors-white";
+    package = pkgs.capitaine-cursors;
+    size = 30;
+    x11.enable = true;
+  };
 }

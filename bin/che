@@ -19,9 +19,11 @@ help="\
   ${n}A command line interface to help me manage my system.
 
   ${b}Commands:${n}
+    dev\t\tDevelopment helpers
     sync\tSync NixOS' configuration
     update\tUpdate the system with latest features
     gc\t\tClean up the system and delete older generations
+    theme\t\tSystem's theme settings
     help\tPrint this help list
 "
 
@@ -49,6 +51,28 @@ gc_help="\
     help\tPrint this help list
 "
 
+dev_help="\
+  ${b}Usage: che dev [COMMAND]
+
+  ${n}Development helpers.
+
+  ${b}Commands:${n}
+    sync ${u}PATH${n}\tSync flake and .direnv
+    help\tPrint this help list
+"
+
+theme_help="\
+  ${b}Usage: che theme [COMMAND]
+
+  ${n}System's theme settings
+
+  ${b}Commands:${n}
+    toggle\tToggle current theme
+    light\tSet light theme
+    dark\tSet dark theme
+    help\tPrint this help list
+"
+
 pushd () {
     command pushd "$@" > /dev/null
 }
@@ -62,6 +86,27 @@ not_found () {
 }
 
 case "$1" in
+    dev)
+        case "$2" in
+            sync)
+                case "$3" in
+                    '')
+                        nix shell
+                        rm -rf .direnv
+                        pushd ..
+                        popd;;
+                    *)
+                        pushd "$3" || exit
+                        nix shell
+                        rm -rf .direnv
+                        pushd ..
+                        popd;;
+                esac;;
+            ''|help)
+                printf "$dev_help";;
+            *)
+                not_found "$2";;
+        esac;;
     sync)
         pushd ~/.dotfiles
         git add .
@@ -99,6 +144,20 @@ case "$1" in
                 printf "$gc_help";;
             *)
                 sudo nix-collect-garbage --delete-older-than "$2";;
+        esac;;
+    theme)
+        case "$2" in
+            toggle)
+                case "$(dump_xsettings)" in
+                    *dark*) xsettingsd -c ~/.xsettingsd-light.conf &;;
+                    *) xsettingsd -c ~/.xsettingsd-dark.conf &;;
+                esac;;
+            light)
+                xsettingsd -c ~/.xsettingsd-light.conf &;;
+            dark)
+                xsettingsd -c ~/.xsettingsd-dark.conf &;;
+            *)
+                printf "$theme_help";;
         esac;;
     ''|help)
         printf "$help";;

@@ -12,7 +12,7 @@
     chromium
     neofetch
     fontforge-gtk
-    gucharmap
-    lxappearance
+    qrencode
+    xclip
   ];
 }
