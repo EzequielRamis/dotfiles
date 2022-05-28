@@ -97,10 +97,7 @@ case "$1" in
                         popd;;
                     *)
                         pushd "$3" || exit
-                        nix shell
-                        rm -rf .direnv
-                        pushd ..
-                        popd;;
+                        che dev sync;;
                 esac;;
             ''|help)
                 printf "$dev_help";;
@@ -125,12 +122,8 @@ case "$1" in
             emacs)
                 doom -y upgrade;;
             all)
-                pushd ~/.dotfiles
-                git add .
-                nix flake update
-                nixos-rebuild switch --verbose --use-remote-sudo --flake .#
-                doom -y upgrade
-                popd;;
+                che update nix
+                che update emacs;;
             ''|help)
                 printf "$update_help";;
             *)
@@ -149,8 +142,8 @@ case "$1" in
         case "$2" in
             toggle)
                 case "$(dump_xsettings)" in
-                    *dark*) xsettingsd -c ~/.xsettingsd-light.conf &;;
-                    *) xsettingsd -c ~/.xsettingsd-dark.conf &;;
+                    *dark*) che theme light;;
+                    *) che theme dark;;
                 esac;;
             light)
                 xsettingsd -c ~/.xsettingsd-light.conf &;;

@@ -12,9 +12,10 @@
       url =
         "https://github.com/EzequielRamis/apple-nerd-fonts/releases/download/1.0/apple-nerd.tar.gz";
     };
-    whitesur-firefox = {
+    whitesur = {
       flake = false;
-      url = "github:vinceliuice/WhiteSur-gtk-theme";
+      url =
+        "github:vinceliuice/WhiteSur-gtk-theme/3dca2b10d0a24bd111119c3eb94df512d7e067f5";
     };
   };
 
@@ -40,7 +41,7 @@
       pkgs = mkPkgs {
         overlays = [
           (final: prev: {
-            my = lib.my.mapModulesRec ./pkgs
+            my = lib.my.mapModules ./pkgs
               (p: prev.callPackage p { inherit inputs; });
             unstable = mkPkgs { };
           })

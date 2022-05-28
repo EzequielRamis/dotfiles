@@ -2,7 +2,7 @@
   gtk = {
     enable = true;
     theme = {
-      package = pkgs.whitesur-gtk-theme;
+      package = pkgs.my.whitesur-gtk;
       name = "WhiteSur-light";
     };
     iconTheme = {
