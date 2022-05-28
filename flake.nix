@@ -14,6 +14,7 @@
     };
     whitesur = {
       flake = false;
+      # 2022-02-21 release
       url =
         "github:vinceliuice/WhiteSur-gtk-theme/3dca2b10d0a24bd111119c3eb94df512d7e067f5";
     };
@@ -41,8 +42,11 @@
       pkgs = mkPkgs {
         overlays = [
           (final: prev: {
-            my = lib.my.mapModules ./pkgs
-              (p: prev.callPackage p { inherit inputs; });
+            my = lib.my.mapModules ./pkgs (p:
+              prev.callPackage p {
+                inherit inputs;
+                inherit (lib) my;
+              });
             unstable = mkPkgs { };
           })
         ];

@@ -1,4 +1,4 @@
-{ pkgs, lib, inputs, ... }:
+{ pkgs, lib, inputs, my, ... }:
 
 pkgs.stdenv.mkDerivation rec {
   name = "whitesur-gtk";
@@ -16,7 +16,14 @@ pkgs.stdenv.mkDerivation rec {
     pkgs.gnome-themes-extra # adwaita engine for Gtk2
   ];
 
-  postPatch = ''
+  postPatch = let
+    colors =
+      builtins.toFile "_colors.scss" (import ./colors.nix { inherit my; });
+    colors-public = builtins.toFile "_colors-public.scss"
+      (import ./colors-public.nix { inherit my; });
+    colors-palette = builtins.toFile "_colors-palette.scss"
+      (import ./colors-palette.nix { inherit my; });
+  in ''
     find -name "*.sh" -print0 | while IFS= read -r -d ''' file; do
       patchShebangs "$file"
     done
@@ -26,6 +33,9 @@ pkgs.stdenv.mkDerivation rec {
 
     # Provides a dummy home directory
     substituteInPlace lib-core.sh --replace 'MY_HOME=$(getent passwd "''${MY_USERNAME}" | cut -d: -f6)' 'MY_HOME=/tmp'
+    cp ${colors} src/sass/_colors.scss
+    cp ${colors-public} src/sass/gtk/_colors-public.scss
+    cp ${colors-palette} src/sass/_colors-palette.scss
   '';
 
   dontBuild = true;
