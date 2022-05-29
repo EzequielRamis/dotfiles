@@ -32,6 +32,7 @@ in {
     };
     rules = { Emacs = { state = "tiled"; }; };
     monitors = { Virtual1 = map toString (lib.lists.range 1 desks'); };
+    extraConfig = "bspc desktop -l monocle";
   };
   services.sxhkd = {
     enable = true;
