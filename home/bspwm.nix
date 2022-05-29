@@ -108,10 +108,10 @@ in {
 
         space = chord {
           "{_,super + }" = none {
-            space = "rofi -show drun";
+            space = "rofit -show drun";
             q = ''
-              rofi -show p -modi "p:rofi-power --choices=shutdown/reboot/logout" -theme power'';
-            u = "rofi -show emoji";
+              rofit -show p -modi "p:rofi-power --choices=shutdown/reboot/logout" -theme power'';
+            u = "rofit -show emoji";
             f = "firefox";
             e = my.vars.emacsclient;
             t = "che theme toggle";

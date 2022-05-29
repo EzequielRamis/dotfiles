@@ -1,0 +1,6 @@
+#!/bin/sh
+
+case "$(dump_xsettings)" in
+    *dark*) true;;
+    *) false;;
+esac

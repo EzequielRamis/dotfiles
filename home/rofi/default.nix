@@ -13,7 +13,7 @@
   };
   xdg.configFile."rofi/index.rasi".source = ./index.rasi;
   xdg.configFile."rofi/power.rasi".source = ./power.rasi;
-  xdg.configFile."rofi/theme.rasi".text = let t = my.palette;
+  xdg.configFile."rofi/light.rasi".text = let t = my.palette;
   in ''
     * {
       t-bg: ${t."00"}CC;
@@ -22,6 +22,17 @@
       t-prompt: ${t."05"};
       t-text: ${t."0E"};
       t-select: ${t."00"};
+    }
+  '';
+  xdg.configFile."rofi/dark.rasi".text = let t = my.palette;
+  in ''
+    * {
+      t-bg: ${t."0F"}CC;
+      t-fg: ${t."0F"};
+      t-border: ${t."0A"};
+      t-prompt: ${t."08"};
+      t-text: ${t."02"};
+      t-select: ${t."0E"};
     }
   '';
 }

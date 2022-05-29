@@ -1,0 +1,3 @@
+#!/bin/sh
+
+rofi -theme-str "$(cat ".config/rofi/$(theme_is_dark && echo "dark" || echo "light").rasi")" $@

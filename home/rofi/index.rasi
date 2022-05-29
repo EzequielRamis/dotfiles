@@ -1,5 +1,3 @@
-@import "theme"
-
 * {
     background-color: transparent;
     text-color: @t-text;

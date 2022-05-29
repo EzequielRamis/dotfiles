@@ -141,10 +141,10 @@ case "$1" in
     theme)
         case "$2" in
             toggle)
-                case "$(dump_xsettings)" in
-                    *dark*) che theme light;;
-                    *) che theme dark;;
-                esac;;
+                if theme_is_dark; then
+                     che theme light
+                else che theme dark
+                fi;;
             light)
                 xsettingsd -c ~/.xsettingsd-light.conf &;;
             dark)
