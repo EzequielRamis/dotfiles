@@ -62,7 +62,7 @@
                 :y "0px"
                 :width "1888px"
                 :height "32px"
-                :anchor "bottom left"
+                :anchor "top left"
                 :class "bar")
     :stacking "bg"
     :windowtype "dock"

@@ -17,12 +17,12 @@ let
   step = "10";
   desks' = 4;
   desks = "{1-${toString desks'}}";
-  bottom_padding = 32;
+  top_padding = 32;
 in {
   xsession.windowManager.bspwm = {
     enable = true;
     settings = {
-      inherit bottom_padding;
+      inherit top_padding;
       window_gap = 16;
       border_width = 2;
       split_ratio = 0.5;
@@ -58,22 +58,20 @@ in {
         shift = plus {
           f = ''
             {\
-              eww close bar; bspc config bottom_padding 0,\
-              bspc config bottom_padding ${
-                toString bottom_padding
-              }; eww open bar\
+              eww close bar; bspc config top_padding 0,\
+              bspc config top_padding ${toString top_padding}; eww open bar\
               }'';
           x = "bspc node -k";
           "{q,e}" = "bspc node @parent -R {270,90}";
           # from https://www.reddit.com/r/bspwm/comments/r5stxu/resizing_windows_nicely_in_my_opinion/
           "{w,a,s,d}" = ''
             {\
-              bspc node @parent/first  -z bottom 0 -${step}; \
+              bspc node @parent/first  -z top 0 -${step}; \
               bspc node @parent/second -z top    0 -${step}, \
               bspc node @parent/second -z left   -${step} 0; \
               bspc node @parent/first  -z right  -${step} 0, \
               bspc node @parent/second -z top    0 +${step}; \
-              bspc node @parent/first  -z bottom 0 +${step}, \
+              bspc node @parent/first  -z top 0 +${step}, \
               bspc node @parent/first  -z right  +${step} 0; \
               bspc node @parent/second -z left   +${step} 0  \
               }'';
