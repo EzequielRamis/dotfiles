@@ -19,7 +19,7 @@
       size = 30;
     };
   };
-  home.packages = [ pkgs.xsettingsd ];
+  home.packages = with pkgs; [ xsettingsd ];
   home.file.".xsettingsd-light.conf".text = ''
     Net/ThemeName "WhiteSur-light"
   '';

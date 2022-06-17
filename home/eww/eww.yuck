@@ -59,21 +59,27 @@
     :monitor 0
     :geometry (geometry
                 :x "16px"
-                :y "0px"
+                :y "-16px"
                 :width "1888px"
-                :height "32px"
+                :height "64px" ; truly 32px
                 :anchor "top left"
                 :class "bar")
     :stacking "bg"
     :windowtype "dock"
     :wm-ignore true
-    (centerbox
-        :orientation "h"
-        (workspaces)
-        (box :halign "center" "")
+    (box
+        :orientation "v"
+        :class "bar-wrapper"
         (centerbox
-            :orientation "h"
-            :halign "end"
-            (box "")
-            (pc-status)
-            (day-status))))
+                :orientation "h"
+                :valign "end"
+                :class "bar-content"
+                (workspaces)
+                (box :halign "center" "")
+                (centerbox
+                    :orientation "h"
+                    :halign "end"
+                    (box "")
+                    (pc-status)
+                    (day-status)))
+        (box :style "background-image: url('/home/ezequiel/.config/eww/assets/corner-light.svg');")))

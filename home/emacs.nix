@@ -25,6 +25,7 @@ in {
     libtool
     libvterm-neovim
     pandoc
+    python39Packages.grip
   ];
 
   home.activation = {

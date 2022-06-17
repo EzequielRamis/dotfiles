@@ -14,5 +14,6 @@
     fontforge-gtk
     qrencode
     xclip
+    screenkey
   ];
 }

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, my, ... }:
+{ config, lib, pkgs, ... }:
 let
   mkHotkeyChain = set:
     with lib.attrsets;
@@ -112,7 +112,7 @@ in {
               rofit -show p -modi "p:rofi-power --choices=shutdown/reboot/logout" -theme power'';
             u = "rofit -show emoji";
             f = "firefox";
-            e = my.vars.emacsclient;
+            e = "emacsclient -c -a '' -e '(fix-workspace-mod)'";
             t = "che theme toggle";
           };
         };

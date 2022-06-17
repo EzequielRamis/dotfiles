@@ -55,6 +55,7 @@
     #   Option         "AllowIndirectGLXProtocol" "off"
     #   Option         "TripleBuffer" "on"
     # '';
+    gdk-pixbuf.modulePackages = [ pkgs.librsvg ];
   };
 
   # hardware.opengl.enable = true;
