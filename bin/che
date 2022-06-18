@@ -146,9 +146,11 @@ case "$1" in
                 else che theme dark
                 fi;;
             light)
-                xsettingsd -c ~/.xsettingsd-light.conf &;;
+                xsettingsd -c ~/.xsettingsd-light.conf &
+                emacsclient -e "(sync-theme-light)" &> /dev/null;;
             dark)
-                xsettingsd -c ~/.xsettingsd-dark.conf &;;
+                xsettingsd -c ~/.xsettingsd-dark.conf &
+                emacsclient -e "(sync-theme-dark)" &> /dev/null;;
             *)
                 printf "$theme_help";;
         esac;;

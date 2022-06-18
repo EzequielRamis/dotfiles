@@ -1,6 +1,6 @@
 # For now the best way to manage doom emacs is to only use bin/doom and nix the
 # least possible
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, my, ... }:
 let emacsDir = "$HOME/.emacs.d";
 in {
   programs.emacs = {
@@ -35,4 +35,13 @@ in {
       fi
     '';
   };
+
+  xdg.dataFile."dotfiles/palette.el".text = ''
+    ;;; palette.el -*- lexical-binding: t; -*-
+    ${lib.strings.concatStrings (lib.attrsets.mapAttrsToList (name: value: ''
+      (defconst palette${name} "${value}")
+    '') my.palette)}
+
+    (provide 'palette)
+  '';
 }
