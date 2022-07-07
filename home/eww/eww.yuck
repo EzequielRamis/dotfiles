@@ -58,10 +58,10 @@
 (defwindow bar
     :monitor 0
     :geometry (geometry
-                :x "16px"
-                :y "-16px"
-                :width "1888px"
-                :height "64px" ; truly 32px
+                :x "0px"
+                :y "0px"
+                :width "1920px"
+                :height "32px"
                 :anchor "top left"
                 :class "bar")
     :stacking "bg"
@@ -81,5 +81,4 @@
                     :halign "end"
                     (box "")
                     (pc-status)
-                    (day-status)))
-        (box :style "background-image: url('/home/ezequiel/.config/eww/assets/corner-light.svg');")))
+                    (day-status)))))

@@ -36,12 +36,11 @@ in {
     '';
   };
 
-  xdg.dataFile."dotfiles/palette.el".text = ''
-    ;;; palette.el -*- lexical-binding: t; -*-
+  xdg.dataFile."dotfiles/mypalette.el".text = ''
     ${lib.strings.concatStrings (lib.attrsets.mapAttrsToList (name: value: ''
       (defconst palette${name} "${value}")
     '') my.palette)}
 
-    (provide 'palette)
+    (provide 'mypalette)
   '';
 }

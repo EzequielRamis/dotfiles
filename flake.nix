@@ -18,8 +18,6 @@
       url =
         "github:vinceliuice/WhiteSur-gtk-theme/3dca2b10d0a24bd111119c3eb94df512d7e067f5";
     };
-    # 0.3.0 release
-    eww.url = "github:elkowar/eww/fe7bc30fc925b5d53d6361805d02fcb02f81c726";
   };
 
   outputs = { self, home-manager, nixpkgs, ... }@inputs:
@@ -50,7 +48,6 @@
                 inherit (lib) my;
               });
             unstable = mkPkgs { };
-            eww = inputs.eww.defaultPackage."${system}";
           })
         ];
       };
