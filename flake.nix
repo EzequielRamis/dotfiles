@@ -35,7 +35,7 @@
 
       mkPkgs = o:
         import nixpkgs ({
-          config = { allowUnfree = true; };
+          config.allowUnfree = true;
           localSystem = { inherit system; };
         } // o);
 

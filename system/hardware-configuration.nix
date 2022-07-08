@@ -4,34 +4,38 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "sd_mod" ];
+  boot.initrd.availableKernelModules =
+    [ "xhci_pci" "ahci" "nvme" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/ef34a955-083c-48e7-aec9-049aee0fbb9a";
-      fsType = "ext4";
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/ef34a955-083c-48e7-aec9-049aee0fbb9a";
+    fsType = "ext4";
+  };
 
-  fileSystems."/ssd" =
-    { device = "/dev/disk/by-uuid/cbfef0ae-7b3b-4ccc-95a9-a4dc256330c9";
-      fsType = "ext4";
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/69B1-8F3C";
+    fsType = "vfat";
+  };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/69B1-8F3C";
-      fsType = "vfat";
-    };
+  fileSystems."/home" = {
+    device = "/dev/disk/by-uuid/c4bd5b6a-7b1b-4a68-ac79-896c567d109d";
+    fsType = "ext4";
+  };
 
-  fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/c4bd5b6a-7b1b-4a68-ac79-896c567d109d";
-      fsType = "ext4";
-    };
+  fileSystems."/ssd" = {
+    device = "/dev/disk/by-uuid/cbfef0ae-7b3b-4ccc-95a9-a4dc256330c9";
+    fsType = "ext4";
+  };
+
+  fileSystems."/home/ezequiel/ssd" = {
+    device = "/ssd";
+    options = [ "bind" ];
+  };
 
   swapDevices = [ ];
 
@@ -44,5 +48,6 @@
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.intel.updateMicrocode =
+    lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

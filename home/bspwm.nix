@@ -31,7 +31,7 @@ in {
       single_monocle = true;
     };
     rules = { Emacs = { state = "tiled"; }; };
-    monitors = { Virtual-1 = map toString (lib.lists.range 1 desks'); };
+    monitors = { HDMI-0 = map toString (lib.lists.range 1 desks'); };
     extraConfig = "bspc desktop -l monocle";
   };
   services.sxhkd = {
