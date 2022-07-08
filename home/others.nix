@@ -15,5 +15,6 @@
     qrencode
     xclip
     screenkey
+    openrgb
   ];
 }
