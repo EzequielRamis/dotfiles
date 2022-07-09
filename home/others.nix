@@ -5,16 +5,27 @@
     jq
     jless
     fzf
+
     xorg.xev
     xdo # for devour
+
     feh
-    xfce.thunar
+
+    #thunar
+    (xfce.thunar.override { thunarPlugins = [ xfce.thunar-archive-plugin ]; })
+
     chromium
+
     neofetch
-    fontforge-gtk
     qrencode
     xclip
     screenkey
     openrgb
+    piper
+
+    steam
+    discord
+
+    pavucontrol
   ];
 }

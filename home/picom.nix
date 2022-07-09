@@ -5,10 +5,16 @@
   services.picom = {
     enable = true;
     backend = "glx";
-    experimentalBackends = true;
     blur = true;
     fade = true;
+    fadeDelta = 5;
     vSync = true;
-    inactiveOpacity = "0.5";
+    shadow = true;
+    extraOptions = ''
+      blur-method = "dual_kawase"
+      blur-strength = 20
+
+      corner-radius = 8
+    '';
   };
 }

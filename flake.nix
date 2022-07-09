@@ -73,7 +73,6 @@
               users.${username} = {
                 home.stateVersion = "18.09";
                 programs.home-manager.enable = true;
-                xdg.enable = true;
                 imports = lib.my.importFrom ./home;
               };
               extraSpecialArgs = userData;

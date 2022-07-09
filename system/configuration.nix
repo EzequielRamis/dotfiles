@@ -21,6 +21,7 @@
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "nodev";
   boot.loader.grub.efiSupport = true;
+  boot.loader.grub.gfxmodeEfi = "1920x1080";
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "${hostname}"; # Define your hostname.
@@ -60,6 +61,7 @@
   };
 
   hardware.opengl.enable = true;
+  hardware.opengl.driSupport32Bit = true;
 
   services.greetd = {
     enable = true;
@@ -105,13 +107,17 @@
   # Enable sound.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.support32Bit = true;
+
+  # rgb and mouse
   hardware.i2c.enable = true;
+  services.ratbagd.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${username} = {
     isNormalUser = true;
     extraGroups =
-      [ "wheel" "networkmanager" "i2c" ]; # Enable ‘sudo’ for the user.
+      [ "wheel" "networkmanager" "i2c" "audio" ]; # Enable ‘sudo’ for the user.
     initialPassword = "";
   };
 
@@ -125,6 +131,7 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
+  # ssd
   services.fstrim.enable = true;
 
   programs.gnupg.agent = {
