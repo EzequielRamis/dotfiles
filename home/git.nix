@@ -8,6 +8,10 @@
       key = "BF25118B1BFFE56E";
       signByDefault = false;
     };
+    includes = [{
+      condition = "gitdir:~/glamit/";
+      path = "~/glamit/.gitconfig";
+    }];
     extraConfig = {
       core = {
         editor = "nvim";
