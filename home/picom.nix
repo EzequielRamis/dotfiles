@@ -20,6 +20,22 @@
       shadow-offset-y = -28;
 
       corner-radius = 8
+
+      blur-background-exclude = [
+        "window_type = 'popup_menu'",
+      ];
+
+      shadow-exclude = [
+        "window_type = 'popup_menu'",
+        "class_g = 'eww-bar'",
+        "name = 'Picture-in-Picture'"
+      ];
+
+      rounded-corners-exclude = [
+        "window_type = 'popup_menu'",
+        "class_g = 'eww-bar'",
+        "name = 'Picture-in-Picture'"
+      ];
     '';
   };
 }
