@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, my, ... }:
 let
   mkHotkeyChain = set:
     with lib.attrsets;
@@ -18,6 +18,7 @@ let
   desks' = 4;
   desks = "{1-${toString desks'}}";
   top_padding = 32;
+  t = my.palette;
 in {
   xsession.windowManager.bspwm = {
     enable = true;
@@ -29,11 +30,31 @@ in {
       gapless_monocle = false;
       borderless_monocle = true;
       single_monocle = true;
+
+      # initial light theme
+      normal_border_color = t."05";
+      focused_border_color = t."66";
+      active_border_color = t."16";
+      presel_feedback_color = t."66";
     };
     rules = { Emacs = { state = "tiled"; }; };
     monitors = { HDMI-0 = map toString (lib.lists.range 1 desks'); };
     extraConfig = "bspc desktop -l monocle";
   };
+  xdg.configFile."bspwm/dark".executable = true;
+  xdg.configFile."bspwm/dark".text = ''
+    bspc config normal_border_color '${t."0A"}'
+    bspc config focused_border_color '${t."65"}'
+    bspc config active_border_color '${t."15"}'
+    bspc config presel_feedback_color '${t."64"}'
+  '';
+  xdg.configFile."bspwm/light".executable = true;
+  xdg.configFile."bspwm/light".text = ''
+    bspc config normal_border_color '${t."05"}'
+    bspc config focused_border_color '${t."66"}'
+    bspc config active_border_color '${t."16"}'
+    bspc config presel_feedback_color '${t."66"}'
+  '';
   services.sxhkd = {
     enable = true;
     keybindings = mkHotkeyChain {

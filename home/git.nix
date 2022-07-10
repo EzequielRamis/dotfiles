@@ -9,8 +9,8 @@
       signByDefault = false;
     };
     includes = [{
-      condition = "gitdir:~/glamit/";
-      path = "~/glamit/.gitconfig";
+      condition = "gitdir:~/Desktop/glamit/";
+      path = "~/Desktop/glamit/.gitconfig";
     }];
     extraConfig = {
       core = {

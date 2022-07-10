@@ -148,11 +148,13 @@ case "$1" in
             light)
                 xsettingsd -c ~/.xsettingsd-light.conf &
                 emacsclient -e "(sync-theme-light)" &> /dev/null
-                kitty +kitten themes --reload-in=all --config-file-name ~/.config/kitty/mytheme.conf Mylight;;
+                kitty +kitten themes --reload-in=all --config-file-name ~/.config/kitty/mytheme.conf Mylight
+                ~/.config/bspwm/light;;
             dark)
                 xsettingsd -c ~/.xsettingsd-dark.conf &
                 emacsclient -e "(sync-theme-dark)" &> /dev/null
-                kitty +kitten themes --reload-in=all --config-file-name ~/.config/kitty/mytheme.conf Mydark;;
+                kitty +kitten themes --reload-in=all --config-file-name ~/.config/kitty/mytheme.conf Mydark
+                ~/.config/bspwm/dark;;
             *)
                 printf "$theme_help";;
         esac;;

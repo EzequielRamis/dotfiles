@@ -16,10 +16,8 @@
 
     chromium
 
-    neofetch
     qrencode
     xclip
-    screenkey
     openrgb
     piper
 
@@ -27,5 +25,12 @@
     discord
 
     pavucontrol
+
+    # candy
+    cmatrix
+    pipes-rs
+    cbonsai
+    neofetch
+    screenkey
   ];
 }
