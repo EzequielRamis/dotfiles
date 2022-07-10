@@ -6,9 +6,12 @@
     settings = let t = my.palette;
     in {
       confirm_os_window_close = 0;
-      background_opacity = "0.8";
       window_padding_width = "0 16";
       enable_audio_bell = false;
+
+      foreground = t."00";
+      background = t."0F";
+      background_opacity = "0.9";
 
       # black
       color0 = t."0F";
