@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-pushd /mnt/home/ezequiel/.dotfiles || exit
-
-nixos-generate-config --show-hardware-config --root /mnt > ./system/hardware-configuration.nix
-
-popd || exit

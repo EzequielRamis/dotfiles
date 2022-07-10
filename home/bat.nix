@@ -3,6 +3,9 @@
 {
   programs.bat = {
     enable = true;
-    config.color = "never";
+    config = {
+      map-syntax = [ "*.conf:XML" ];
+      theme = "base16";
+    };
   };
 }

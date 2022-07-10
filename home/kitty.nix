@@ -20,7 +20,7 @@ in {
 
     background ${t."0F"}
     foreground ${t."00"}
-    cursor ${t."02"}
+    cursor ${t."65"}
 
     # black
     color0 ${t."0F"}
@@ -59,11 +59,11 @@ in {
 
     background ${t."00"}
     foreground ${t."0F"}
-    cursor ${t."08"}
+    cursor ${t."67"}
 
     # black
     color0 ${t."0F"}
-    color8 ${t."08"}
+    color8 ${t."09"}
 
     # red
     color1 ${t."18"}
@@ -90,7 +90,7 @@ in {
     color14 ${t."55"}
 
     # white
-    color7 ${t."03"}
-    color15 ${t."00"}
+    color7 ${t."0F"}
+    color15 ${t."09"}
   '';
 }

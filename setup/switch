@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-pushd /home/ezequiel/.dotfiles || exit
-
-nixos-rebuild switch --verbose --flake .#ramis
-
-popd || exit
