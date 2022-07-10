@@ -18,6 +18,8 @@ in {
     eww open bar &
     sxhkd &
     thunar --daemon &
+    dunst &
+    flameshot &
 
     exec bspwm
   '';

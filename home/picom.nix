@@ -12,7 +12,12 @@
     shadow = true;
     extraOptions = ''
       blur-method = "dual_kawase"
-      blur-strength = 20
+      blur-strength = 12
+
+      shadow-radius = 28;
+      shadow-opacity = 0.4;
+      shadow-offset-x = -28;
+      shadow-offset-y = -28;
 
       corner-radius = 8
     '';

@@ -38,6 +38,7 @@ in {
     enable = true;
     keybindings = mkHotkeyChain {
       "alt + {_,shift + }Tab" = "bspc node -f {next,prev}.leaf.local";
+      Print = "flameshot gui";
 
       super = plus {
         # reload sxhkd
@@ -113,6 +114,7 @@ in {
             u = "rofit -show emoji";
             f = "firefox";
             e = "emacsclient -c -a '' -e '(fix-workspace-mod)'";
+            w = "feh --bg-fill --no-fehbg --randomize ~/Pictures/Wallpapers/*";
             t = "che theme toggle";
           };
         };
