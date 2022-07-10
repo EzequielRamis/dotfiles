@@ -3,6 +3,8 @@ let c = "${pkgs.capitaine-cursors}/share/icons/capitaine-cursors-white";
 in {
   home.file.".xinitrc".text = ''
     xsettingsd -c ~/.xsettingsd-light.conf &
+    kitty +kitten themes --reload-in=all --config-file-name ~/.config/kitty/mytheme.conf Mylight
+
     # cursor speed
     xset r rate 400 40
     # mouse acceleration
