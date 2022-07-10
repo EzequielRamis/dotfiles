@@ -22,11 +22,11 @@
       color9 = t."15";
 
       # green
-      color2 = t."46";
-      color10 = t."44";
+      color2 = t."45";
+      color10 = t."43";
 
       # yellow
-      color3 = t."34";
+      color3 = t."33";
       color11 = t."32";
 
       # blue
@@ -38,8 +38,8 @@
       color13 = t."75";
 
       # cyan
-      color6 = t."56";
-      color14 = t."54";
+      color6 = t."55";
+      color14 = t."53";
 
       # white
       color7 = t."04";
