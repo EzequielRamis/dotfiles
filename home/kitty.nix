@@ -10,7 +10,7 @@ in {
       enable_audio_bell = false;
       allow_remote_control = true;
       window_padding_width = "0 16";
-      background_opacity = "0.9";
+      background_opacity = "0.8";
       include = "mytheme.conf";
       cursor_text_color = "background";
     };

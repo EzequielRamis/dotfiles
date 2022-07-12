@@ -9,17 +9,20 @@ in {
     xset r rate 400 40
     # mouse acceleration
     xset m 0 0
+    # screen saver off (not working)
+    xset -dpms
+    xset s off
     xsetroot -cursor_name left_ptr
     xsetroot -xcf ${c}/cursors/left_ptr 30
     xrdb -merge ~/.Xresources
 
-    feh --bg-fill --no-fehbg --randomize ~/Pictures/Wallpapers/* &
+    feh --bg-fill --no-fehbg --randomize ~/Pictures/Wallpapers/Light/* &
 
     picom -b --experimental-backends
 
     eww open bar &
     sxhkd &
-    thunar --daemon &
+    pcmanfm -d &
     dunst &
     flameshot &
 

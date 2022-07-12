@@ -39,7 +39,9 @@ in {
     };
     rules = { Emacs = { state = "tiled"; }; };
     monitors = { HDMI-0 = map toString (lib.lists.range 1 desks'); };
-    extraConfig = "bspc desktop -l monocle";
+    extraConfig = ''
+      bspc desktop -l monocle
+    '';
   };
   xdg.configFile."bspwm/dark".executable = true;
   xdg.configFile."bspwm/dark".text = ''
@@ -60,6 +62,15 @@ in {
     keybindings = mkHotkeyChain {
       "alt + {_,shift + }Tab" = "bspc node -f {next,prev}.leaf.local";
       Print = "flameshot gui";
+
+      # sound
+      XF86AudioMute = "pactl set-sink-mute @DEFAULT_SINK@ toggle";
+      XF86AudioRaiseVolume = "pactl set-sink-volume @DEFAULT_SINK@ +2%";
+      XF86AudioLowerVolume = "pactl set-sink-volume @DEFAULT_SINK@ -2%";
+
+      # headset/speakers toggle
+      XF86AudioPlay =
+        "pactl set-default-sink $(pactl list sinks short | grep -v $(pactl get-default-sink) | cut -f2)";
 
       super = plus {
         # reload sxhkd
@@ -135,8 +146,10 @@ in {
             u = "rofit -show emoji";
             f = "firefox";
             e = "emacsclient -c -a '' -e '(fix-workspace-mod)'";
-            w = "feh --bg-fill --no-fehbg --randomize ~/Pictures/Wallpapers/*";
+            w =
+              "feh --bg-fill --no-fehbg --randomize ~/Pictures/Wallpapers/$(theme_is_dark && echo 'Dark' || echo 'Light')/*";
             t = "che theme toggle";
+            m = "pcmanfm";
           };
         };
       };

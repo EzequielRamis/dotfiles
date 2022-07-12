@@ -8,16 +8,14 @@
 
     xorg.xev
     xdo # for devour
+    xclip
 
     feh
-
-    #thunar
-    (xfce.thunar.override { thunarPlugins = [ xfce.thunar-archive-plugin ]; })
+    unzip
 
     chromium
 
     qrencode
-    xclip
     openrgb
     piper
 
