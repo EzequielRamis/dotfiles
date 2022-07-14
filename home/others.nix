@@ -21,6 +21,7 @@
 
     steam
     discord
+    teams
 
     pavucontrol
 

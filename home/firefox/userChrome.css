@@ -1,0 +1,88 @@
+/* from https://github.com/QNetITQ/WaveFox/blob/main/chrome/special/linux.css */
+#main-window:is(:not(:-moz-lwtheme), [lwt-default-theme-in-dark-mode])
+{
+    background-color: color-mix(in srgb, -moz-Dialog 60%, transparent) !important;
+}
+
+:root[tabsintitlebar]:is(:not(:-moz-lwtheme), [lwt-default-theme-in-dark-mode]) #navigator-toolbox-background
+{
+    appearance: none !important;
+}
+
+:root:not([tabsintitlebar]):is(:not(:-moz-lwtheme), [lwt-default-theme-in-dark-mode]) .titlebar-color
+{
+    appearance: none !important;
+}
+
+.browser-toolbar:not(.titlebar-color)
+{
+    background-color: color-mix(in srgb, var(--toolbar-bgcolor) 70%, transparent) !important;
+    background-image: none !important;
+    padding: 5px 0 !important;
+}
+
+#PersonalToolbar
+{
+    padding-top: 0 !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+}
+
+#TabsToolbar #firefox-view-button[open] > .toolbarbutton-icon, .tab-background:is([selected], [multiselected])
+{
+    background-color: color-mix(in srgb, var(--toolbar-bgcolor) 70%, transparent) !important;
+    background-image: none !important;
+    border: 1px solid color-mix(in srgb, var(--chrome-content-separator-color) 80%, transparent) !important;
+    box-shadow: none !important;
+}
+
+#nav-bar:not([tabs-hidden="true"])
+{
+    box-shadow: none !important;
+}
+
+#navigator-toolbox
+{
+    border-bottom: none !important;
+}
+
+#tabbrowser-arrowscrollbox
+{
+    padding: 2px 4px !important;
+    padding-bottom: 0 !important;
+}
+
+#tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs]) > #tabbrowser-arrowscrollbox > .tabbrowser-tab[first-visible-unpinned-tab]
+{
+    margin-inline-start: 2px !important;
+}
+
+.tab-content
+{
+    padding: 0 12px !important;
+}
+
+#tabbrowser-tabs:not([secondarytext-unsupported]) .tab-label-container
+{
+    height: 3.3em !important;
+}
+
+#urlbar:not([open="true"]) #urlbar-background
+{
+    border: none !important;
+}
+
+#urlbar-input-container
+{
+    color: -moz-dialogtext !important;
+}
+
+tab
+{
+    color: -moz-dialogtext !important;
+}
+
+#urlbar[breakout]
+{
+    top: 4px !important;
+}
