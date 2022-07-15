@@ -49,7 +49,7 @@
 #tabbrowser-arrowscrollbox
 {
     padding: 2px 4px !important;
-    padding-bottom: 0 !important;
+    padding-bottom: 1px !important;
 }
 
 #tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs]) > #tabbrowser-arrowscrollbox > .tabbrowser-tab[first-visible-unpinned-tab]
@@ -85,4 +85,34 @@ tab
 #urlbar[breakout]
 {
     top: 4px !important;
+}
+
+#PlacesToolbar menuitem, #PlacesToolbar menu
+{
+    color: -moz-dialogtext !important;
+}
+
+#urlbar, #searchbar
+{
+    color: -moz-dialogtext !important;
+}
+
+panelmultiview
+{
+    color: -moz-dialogtext !important;
+}
+
+#fxa-menu-header-title
+{
+    color: inherit !important;
+}
+
+.subviewbutton
+{
+    color: -moz-dialogtext !important;
+}
+
+#sidebar-box
+{
+    color: -moz-dialogtext !important;
 }
