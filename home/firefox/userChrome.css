@@ -90,6 +90,7 @@ tab
 #PlacesToolbar menuitem, #PlacesToolbar menu
 {
     color: -moz-dialogtext !important;
+    margin: 0 !important;
 }
 
 #urlbar, #searchbar
@@ -115,4 +116,19 @@ panelmultiview
 #sidebar-box
 {
     color: -moz-dialogtext !important;
+}
+
+.menupopup-arrowscrollbox
+{
+    box-sizing: content-box !important;
+    padding: 8px !important;
+    border-radius: 12px !important;
+    box-shadow: none !important;
+    background: -moz-dialog !important;
+    border: 1px solid color-mix(in srgb, var(--chrome-content-separator-color) 80%, transparent) !important;
+}
+
+menuseparator
+{
+    margin: 8px 0;
 }
