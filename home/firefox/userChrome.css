@@ -132,3 +132,8 @@ menuseparator
 {
     margin: 8px 0;
 }
+
+#tabbrowser-tabpanels
+{
+    background-color: color-mix(in srgb, -moz-Dialog 60%, transparent) !important;
+}
