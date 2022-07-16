@@ -172,25 +172,12 @@
         "type": "github"
       }
     },
-    "openrgb-rules": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-2YEkjdze3NfyvIKkvgG9w3iBtMwrjundRnQ6cr+3/no=",
-        "type": "file",
-        "url": "https://gitlab.com/CalcProgrammer1/OpenRGB/-/jobs/artifacts/master/raw/60-openrgb.rules?inline=false&job=Linux+64+AppImage"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://gitlab.com/CalcProgrammer1/OpenRGB/-/jobs/artifacts/master/raw/60-openrgb.rules?inline=false&job=Linux+64+AppImage"
-      }
-    },
     "root": {
       "inputs": {
         "apple-nerd-fonts": "apple-nerd-fonts",
         "eww": "eww",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_3",
-        "openrgb-rules": "openrgb-rules",
         "secrets": "secrets",
         "whitesur": "whitesur"
       }
@@ -215,11 +202,11 @@
     "secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1657937488,
-        "narHash": "sha256-bpvq/L519btadPl+kJnvU9gOsp5NbRWmOhtGFAvwWsM=",
+        "lastModified": 1657995029,
+        "narHash": "sha256-6stpDVlFIlHSPxTq0u78dA9/C+owW4FwHqLqKmLeLzk=",
         "ref": "refs/heads/main",
-        "rev": "c69965e6bc7a94531d5fab6a6529aa48b6891e2f",
-        "revCount": 10,
+        "rev": "6bdb054a5e947c0bade5c1b771601e4931333a1a",
+        "revCount": 11,
         "type": "git",
         "url": "ssh://git@github.com/EzequielRamis/secrets.git"
       },

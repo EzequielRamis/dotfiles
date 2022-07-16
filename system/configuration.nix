@@ -1,4 +1,4 @@
-{ pkgs, lib, hostname, username, secrets, data, ... }: {
+{ pkgs, lib, hostname, username, secrets, ... }: {
   imports = [ ./hardware-configuration.nix ];
 
   nix = {
@@ -138,10 +138,7 @@
   # ssd
   services.fstrim.enable = true;
 
-  services.udev = {
-    packages = secrets.udevPackages;
-    extraRules = builtins.readFile data.openrgb-rules;
-  };
+  services.udev = { packages = secrets.udevPackages; };
 
   programs.gnupg.agent = {
     enable = true;

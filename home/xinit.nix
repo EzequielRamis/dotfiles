@@ -25,6 +25,8 @@ in {
     pcmanfm -d &
     dunst &
     flameshot &
+    playerctld &
+    spotifyd &
   '' + secrets.xinitrc + ''
     exec bspwm
   '';
