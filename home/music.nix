@@ -1,7 +1,7 @@
 { config, lib, pkgs, secrets, ... }:
 
 {
-  home.packages = with pkgs; [ playerctl sptlrx spotifyd ];
+  home.packages = with pkgs; [ playerctl spotifyd sptlrx spotify-tui ];
   home.sessionVariables.SPOTIFY_COOKIE =
     builtins.readFile secrets.spotify.cookie;
   xdg.configFile."spotifyd/spotifyd.conf".text = ''
@@ -15,7 +15,7 @@
     no_audio_cache = true
     initial_volume = "100"
     volume_normalization = true
-    autoplay = true
+    autoplay = false
     device_type = "computer"
   '';
 }

@@ -20,13 +20,14 @@ in {
 
     picom -b --experimental-backends
 
+    playerctld &
+    spotifyd &
+
     eww open bar &
     sxhkd &
     pcmanfm -d &
     dunst &
     flameshot &
-    playerctld &
-    spotifyd &
   '' + secrets.xinitrc + ''
     exec bspwm
   '';
