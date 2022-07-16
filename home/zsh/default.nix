@@ -6,9 +6,6 @@
     autocd = true;
     defaultKeymap = "viins";
     dotDir = ".config/zsh";
-    profileExtra = ''
-      export GPG_TTY=$TTY
-    '';
     initExtraFirst = builtins.readFile ./initExtraFirst.zsh;
     initExtra = builtins.readFile ./initExtra.zsh;
     shellAliases = {
