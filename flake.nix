@@ -20,6 +20,13 @@
     };
     # my fork
     eww.url = "github:EzequielRamis/eww/css";
+    secrets.url = "git+ssh://git@github.com/EzequielRamis/secrets.git";
+    secrets.flake = false;
+    openrgb-rules = {
+      flake = false;
+      url =
+        "https://gitlab.com/CalcProgrammer1/OpenRGB/-/jobs/artifacts/master/raw/60-openrgb.rules?job=Linux+64+AppImage&inline=false";
+    };
   };
 
   outputs = { self, home-manager, nixpkgs, ... }@inputs:
@@ -55,8 +62,11 @@
         ];
       };
 
+      secrets = import inputs.secrets { inherit pkgs; };
+      data = { inherit (inputs) openrgb-rules; };
+
       userData = {
-        inherit pkgs system hostname username;
+        inherit pkgs system hostname username secrets data;
         inherit (lib) my;
       };
 

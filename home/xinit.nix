@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, secrets, ... }:
 let c = "${pkgs.capitaine-cursors}/share/icons/capitaine-cursors-white";
 in {
   home.file.".xinitrc".text = ''
@@ -25,7 +25,7 @@ in {
     pcmanfm -d &
     dunst &
     flameshot &
-
+  '' + secrets.xinitrc + ''
     exec bspwm
   '';
   home.pointerCursor = {

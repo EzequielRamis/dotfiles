@@ -172,12 +172,26 @@
         "type": "github"
       }
     },
+    "openrgb-rules": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-2YEkjdze3NfyvIKkvgG9w3iBtMwrjundRnQ6cr+3/no=",
+        "type": "file",
+        "url": "https://gitlab.com/CalcProgrammer1/OpenRGB/-/jobs/artifacts/master/raw/60-openrgb.rules?inline=false&job=Linux+64+AppImage"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://gitlab.com/CalcProgrammer1/OpenRGB/-/jobs/artifacts/master/raw/60-openrgb.rules?inline=false&job=Linux+64+AppImage"
+      }
+    },
     "root": {
       "inputs": {
         "apple-nerd-fonts": "apple-nerd-fonts",
         "eww": "eww",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_3",
+        "openrgb-rules": "openrgb-rules",
+        "secrets": "secrets",
         "whitesur": "whitesur"
       }
     },
@@ -196,6 +210,22 @@
         "ref": "nightly",
         "repo": "rust-analyzer",
         "type": "github"
+      }
+    },
+    "secrets": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1657937488,
+        "narHash": "sha256-bpvq/L519btadPl+kJnvU9gOsp5NbRWmOhtGFAvwWsM=",
+        "ref": "refs/heads/main",
+        "rev": "c69965e6bc7a94531d5fab6a6529aa48b6891e2f",
+        "revCount": 10,
+        "type": "git",
+        "url": "ssh://git@github.com/EzequielRamis/secrets.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/EzequielRamis/secrets.git"
       }
     },
     "utils": {

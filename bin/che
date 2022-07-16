@@ -106,6 +106,7 @@ case "$1" in
         esac;;
     sync)
         pushd ~/.dotfiles
+        nix flake lock --update-input secrets
         git add .
         nixos-rebuild switch --verbose --use-remote-sudo --flake .#
         popd;;
