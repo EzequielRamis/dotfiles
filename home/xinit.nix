@@ -1,36 +1,35 @@
-{ pkgs, lib, secrets, ... }:
+{ pkgs, lib, ... }:
 let c = "${pkgs.capitaine-cursors}/share/icons/capitaine-cursors-white";
 in {
-  home.file.".xinitrc".text = ''
-    xsettingsd -c ~/.xsettingsd-light.conf &
-    kitty +kitten themes --reload-in=all --config-file-name ~/.config/kitty/mytheme.conf Mylight
+  home.keyboard = {
+    layout = "es";
+    options = [ "caps:super" ];
+  };
+  xsession = {
+    enable = true;
+    numlock.enable = true;
+    initExtra = ''
+      openrgb -p None.orp
 
-    # cursor speed
-    xset r rate 400 40
-    # mouse acceleration
-    xset m 0 0
-    # screen saver off (not working)
-    xset -dpms
-    xset s off
-    xsetroot -cursor_name left_ptr
-    xsetroot -xcf ${c}/cursors/left_ptr 30
-    xrdb -merge ~/.Xresources
+      xsettingsd -c ~/.xsettingsd-light.conf &
+      kitty +kitten themes --reload-in=all --config-file-name ~/.config/kitty/mytheme.conf Mylight
 
-    feh --bg-fill --no-fehbg --randomize ~/Pictures/Wallpapers/Light/* &
+      # cursor speed
+      xset r rate 400 40
+      # mouse acceleration
+      xset m 0 0
+      # screen saver off (not working)
+      xset -dpms
+      xset s off
+      xsetroot -cursor_name left_ptr
 
-    picom -b --experimental-backends
+      feh --bg-fill --no-fehbg --randomize ~/Pictures/Wallpapers/Light/* &
 
-    playerctld &
-    spotifyd &
-
-    eww open bar &
-    sxhkd &
-    pcmanfm -d &
-    dunst &
-    flameshot &
-  '' + secrets.xinitrc + ''
-    exec bspwm
-  '';
+      eww open bar &
+      pcmanfm -d &
+      dunst &
+    '';
+  };
   home.pointerCursor = {
     name = "capitaine-cursors-white";
     package = pkgs.capitaine-cursors;

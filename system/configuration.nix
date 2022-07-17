@@ -39,49 +39,57 @@
     keyMap = "es";
   };
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  services.xserver = {
-    enable = true;
-    autorun = false;
-    resolutions = [{
-      x = 1920;
-      y = 1080;
-    }];
-    layout = "es";
-    xkbOptions = "caps:super";
-    displayManager.startx.enable = true;
-    videoDrivers = [ "nvidia" ];
-    screenSection = ''
-      Option         "metamodes" "nvidia-auto-select +0+0 {ForceFullCompositionPipeline=On}"
-      Option         "AllowIndirectGLXProtocol" "off"
-      Option         "TripleBuffer" "on"
-    '';
-    gdk-pixbuf.modulePackages = [ pkgs.librsvg ];
-  };
-
   hardware.opengl.enable = true;
   hardware.opengl.driSupport32Bit = true;
 
-  services.greetd = {
-    enable = true;
-    settings = let
-      startx = "startx -x .xinitrc &> /dev/null";
-      user = username;
-    in {
-      default_session = {
-        inherit user;
-        command = "${
-            lib.makeBinPath [ pkgs.greetd.tuigreet ]
-          }/tuigreet --time --cmd '${startx}'";
-      };
-      initial_session = {
-        inherit user;
-        command = startx;
+  # Enable sound.
+  sound.enable = true;
+  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.support32Bit = true;
+
+  # rgb and mouse
+  hardware.i2c.enable = true;
+
+  services = {
+    # Enable CUPS to print documents.
+    printing.enable = true;
+
+    xserver = {
+      enable = true;
+      resolutions = [{
+        x = 1920;
+        y = 1080;
+      }];
+      videoDrivers = [ "nvidia" ];
+      screenSection = ''
+        Option         "metamodes" "nvidia-auto-select +0+0 {ForceFullCompositionPipeline=On}"
+        Option         "AllowIndirectGLXProtocol" "off"
+        Option         "TripleBuffer" "on"
+      '';
+      gdk-pixbuf.modulePackages = [ pkgs.librsvg ];
+      displayManager = {
+        lightdm.enable = true;
+        autoLogin.enable = true;
+        autoLogin.user = username;
+        defaultSession = "none+hm";
+        session = [{
+          name = "hm";
+          manage = "window";
+          start = "";
+        }];
       };
     };
-  };
+
+    ratbagd.enable = true;
+
+    gvfs.enable = true;
+
+    # Enable the OpenSSH daemon.
+    openssh.enable = true;
+
+    # ssd
+    fstrim.enable = true;
+  } // secrets.services;
 
   fonts = {
     fonts = with pkgs; [
@@ -105,17 +113,6 @@
     };
   };
 
-  # Enable sound.
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
-  hardware.pulseaudio.support32Bit = true;
-
-  # rgb and mouse
-  hardware.i2c.enable = true;
-  services.ratbagd.enable = true;
-
-  services.gvfs.enable = true;
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${username} = {
     isNormalUser = true;
@@ -129,16 +126,7 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs;
-    [ neovim curl wget git ] ++ secrets.systemPackages;
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-
-  # ssd
-  services.fstrim.enable = true;
-
-  services.udev = { packages = secrets.udevPackages; };
+  environment.systemPackages = with pkgs; [ neovim curl wget git ];
 
   programs.gnupg.agent = {
     enable = true;

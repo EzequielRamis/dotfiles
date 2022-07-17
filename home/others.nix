@@ -1,36 +1,37 @@
-{ config, lib, pkgs, secrets, ... }:
+{ config, lib, pkgs, ... }:
 
 {
-  home.packages = with pkgs;
-    secrets.homePackages ++ [
-      jq
-      jless
-      fzf
+  home.packages = with pkgs; [
+    jq
+    jless
+    fzf
 
-      xorg.xev
-      xdo # for devour
-      xclip
+    xorg.xev
+    xdo # for devour
+    xclip
+    service-wrapper
 
-      feh
-      unzip
+    feh
+    unzip
 
-      chromium
+    chromium
+    rustdesk
 
-      qrencode
-      openrgb
-      piper
+    qrencode
+    openrgb
+    piper
 
-      steam
-      discord
-      teams
+    steam
+    discord
+    teams
 
-      pavucontrol
+    pavucontrol
 
-      # candy
-      cmatrix
-      pipes-rs
-      cbonsai
-      neofetch
-      screenkey
-    ];
+    # candy
+    cmatrix
+    pipes-rs
+    cbonsai
+    neofetch
+    screenkey
+  ];
 }
