@@ -18,5 +18,5 @@
   };
   home.sessionVariables.SPOTIFY_COOKIE =
     builtins.readFile secrets.spotify.cookie;
-  home.packages = with pkgs; [ sptlrx spotify-tui ];
+  home.packages = with pkgs; [ playerctl sptlrx spotify-tui ];
 }
