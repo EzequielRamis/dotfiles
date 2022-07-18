@@ -1,6 +1,4 @@
-{ pkgs, lib, ... }:
-let c = "${pkgs.capitaine-cursors}/share/icons/capitaine-cursors-white";
-in {
+{ pkgs, lib, ... }: {
   home.keyboard = {
     layout = "es";
     options = [ "caps:super" ];

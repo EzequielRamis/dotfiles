@@ -71,9 +71,9 @@
         lightdm.enable = true;
         autoLogin.enable = true;
         autoLogin.user = username;
-        defaultSession = "none+hm";
+        defaultSession = "none+fake";
         session = [{
-          name = "hm";
+          name = "fake";
           manage = "window";
           start = "";
         }];

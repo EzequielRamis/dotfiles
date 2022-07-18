@@ -37,7 +37,10 @@ in {
       active_border_color = t."16";
       presel_feedback_color = t."66";
     };
-    rules = { Emacs = { state = "tiled"; }; };
+    rules = {
+      Emacs.state = "tiled";
+      "*:*:Picture-in-Picture".state = "floating";
+    };
     monitors = { HDMI-0 = map toString (lib.lists.range 1 desks'); };
     extraConfig = ''
       bspc desktop -l monocle

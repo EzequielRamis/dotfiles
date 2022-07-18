@@ -61,15 +61,15 @@
         ];
       };
 
-      secrets = import inputs.secrets { inherit pkgs; };
-
-      userData = {
+      extraSpecialArgs = {
         inherit pkgs system hostname username secrets;
         inherit (lib) my;
       };
 
-      nixConfig = with pkgs;
-        import ./system/configuration.nix (userData // { inherit lib; });
+      nixConfig = import ./system/configuration.nix
+        (extraSpecialArgs // { inherit lib; });
+
+      secrets = import inputs.secrets { inherit pkgs; };
 
     in rec {
       nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
@@ -79,6 +79,7 @@
           home-manager.nixosModules.home-manager
           {
             home-manager = {
+              inherit extraSpecialArgs;
               useGlobalPkgs = true;
               useUserPackages = true;
               users.${username} = {
@@ -86,7 +87,6 @@
                 programs.home-manager.enable = true;
                 imports = lib.my.importFrom ./home;
               };
-              extraSpecialArgs = userData;
             };
           }
         ];

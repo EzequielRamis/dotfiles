@@ -202,11 +202,11 @@
     "secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1658023327,
-        "narHash": "sha256-/44vwK+bgbNPH2wwnY10muX5HRywoGiUtCkJZaFgOPg=",
+        "lastModified": 1658074953,
+        "narHash": "sha256-LID5+DIVNZMn8dDzg52xWlfvR8Ltg0hPOW1CNMEDcJ8=",
         "ref": "refs/heads/main",
-        "rev": "6fc1d8a56ce4d507649fdd670300327fa4838aec",
-        "revCount": 12,
+        "rev": "62e4ccbe2cd79082e294dcd84f5c6d603aa652a0",
+        "revCount": 1,
         "type": "git",
         "url": "ssh://git@github.com/EzequielRamis/secrets.git"
       },

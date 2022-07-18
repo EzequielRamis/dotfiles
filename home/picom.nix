@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, my, ... }:
 
 {
   # activate service when it's finally installed
@@ -10,7 +10,7 @@
     fadeDelta = 5;
     vSync = true;
     shadow = true;
-    shadowOpacity = 0.4;
+    shadowOpacity = 0.1;
     shadowExclude = [
       "class_g = 'eww-bar'"
       "name = 'Picture-in-Picture'"
@@ -110,15 +110,16 @@
         fade = false;
       };
     };
-    settings = {
+    settings = rec {
       blur = {
         method = "dual_kawase";
         strength = 12;
       };
 
-      shadow-radius = 28;
-      shadow-offset-x = -28;
-      shadow-offset-y = -28;
+      shadow-color = my.palette."0F";
+      shadow-radius = 24;
+      shadow-offset-x = -shadow-radius + 0;
+      shadow-offset-y = -shadow-radius + 8;
 
       corner-radius = 8;
 

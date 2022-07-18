@@ -16,9 +16,9 @@
   xdg.configFile."rofi/light.rasi".text = let t = my.palette;
   in ''
     * {
-      t-bg: ${t."00"}CC;
+      t-bg: ${t."00"}B3;
       t-fg: ${t."00"};
-      t-border: ${t."04"};
+      t-border: ${t."03"};
       t-prompt: ${t."05"};
       t-text: ${t."0E"};
       t-select: ${t."00"};
@@ -27,9 +27,9 @@
   xdg.configFile."rofi/dark.rasi".text = let t = my.palette;
   in ''
     * {
-      t-bg: ${t."0F"}CC;
+      t-bg: ${t."0F"}B3;
       t-fg: ${t."0F"};
-      t-border: ${t."0A"};
+      t-border: ${t."0B"};
       t-prompt: ${t."08"};
       t-text: ${t."02"};
       t-select: ${t."0E"};

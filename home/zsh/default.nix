@@ -3,6 +3,7 @@
     enable = true;
     enableAutosuggestions = true;
     enableSyntaxHighlighting = true;
+    enableCompletion = true;
     autocd = true;
     defaultKeymap = "viins";
     dotDir = ".config/zsh";

@@ -10,7 +10,7 @@ window {
     border: 1px;
     border-color: @t-border;
     border-radius: 8px;
-    width: 24em;
+    width: 21em;
 }
 
 inputbar {

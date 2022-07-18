@@ -8,7 +8,7 @@ in {
     extraPackages = epkgs: [ epkgs.vterm ];
   };
   services.emacs = {
-    enable = true;
+    enable = false;
     defaultEditor = true;
   };
 
