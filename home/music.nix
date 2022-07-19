@@ -9,7 +9,9 @@
       use_mpris = true;
       backend = "pulseaudio";
       device_name = "Daemon";
-      no_audio_cache = true;
+      no_audio_cache = false;
+      cache_path = ".cache/spotifyd";
+      max_cache_size = 1000000000;
       initial_volume = "100";
       volume_normalization = true;
       autoplay = false;

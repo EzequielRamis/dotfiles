@@ -18,6 +18,10 @@
       url =
         "github:vinceliuice/WhiteSur-gtk-theme/3dca2b10d0a24bd111119c3eb94df512d7e067f5";
     };
+    spotifyd = {
+      flake = false;
+      url = "github:Spotifyd/spotifyd/993336f74ec89cb6cad23dd009251e70548761b6";
+    };
     # my fork
     eww.url = "github:EzequielRamis/eww/css";
     secrets.url = "git+ssh://git@github.com/EzequielRamis/secrets.git";
@@ -45,7 +49,7 @@
 
       pkgs = mkPkgs {
         overlays = [
-          (final: prev: {
+          (final: prev: rec {
             my = lib.my.mapModules ./pkgs (p:
               prev.callPackage p {
                 inherit inputs;
@@ -53,7 +57,7 @@
               });
             unstable = mkPkgs { };
             eww = inputs.eww.defaultPackage."${system}";
-            spotifyd = prev.spotifyd.override {
+            spotifyd = my.spotifyd.override {
               withMpris = true;
               withPulseAudio = true;
             };

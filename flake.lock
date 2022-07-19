@@ -179,6 +179,7 @@
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_3",
         "secrets": "secrets",
+        "spotifyd": "spotifyd",
         "whitesur": "whitesur"
       }
     },
@@ -213,6 +214,23 @@
       "original": {
         "type": "git",
         "url": "ssh://git@github.com/EzequielRamis/secrets.git"
+      }
+    },
+    "spotifyd": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1658074169,
+        "narHash": "sha256-IILJCvH+dyKRRUERW9zicsoRoCBiKw03MTnitZb2hp0=",
+        "owner": "Spotifyd",
+        "repo": "spotifyd",
+        "rev": "993336f74ec89cb6cad23dd009251e70548761b6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Spotifyd",
+        "repo": "spotifyd",
+        "rev": "993336f74ec89cb6cad23dd009251e70548761b6",
+        "type": "github"
       }
     },
     "utils": {

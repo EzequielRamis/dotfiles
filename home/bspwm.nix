@@ -76,7 +76,8 @@ in {
       # headset/speakers toggle
       "alt + XF86AudioPlay" =
         "pactl set-default-sink $(pactl list sinks short | grep -v $(pactl get-default-sink) | cut -f2)";
-      "shift + XF86AudioPlay" = "spt pb --transfer=Daemon";
+      "shift + XF86AudioPlay" =
+        "spt pb --transfer=Daemon; playerctl -p spotifyd play";
       "shift + XF86AudioMute" = "playerctl -p spotifyd stop";
       "shift + XF86AudioRaiseVolume" = "playerctl -p spotifyd next";
       "shift + XF86AudioLowerVolume" = "playerctl -p spotifyd previous";
