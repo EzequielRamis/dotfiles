@@ -1,0 +1,10 @@
+#!/bin/sh
+
+url=$(cat /tmp/spotify_metadata.txt | sed -n '2p')
+trackid=$(cat /tmp/spotify_metadata.txt | sed -n '3p')
+title=$(cat /tmp/spotify_metadata.txt | sed -n '4p')
+artist=$(cat /tmp/spotify_metadata.txt | sed -n '5p')
+album=$(cat /tmp/spotify_metadata.txt | sed -n '6p')
+art=$(cat /tmp/spotify_metadata.txt | sed -n '7p')
+
+echo "(label :text ' $title - $artist')"

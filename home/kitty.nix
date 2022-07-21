@@ -21,6 +21,7 @@ in {
     background ${t."0F"}
     foreground ${t."00"}
     cursor ${t."65"}
+    url_color ${t."65"}
 
     # black
     color0 ${t."0F"}
@@ -60,6 +61,7 @@ in {
     background ${t."00"}
     foreground ${t."0F"}
     cursor ${t."67"}
+    url_color ${t."67"}
 
     # black
     color0 ${t."0F"}

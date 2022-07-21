@@ -6,6 +6,9 @@
   xdg.configFile."eww/scripts/workspace".source = ./scripts/workspace;
   xdg.configFile."eww/scripts/workspace".executable = true;
 
+  xdg.configFile."eww/scripts/spotify".source = ./scripts/spotify;
+  xdg.configFile."eww/scripts/spotify".executable = true;
+
   xdg.configFile."eww/assets/corner-light.svg".text = ''
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path fill="black" d="M0 16C0.272467 7.67099 7.33615 1 16 1V0H0V16Z"/>

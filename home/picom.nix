@@ -10,7 +10,7 @@
     fadeDelta = 5;
     vSync = true;
     shadow = true;
-    shadowOpacity = 0.1;
+    shadowOpacity = 0.16;
     shadowExclude = [
       "class_g = 'eww-bar'"
       "name = 'Picture-in-Picture'"
@@ -33,9 +33,7 @@
     wintypes = {
       dock = {
         shadow = false;
-        blur-background = false;
         full-shadow = false;
-        fade = false;
       };
       toolbar = {
         shadow = false;

@@ -1,11 +1,12 @@
 (deflisten workspace "scripts/workspace")
 
+(defpoll spotify :interval "1s" "scripts/spotify")
+
 (defpoll hour :interval "1s" "date '+%H'")
 (defpoll minute :interval "1s" "date '+%M'")
 
 (defpoll day_name :interval "1s" "date '+%a' | tr a-z A-Z")
-(defpoll day_nro :interval "1s" "date '+%d'")
-(defpoll month :interval "1s" "date '+%b' | tr a-z A-Z")
+(defpoll day_numb :interval "1s" "date '+%d'")
 
 (defwidget metric [text value class]
     (box
@@ -38,17 +39,15 @@
             :value {round(EWW_RAM.used_mem_perc, 0)})))
 
 (defwidget day-status []
-    (centerbox
+    (box
         :class "day-status"
         :orientation "h"
-        (centerbox
+        (box
             :class "day"
             :orientation "h"
             (label :class "day-name" :text day_name)
-            (label :class "day-nro" :text day_nro)
-            (label :class "month" :text month))
-        (label :class "sep" :text "·")
-        (box
+            (label :class "day-numb" :text day_numb))
+        (centerbox
             :orientation "h"
             :class "time"
             (label :class "hour" :text hour)
@@ -64,21 +63,16 @@
                 :height "32px"
                 :anchor "top left"
                 :class "bar")
-    :stacking "bg"
+    :stacking "bottom"
     :windowtype "dock"
-    :wm-ignore true
     (box
-        :orientation "v"
-        :class "bar-wrapper"
-        (centerbox
-                :orientation "h"
-                :valign "end"
-                :class "bar-content"
-                (workspaces)
-                (box :halign "center" "")
-                (centerbox
-                    :orientation "h"
-                    :halign "end"
-                    (box "")
-                    (pc-status)
-                    (day-status)))))
+        :orientation "h"
+        :valign "end"
+        :class "bar-content"
+        (workspaces)
+        (literal :content spotify)
+        (box
+            :orientation "h"
+            :halign "end"
+            (pc-status)
+            (day-status))))
