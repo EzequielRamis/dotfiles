@@ -7,4 +7,6 @@ artist=$(cat /tmp/spotify_metadata.txt | sed -n '5p')
 album=$(cat /tmp/spotify_metadata.txt | sed -n '6p')
 art=$(cat /tmp/spotify_metadata.txt | sed -n '7p')
 
-echo "(label :text ' $title - $artist')"
+if [[ -n "$trackid" ]]; then
+    echo "(label :xalign 0.5 :text '  $title - $artist')"
+fi

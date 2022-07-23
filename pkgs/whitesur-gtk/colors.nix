@@ -104,10 +104,10 @@ in ''
   $alt_dark_bg_color:                 rgba(black, 0.3);
 
   // for gnome-shell keyboard
-  $solid_bg_color:                    if($variant == 'light', ${p."02"}, ${
-    p."09"
+  $alt_solid_bg_color:                if($variant == 'light', ${p."05"}, ${
+    p."0A"
   });
-  $alt_solid_bg_color:                if($variant == 'light', ${p."04"}, ${
+  $solid_bg_color:                    if($variant == 'light', ${p."03"}, ${
     p."0B"
   });
 

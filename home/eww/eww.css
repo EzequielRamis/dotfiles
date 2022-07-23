@@ -3,12 +3,52 @@
 }
 
 .bar-content {
-    padding: 8px;
-    background-color: alpha(@theme_bg_color, 0.6);
+    background-color: @bg_color;
+    padding: 6px 3px;
+    border: 1px solid @borders;
+    border-top: none;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.ws, .pc-status, .time {
+    background: @solid_bg_color;
+    border-radius: 6px;
+    margin: 0 4px;
 }
 
 .w {
     all: unset;
-    padding: 0 8px;
+    padding: 1px 8px;
     font-weight: 900;
+    transition: 0.2s all ease;
+    color: @unfocused_insensitive_color;
+}
+
+.w.occupied {
+    color: @fg_color;
+}
+
+.w.focused {
+    color: @selected_bg_color;
+}
+
+.w:hover,
+.pc-status:hover
+{
+    background: @alt_solid_bg_color;
+}
+
+.w:first-child {
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.w:last-child {
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.metric {
+    padding: 1px 8px;
 }

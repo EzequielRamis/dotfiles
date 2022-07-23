@@ -2,17 +2,14 @@
 
 tmp="/tmp/spotify_metadata.txt"
 
-sed -i.bak "1 s/.*/$PLAYER_EVENT/" $tmp
+PLAYER="/etc/profiles/per-user/ezequiel/bin/playerctl"
 
-# filter out preload, play, pause, etc... events
-if [ "$PLAYER_EVENT" = "change" ] || [ "$PLAYER_EVENT" = "play" ]
-then
-    meta=$(/etc/profiles/per-user/ezequiel/bin/playerctl -p spotifyd metadata -f\
-    "{{xesam:url}}
+meta=$(eval "$PLAYER -p spotifyd metadata -f\
+  '{{xesam:url}}
 {{mpris:trackid}}
 {{xesam:title}}
 {{xesam:artist}}
 {{xesam:album}}
-{{mpris:artUrl}}")
-    echo -e "$PLAYER_EVENT\n$meta" > $tmp
-fi
+{{mpris:artUrl}}'")
+
+echo -e "$PLAYER_EVENT\n$meta" > $tmp

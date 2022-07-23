@@ -38,6 +38,9 @@ in ''
   @define-color link_color #{"" + $link_color};
   @define-color content_view_bg #{"" + $base_color};
 
+  @define-color solid_bg_color #{"" + $solid_bg_color};
+  @define-color alt_solid_bg_color #{"" + $alt_solid_bg_color};
+
   /* Very contrasty background for text views (@theme_text_color foreground) */
   @define-color text_view_bg #{"" + if($variant == 'light', $base_color, darken($base_color, 6%))};
 

@@ -33,7 +33,9 @@
     wintypes = {
       dock = {
         shadow = false;
+        blur-background = true;
         full-shadow = false;
+        fade = true;
       };
       toolbar = {
         shadow = false;

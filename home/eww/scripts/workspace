@@ -5,8 +5,8 @@ workspaces() {
     local c2="○"
     local c3="○"
     local c4="○"
-    while read w; do eval "local o$w"="occupied"; eval "c$w"="●"; done < <(bspc query -D -d .occupied --names)
-    while read w; do eval "local f$w"="focused"; done < <(bspc query -D -d focused --names)
+    while read w; do eval "local o$w"="occupied"; done < <(bspc query -D -d .occupied --names)
+    while read w; do eval "local f$w"="focused"; eval "c$w"="●"; done < <(bspc query -D -d focused --names)
 
     echo "(box :class 'ws'\
                :orientation 'h'\

@@ -1,34 +1,21 @@
 (deflisten workspace "scripts/workspace")
 
 (defpoll spotify :interval "1s" "scripts/spotify")
-
-(defpoll hour :interval "1s" "date '+%H'")
-(defpoll minute :interval "1s" "date '+%M'")
-
-(defpoll day_name :interval "1s" "date '+%a' | tr a-z A-Z")
-(defpoll day_numb :interval "1s" "date '+%d'")
+(defpoll time :interval "1s" "date '+%a %d  -  %H : %M' | tr a-z A-Z")
 
 (defwidget metric [text value class]
     (box
         :orientation "h"
         :class class
-        :space-evenly true
-        ;; (progress
-        ;;     :orientation "v"
-        ;;     :value value
-        ;;     :flipped true
-        ;;     :class "progress")
+        :width 56
         (label :class "label" :text text)
         (label :class "value" :text value)))
-
-(defwidget workspaces []
-    (literal :content workspace))
 
 (defwidget pc-status []
     (box
         :class "pc-status"
         :orientation "h"
-        :space-evenly false
+        :halign "end"
         (metric
             :text ""
             :class "metric cpu"
@@ -38,41 +25,31 @@
             :class "metric ram"
             :value {round(EWW_RAM.used_mem_perc, 0)})))
 
-(defwidget day-status []
-    (box
-        :class "day-status"
-        :orientation "h"
-        (box
-            :class "day"
-            :orientation "h"
-            (label :class "day-name" :text day_name)
-            (label :class "day-numb" :text day_numb))
-        (centerbox
-            :orientation "h"
-            :class "time"
-            (label :class "hour" :text hour)
-            (label :class "sep" :text ":")
-            (label :class "minute" :text minute))))
-
 (defwindow bar
     :monitor 0
     :geometry (geometry
-                :x "0px"
+                :x "16px"
                 :y "0px"
-                :width "1920px"
+                :width "1888px"
                 :height "32px"
                 :anchor "top left"
                 :class "bar")
     :stacking "bottom"
     :windowtype "dock"
-    (box
+    (centerbox
         :orientation "h"
-        :valign "end"
+        :valign "center"
         :class "bar-content"
-        (workspaces)
-        (literal :content spotify)
+        (eventbox
+            :cursor "pointer"
+            :halign "start"
+            (literal :content workspace))
+        (box
+            :valign "center"
+            :halign "center"
+            (literal :content spotify))
         (box
             :orientation "h"
             :halign "end"
             (pc-status)
-            (day-status))))
+            (label :class "metric time" :text time))))
