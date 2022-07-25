@@ -1,27 +1,30 @@
 (deflisten workspace "scripts/workspace")
+(deflisten volume "scripts/volume")
 
-(defpoll spotify :interval "1s" "scripts/spotify")
-(defpoll time :interval "1s" "date '+%a %d  -  %H : %M' | tr a-z A-Z")
+(defpoll spotify     :interval "1s" "cat /tmp/spotify_metadata.txt")
+(defpoll spotify_art :interval "1s" "echo /tmp/spotify_art.jpg")
+(defpoll time        :interval "1s" "date '+%a %d  -  %H : %M' | tr a-z A-Z")
 
 (defwidget metric [text value class]
     (box
         :orientation "h"
+        :halign "fill"
         :class class
-        :width 56
         (label :class "label" :text text)
-        (label :class "value" :text value)))
+        (label :width 25 :class "value" :text value :xalign 0)))
 
 (defwidget pc-status []
     (box
         :class "pc-status"
         :orientation "h"
         :halign "end"
+        :space-evenly false
         (metric
-            :text ""
+            :text "􀫥"
             :class "metric cpu"
             :value {round(EWW_CPU.avg, 0)})
         (metric
-            :text ""
+            :text "􀫦"
             :class "metric ram"
             :value {round(EWW_RAM.used_mem_perc, 0)})))
 
@@ -43,13 +46,37 @@
         (eventbox
             :cursor "pointer"
             :halign "start"
-            (literal :content workspace))
-        (box
             :valign "center"
-            :halign "center"
-            (literal :content spotify))
+            (literal :content workspace))
+        (eventbox
+          :cursor "pointer"
+          (box
+              :valign "center"
+              :space-evenly false
+              ;; (image :path spotify_art :image-width 20 :image-height 20)
+              (label :class "spotify-icon" :text {"${spotify.trackid}" == "" ? "": "阮  "})
+              (label :text {"${spotify.trackid}" == "" ? "": "${spotify.title} - ${spotify.artist}"})))
         (box
             :orientation "h"
             :halign "end"
+            :valign "center"
+            :space-evenly false
+            (eventbox
+              :class "vol"
+              :halign "end"
+              :cursor "pointer"
+              :onscroll "pactl set-sink-volume @DEFAULT_SINK@ $([[ '{}' == 'up' ]] && echo +2% || echo -2%)"
+              :onclick "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+              :onrightclick "audio_device_toggle"
+              (box
+                :space-evenly true
+                :halign "end"
+                :width 125
+                (label :text {"${volume.type}" == "speaker" ? "􀝏" : "􀑈"} :class "volume-type")
+                (label :text {"${volume.muted}"      ? "􀊢" :
+                              "${volume.value}" < 15 ? "􀊠" :
+                              "${volume.value}" < 30 ? "􀊤" :
+                              "${volume.value}" < 60 ? "􀊦" : "􀊨"} :class "volume-icon")
+                (label :text "${volume.value}%" :class "volume-value")))
             (pc-status)
             (label :class "metric time" :text time))))

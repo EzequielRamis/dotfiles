@@ -50,6 +50,8 @@
   # rgb and mouse
   hardware.i2c.enable = true;
 
+  hardware.xpadneo.enable = true;
+
   services = {
     # Enable CUPS to print documents.
     printing.enable = true;

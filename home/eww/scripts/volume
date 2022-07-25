@@ -1,0 +1,21 @@
+#!/bin/sh
+
+get_volume() {
+  sink=$(pactl get-default-sink)
+  sink_type="speaker"
+  if [[ "$sink" == *"Jabra"* ]]; then
+    sink_type="headset"
+  fi
+  vol=$(pactl get-sink-volume @DEFAULT_SINK@ | head -n1 | cut -d '/' -f2 | tr -dc '0-9')
+  vol_muted=$(pactl get-sink-mute @DEFAULT_SINK@ | head -n1 | cut -d '/' -f2)
+  echo -e "{\
+    \"value\": ${vol},\
+    \"muted\": $([[ "$vol_muted" == *"yes"* ]] && echo true || echo false),\
+    \"type\": \"${sink_type}\"\
+    }"
+}
+
+get_volume
+pactl subscribe | grep --line-buffered sink | while read -r _ ; do
+  get_volume
+done

@@ -2,14 +2,28 @@
 
 tmp="/tmp/spotify_metadata.txt"
 
-PLAYER="/etc/profiles/per-user/ezequiel/bin/playerctl"
+SW="/run/current-system/sw/bin"
+HM="/etc/profiles/per-user/ezequiel/bin"
+
+PLAYER="$HM/playerctl"
+
+wget() {
+    eval "$SW/wget $@"
+}
+
+jq() {
+    eval "$HM/jq $@"
+}
 
 meta=$(eval "$PLAYER -p spotifyd metadata -f\
-  '{{xesam:url}}
-{{mpris:trackid}}
-{{xesam:title}}
-{{xesam:artist}}
-{{xesam:album}}
-{{mpris:artUrl}}'")
+  '{
+\"url\":     \"{{xesam:url}}\",
+\"trackid\": \"{{mpris:trackid}}\",
+\"title\":   \"{{xesam:title}}\",
+\"artist\":  \"{{xesam:artist}}\",
+\"album\":   \"{{xesam:album}}\",
+\"artUrl\":  \"{{mpris:artUrl}}\"
+}'")
 
-echo -e "$PLAYER_EVENT\n$meta" > $tmp
+wget "$(echo -e "$meta" | jq -r '.artUrl')" -O /tmp/spotify_art.jpg
+echo -e "$meta" > $tmp

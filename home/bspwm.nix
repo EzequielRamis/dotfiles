@@ -65,6 +65,7 @@ in {
     keybindings = mkHotkeyChain {
       "alt + {_,shift + }Tab" = "bspc node -f {next,prev}.leaf.local";
       Print = "flameshot gui";
+      "shift + Print" = "flameshot full -c";
 
       # sound
       XF86AudioMute = "pactl set-sink-mute @DEFAULT_SINK@ toggle";
@@ -74,8 +75,7 @@ in {
       XF86AudioPlay = "playerctl -p spotifyd play-pause";
 
       # headset/speakers toggle
-      "alt + XF86AudioPlay" =
-        "pactl set-default-sink $(pactl list sinks short | grep -v $(pactl get-default-sink) | cut -f2)";
+      "alt + XF86AudioPlay" = "audio_device_toggle";
       "shift + XF86AudioPlay" =
         "spt pb --transfer=Daemon; playerctl -p spotifyd play";
       "shift + XF86AudioMute" = "playerctl -p spotifyd stop";

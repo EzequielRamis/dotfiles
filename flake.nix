@@ -95,6 +95,6 @@
           }
         ];
       };
-      defaultPackage = nixosConfigurations.${hostname};
+      packages.${system}.default = nixosConfigurations.${hostname};
     };
 }

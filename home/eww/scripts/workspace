@@ -11,6 +11,7 @@ workspaces() {
     echo "(box :class 'ws'\
                :orientation 'h'\
                :halign 'start'\
+               :valign 'center'\
                (button :onclick 'bspc desktop -f 1' :class 'w $o1 $f1' '$c1')\
                (button :onclick 'bspc desktop -f 2' :class 'w $o2 $f2' '$c2')\
                (button :onclick 'bspc desktop -f 3' :class 'w $o3 $f3' '$c3')\

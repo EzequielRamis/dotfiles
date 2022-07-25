@@ -33,7 +33,7 @@
     wintypes = {
       dock = {
         shadow = false;
-        blur-background = true;
+        blur-background = false;
         full-shadow = false;
         fade = true;
       };

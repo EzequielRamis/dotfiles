@@ -1,0 +1,3 @@
+#!/bin/sh
+
+pactl set-default-sink $(pactl list sinks short | grep -v $(pactl get-default-sink) | cut -f2)

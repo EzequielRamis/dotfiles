@@ -23,9 +23,14 @@
 
     steam
     discord
+    jstest-gtk
+    linuxConsoleTools
+
     teams
 
     pavucontrol
+    gucharmap
+    fontforge-gtk
 
     # candy
     cmatrix
