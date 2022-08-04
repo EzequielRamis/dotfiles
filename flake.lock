@@ -96,11 +96,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1657719085,
-        "narHash": "sha256-nQt3MEBwKuKlmFKSRhdoh60AGlc+YlspV5e8kO/3y8U=",
+        "lastModified": 1659232160,
+        "narHash": "sha256-RYKbKAYooiART2RUEpUnP7tAYM6+2i1m9+QI14wljZU=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "2c94b9801f1a11cde0fc97aa850687bb9137d42c",
+        "rev": "7146638e9ef74aba6736cbbf12dbe60e1ed24c1e",
         "type": "github"
       },
       "original": {
@@ -158,11 +158,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1657533762,
-        "narHash": "sha256-/cxTFSMmpAb8tBp1yVga1fj+i8LB9aAxnMjYFpRMuVs=",
+        "lastModified": 1659131907,
+        "narHash": "sha256-8bz4k18M/FuVC+EVcI4aREN2PsEKT7LGmU2orfjnpCg=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "38860c9e91cb00f4d8cd19c7b4e36c45680c89b5",
+        "rev": "8d435fca5c561da8168abb30270788d2da2a7951",
         "type": "github"
       },
       "original": {
@@ -203,11 +203,11 @@
     "secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1658074953,
+        "lastModified": 1659636234,
         "narHash": "sha256-LID5+DIVNZMn8dDzg52xWlfvR8Ltg0hPOW1CNMEDcJ8=",
         "ref": "refs/heads/main",
-        "rev": "62e4ccbe2cd79082e294dcd84f5c6d603aa652a0",
-        "revCount": 1,
+        "rev": "4338ffadbace05e788a5d398da06a3d513255e02",
+        "revCount": 5,
         "type": "git",
         "url": "ssh://git@github.com/EzequielRamis/secrets.git"
       },

@@ -52,9 +52,15 @@
 
   hardware.xpadneo.enable = true;
 
+  hardware.sane = {
+    enable = true;
+    extraBackends = [ pkgs.hplipWithPlugin ];
+  };
+
   services = {
     # Enable CUPS to print documents.
     printing.enable = true;
+    printing.drivers = [ pkgs.hplipWithPlugin ];
 
     xserver = {
       enable = true;
@@ -91,6 +97,8 @@
 
     # ssd
     fstrim.enable = true;
+
+    gnome.at-spi2-core.enable = true;
   } // secrets.services;
 
   fonts = {
@@ -118,8 +126,13 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${username} = {
     isNormalUser = true;
-    extraGroups =
-      [ "wheel" "networkmanager" "i2c" "audio" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+      "i2c"
+      "audio"
+      "scanner"
+    ]; # Enable ‘sudo’ for the user.
     initialPassword = "";
   };
 

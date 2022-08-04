@@ -86,10 +86,10 @@
         fade = false;
       };
       notification = {
-        shadow = false;
+        shadow = true;
         blur-background = false;
-        full-shadow = false;
-        fade = false;
+        full-shadow = true;
+        fade = true;
       };
       combo = {
         shadow = false;

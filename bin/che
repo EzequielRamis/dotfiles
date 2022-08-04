@@ -121,7 +121,7 @@ case "$1" in
                 nixos-rebuild switch --verbose --use-remote-sudo --flake .#
                 popd;;
             emacs)
-                doom -y upgrade;;
+                doom -! upgrade;;
             all)
                 che update nix
                 che update emacs;;

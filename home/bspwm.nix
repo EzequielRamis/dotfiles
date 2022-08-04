@@ -44,6 +44,16 @@ in {
     monitors = { HDMI-0 = map toString (lib.lists.range 1 desks'); };
     extraConfig = ''
       bspc desktop -l monocle
+
+      xdo lower -N "eww-bar"
+      bspc subscribe node_state | while read -r _ _ _ _ state flag; do
+        if [[ "$state" != fullscreen ]]; then continue; fi
+        if [[ "$flag" == on ]]; then
+          xdo lower -N "eww-bar"
+        else
+          xdo raise -N "eww-bar"
+        fi
+      done &
     '';
   };
   xdg.configFile."bspwm/dark".executable = true;
@@ -78,7 +88,7 @@ in {
       "alt + XF86AudioPlay" = "audio_device_toggle";
       "shift + XF86AudioPlay" =
         "spt pb --transfer=Daemon; playerctl -p spotifyd play";
-      "shift + XF86AudioMute" = "playerctl -p spotifyd stop";
+      "shift + XF86AudioMute" = "systemctl --user restart spotifyd";
       "shift + XF86AudioRaiseVolume" = "playerctl -p spotifyd next";
       "shift + XF86AudioLowerVolume" = "playerctl -p spotifyd previous";
 

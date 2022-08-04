@@ -12,7 +12,7 @@
       no_audio_cache = false;
       cache_path = ".cache/spotifyd";
       max_cache_size = 1000000000;
-      initial_volume = "75";
+      initial_volume = "65";
       volume_normalization = true;
       autoplay = false;
       device_type = "computer";
@@ -31,11 +31,11 @@
 
     # 'autosens' will attempt to decrease sensitivity if the bars peak. 1 = on, 0 = off
     # new as of 0.6.0 autosens of low values (dynamic range)
-    autosens = 0
+    autosens = 1
 
     # Manual sensitivity in %. If autosens is enabled, this will only be the initial value.
     # 200 means double height. Accepts only non-negative values.
-    sensitivity = 12
+    # sensitivity = 12
 
     # The number of bars (0-200). 0 sets it to auto (fill up console).
     # Bars' width and space between bars in number of characters.
