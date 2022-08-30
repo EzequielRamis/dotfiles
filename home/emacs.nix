@@ -18,14 +18,16 @@ in {
     fd
     ripgrep
     nixfmt
-    python3Minimal
     cmake
     gnumake
     gcc
     libtool
     libvterm-neovim
     pandoc
-    python39Packages.grip
+    # org
+    texlive.combined.scheme-medium
+    (python39.withPackages (ps: with ps; [ jupyter grip ]))
+    nodePackages.vscode-langservers-extracted
   ];
 
   home.activation = {

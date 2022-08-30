@@ -15,7 +15,7 @@
     unzip
 
     chromium
-    rustdesk
+    jetbrains.clion
 
     qrencode
     openrgb
@@ -25,8 +25,15 @@
     discord
     jstest-gtk
     linuxConsoleTools
+    lutris
+    wine
+    winetricks
+    calibre
+    libmtp
+    usbutils
 
     teams
+    awsvpnclient
 
     pavucontrol
     gucharmap

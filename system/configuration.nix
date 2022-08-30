@@ -12,10 +12,13 @@
     settings.trusted-public-keys = [
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "cm-idris2-pkgs.cachix.org-1:YB2oJSEsD5oMJjAESxolC2GQtE6B5I6jkWhte2gtXjk="
     ] ++ secrets.trusted-public-keys;
-    settings.substituters =
-      [ "https://cache.nixos.org" "https://nix-community.cachix.org" ]
-      ++ secrets.substituters;
+    settings.substituters = [
+      "https://cache.nixos.org"
+      "https://nix-community.cachix.org"
+      "https://cm-idris2-pkgs.cachix.org"
+    ] ++ secrets.substituters;
   };
   nixpkgs.config.allowUnfree = true;
 
@@ -91,6 +94,8 @@
     ratbagd.enable = true;
 
     gvfs.enable = true;
+    udisks2.enable = true;
+    devmon.enable = true;
 
     # Enable the OpenSSH daemon.
     openssh.enable = true;
@@ -99,6 +104,7 @@
     fstrim.enable = true;
 
     gnome.at-spi2-core.enable = true;
+    gnome.gnome-keyring.enable = true;
   } // secrets.services;
 
   fonts = {
