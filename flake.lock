@@ -249,17 +249,17 @@
     "spotifyd": {
       "flake": false,
       "locked": {
-        "lastModified": 1658074169,
-        "narHash": "sha256-IILJCvH+dyKRRUERW9zicsoRoCBiKw03MTnitZb2hp0=",
+        "lastModified": 1662483639,
+        "narHash": "sha256-6/mFCApGYiK6rYrzfxHuQI3a49bzkmpPcJw5gHCnUuY=",
         "owner": "Spotifyd",
         "repo": "spotifyd",
-        "rev": "993336f74ec89cb6cad23dd009251e70548761b6",
+        "rev": "7146f64a819590a16de9991de74f8bc2fea9c2ac",
         "type": "github"
       },
       "original": {
         "owner": "Spotifyd",
         "repo": "spotifyd",
-        "rev": "993336f74ec89cb6cad23dd009251e70548761b6",
+        "rev": "7146f64a819590a16de9991de74f8bc2fea9c2ac",
         "type": "github"
       }
     },

@@ -20,7 +20,7 @@
     };
     spotifyd = {
       flake = false;
-      url = "github:Spotifyd/spotifyd/993336f74ec89cb6cad23dd009251e70548761b6";
+      url = "github:Spotifyd/spotifyd/7146f64a819590a16de9991de74f8bc2fea9c2ac";
     };
     # my fork
     eww.url = "github:EzequielRamis/eww/css";

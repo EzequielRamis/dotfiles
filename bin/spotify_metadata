@@ -2,18 +2,18 @@
 
 tmp="/tmp/spotify_metadata.txt"
 
-SW="/run/current-system/sw/bin"
+# SW="/run/current-system/sw/bin"
 HM="/etc/profiles/per-user/ezequiel/bin"
 
 PLAYER="$HM/playerctl"
 
-wget() {
-    eval "$SW/wget $@"
-}
+# wget() {
+#     eval "$SW/wget $@"
+# }
 
-jq() {
-    eval "$HM/jq $@"
-}
+# jq() {
+#     eval "$HM/jq $@"
+# }
 
 meta=$(eval "$PLAYER -p spotifyd metadata -f\
   '{
@@ -25,5 +25,5 @@ meta=$(eval "$PLAYER -p spotifyd metadata -f\
 \"artUrl\":  \"{{mpris:artUrl}}\"
 }'")
 
-wget "$(echo -e "$meta" | jq -r '.artUrl')" -O /tmp/spotify_art.jpg
+# wget "$(echo -e "$meta" | jq -r '.artUrl')" -O /tmp/spotify_art.jpg
 echo -e "$meta" > $tmp

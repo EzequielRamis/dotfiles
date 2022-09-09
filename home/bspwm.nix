@@ -40,6 +40,7 @@ in {
     rules = {
       Emacs.state = "tiled";
       "*:*:Picture-in-Picture".state = "floating";
+      "*:jetbrains-clion:splash".state = "floating";
     };
     monitors = { HDMI-0 = map toString (lib.lists.range 1 desks'); };
     extraConfig = ''

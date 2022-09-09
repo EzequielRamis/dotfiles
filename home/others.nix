@@ -20,9 +20,10 @@
     qrencode
     openrgb
     piper
+    obs-studio
 
     steam
-    discord
+    (discord.override { nss = nss_latest; })
     jstest-gtk
     linuxConsoleTools
     lutris
@@ -44,7 +45,6 @@
     cmatrix
     pipes-rs
     cbonsai
-    neofetch
     screenkey
     cava
   ];

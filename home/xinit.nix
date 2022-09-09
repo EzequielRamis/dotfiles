@@ -26,7 +26,6 @@
       eww open bar &
       pcmanfm -d &
       dunst &
-      fix_sptd &
     '';
   };
   home.pointerCursor = {

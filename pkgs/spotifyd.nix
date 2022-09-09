@@ -9,7 +9,7 @@ pkgs.rustPackages.rustPlatform.buildRustPackage rec {
 
   nativeBuildInputs = [ pkgs.pkg-config ];
 
-  cargoSha256 = "sha256-oITwfnXtT4W4FSiIjl2AWsjHLylh7BqbB/KFVkrDm94=";
+  cargoSha256 = "sha256-fSXvEtB1P6zuzF5x/WkKcfKmWepPoGc72VzIF7DQCe4=";
 
   buildInputs = [ pkgs.openssl ] ++ lib.optional withALSA pkgs.alsa-lib
     ++ lib.optional withPulseAudio pkgs.libpulseaudio

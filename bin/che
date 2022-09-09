@@ -23,7 +23,7 @@ help="\
     sync\tSync NixOS' configuration
     update\tUpdate the system with latest features
     gc\t\tClean up the system and delete older generations
-    theme\t\tSystem's theme settings
+    theme\tSystem's theme settings
     help\tPrint this help list
 "
 

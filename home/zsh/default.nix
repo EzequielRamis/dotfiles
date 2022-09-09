@@ -15,6 +15,7 @@
       qrclip = "xclip -o | qrencode -t utf8";
       clear = ''printf "\033[2J\033[3J\033[1;1H"'';
       lutris = "WEBKIT_DISABLE_COMPOSITING_MODE=1 lutris";
+      neofetch = "fix_neofetch";
     };
   };
 }
