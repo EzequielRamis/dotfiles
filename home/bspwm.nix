@@ -164,7 +164,8 @@ in {
             space = "rofit -show drun";
             q = ''
               rofit -show p -modi "p:rofi-power --choices=shutdown/reboot/logout" -theme power'';
-            u = "rofit -show emoji";
+            u = ''
+              rofit -show emoji -emoji-format "\{emoji\}" -modi emoji -theme emoji'';
             f = "firefox";
             e = "emacsclient -c -a '' -e '(fix-workspace-mod)'";
             w =

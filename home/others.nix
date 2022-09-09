@@ -8,6 +8,7 @@
 
     xorg.xev
     xdo # for devour
+    xdotool
     xclip
     service-wrapper
 

@@ -13,6 +13,7 @@
   };
   xdg.configFile."rofi/index.rasi".source = ./index.rasi;
   xdg.configFile."rofi/power.rasi".source = ./power.rasi;
+  xdg.configFile."rofi/emoji.rasi".source = ./emoji.rasi;
   xdg.configFile."rofi/light.rasi".text = let t = my.palette;
   in ''
     * {

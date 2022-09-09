@@ -1,0 +1,23 @@
+@theme "index"
+
+listview {
+    columns: 5;
+    lines: 4;
+    layout: vertical;
+    fixed-columns: true;
+    margin: 0.5em 0.25em;
+    flow: horizontal;
+}
+
+window {
+    width: 19em;
+}
+
+element {
+    padding: 1em;
+    margin: 0 0.25em;
+}
+
+entry {
+    placeholder: "Search emoji...";
+}

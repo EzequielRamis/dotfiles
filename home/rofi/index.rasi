@@ -21,7 +21,7 @@ inputbar {
 }
 
 entry {
-    placeholder: "Search...";
+    placeholder: "Search application...";
     placeholder-color: @t-prompt;
     padding: 0.75em 1.25em;
 }
