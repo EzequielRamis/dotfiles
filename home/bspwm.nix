@@ -168,8 +168,7 @@ in {
               rofit -show emoji -emoji-format "\{emoji\}" -modi emoji -theme emoji'';
             f = "firefox";
             e = "emacsclient -c -a '' -e '(fix-workspace-mod)'";
-            w =
-              "feh --bg-fill --no-fehbg --randomize ~/Pictures/Wallpapers/$(theme_is_dark && echo 'Dark' || echo 'Light')/*";
+            w = "fehbg random";
             t = "che theme toggle";
             m = "pcmanfm";
           };

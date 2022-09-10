@@ -21,7 +21,8 @@
       xset s off
       xsetroot -cursor_name left_ptr
 
-      feh --bg-fill --no-fehbg --randomize ~/Pictures/Wallpapers/Light/* &
+      ls ~/Pictures/Wallpapers/Light -1 | shuf -n1 > /tmp/current_wallpaper.txt
+      feh --bg-fill --no-fehbg ~/Pictures/Wallpapers/Light/"$(cat /tmp/current_wallpaper.txt)" &
 
       eww open bar &
       pcmanfm -d &

@@ -28,6 +28,7 @@ in {
     texlive.combined.scheme-medium
     (python39.withPackages (ps: with ps; [ jupyter grip ]))
     nodePackages.vscode-langservers-extracted
+    nodePackages.prettier
   ];
 
   home.activation = {

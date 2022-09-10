@@ -10,6 +10,7 @@
     xdo # for devour
     xdotool
     xclip
+    scrot
     service-wrapper
 
     feh
@@ -22,6 +23,7 @@
     openrgb
     piper
     obs-studio
+    vlc
 
     steam
     (discord.override { nss = nss_latest; })

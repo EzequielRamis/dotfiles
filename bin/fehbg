@@ -1,0 +1,16 @@
+#!/bin/sh
+
+THEME=theme_is_dark
+CURRENT="$(cat /tmp/current_wallpaper.txt)"
+
+case "$1" in
+    random)
+        CURRENT="$(ls ~/Pictures/Wallpapers/$($THEME && echo Dark || echo Light) -1 | fgrep -v $CURRENT | shuf -n1)"
+        echo "$CURRENT" > /tmp/current_wallpaper.txt
+        feh --bg-fill --no-fehbg ~/Pictures/Wallpapers/$($THEME && echo Dark || echo Light)/$CURRENT;;
+    theme)
+        if $THEME;
+            then feh --bg-fill --no-fehbg ~/Pictures/Wallpapers/Light/$CURRENT
+            else feh --bg-fill --no-fehbg ~/Pictures/Wallpapers/Dark/$CURRENT
+        fi;;
+esac
