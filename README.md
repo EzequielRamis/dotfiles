@@ -5,10 +5,10 @@
 <img src="showcase/Screenshot 2022-09-10 19-08-35.png" width="100%" />
 
 <p align="center">
-<span><img src="showcase/Screenshot 2022-09-10 19-11-50.png" height="200" /></span>
-<span><img src="showcase/Screenshot 2022-09-10 19-00-26.png" height="200" /></span>
-<span><img src="showcase/Screenshot 2022-09-10 19-01-31.png" height="200" /></span>
-<span><img src="showcase/Screenshot 2022-09-10 19-02-34.png" height="200" /></span>
+<span><img src="showcase/Screenshot 2022-09-10 19-11-50.png" height="212" /></span>
+<span><img src="showcase/Screenshot 2022-09-10 19-00-26.png" height="212" /></span>
+<span><img src="showcase/Screenshot 2022-09-10 19-01-31.png" height="212" /></span>
+<span><img src="showcase/Screenshot 2022-09-10 19-02-34.png" height="212" /></span>
 </p>
 
 https://user-images.githubusercontent.com/44057100/189502098-afea0ae8-a7be-4607-bd38-892be5826fc2.mp4
