@@ -11,7 +11,7 @@
 
     [X-Action-Profile profile-zero]
     MimeTypes=image/*;
-    Exec=feh --bg-fill --no-fehbg %f
+    Exec=fehbg set %f
     Name=Default profile
     SelectionCount==1
   '';

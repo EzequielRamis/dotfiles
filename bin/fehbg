@@ -4,6 +4,9 @@ THEME=theme_is_dark
 CURRENT="$(cat /tmp/current_wallpaper.txt)"
 
 case "$1" in
+    set)
+        basename $2 > /tmp/current_wallpaper.txt
+        feh --bg-fill --no-fehbg $2;;
     random)
         CURRENT="$(ls ~/Pictures/Wallpapers/$($THEME && echo Dark || echo Light) -1 | fgrep -v $CURRENT | shuf -n1)"
         echo "$CURRENT" > /tmp/current_wallpaper.txt
