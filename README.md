@@ -1,4 +1,4 @@
-# My NixOS configuration
+# My NixOS configuration <img src="showcase/badge.jpg" width="50" />
 
 ## Showcase
 
