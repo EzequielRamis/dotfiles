@@ -10,7 +10,6 @@
     xdo # for devour
     xdotool
     xclip
-    scrot
     service-wrapper
 
     feh

@@ -10,9 +10,10 @@ https://user-images.githubusercontent.com/44057100/189502098-afea0ae8-a7be-4607-
 | Shell        | zsh                                                                                                                                             |
 | Terminal     | kitty                                                                                                                                           |
 | Browser      | Firefox                                                                                                                                         |
-| Editor       | Doom Emacs                                                                                                                                      |
+| Editor       | Doom Emacs ([.doom.d](https://github.com/EzequielRamis/doom.d))                                                                                 |
 | Launcher     | rofi                                                                                                                                            |
 | File Manager | PCManFM                                                                                                                                         |
+| Notifier     | dunst                                                                                                                                           |
 | Theme        | Modified [Whitesur](https://github.com/vinceliuice/WhiteSur-gtk-theme) with [my custom color palette](https://github.com/EzequielRamis/palette) |
 
 ## Acknowledgements
