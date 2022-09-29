@@ -12,31 +12,13 @@
         "url": "https://github.com/EzequielRamis/apple-nerd-fonts/releases/download/1.0/apple-nerd.tar.gz"
       }
     },
-    "awsvpnclient": {
-      "inputs": {
-        "nixpkgs": "nixpkgs"
-      },
-      "locked": {
-        "lastModified": 1650433861,
-        "narHash": "sha256-Pnw59wD6KRi0lwumzD1qs3S8yjldMCWjRZXWXU905rs=",
-        "owner": "ymatsiuk",
-        "repo": "awsvpnclient",
-        "rev": "52d52fcbebdc15191c86df15cd12434e900e52ae",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ymatsiuk",
-        "repo": "awsvpnclient",
-        "type": "github"
-      }
-    },
     "eww": {
       "inputs": {
         "fenix": "fenix",
         "flake-compat": "flake-compat",
         "flake-utils": "flake-utils",
         "naersk": "naersk",
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": "nixpkgs_2"
       },
       "locked": {
         "lastModified": 1653951515,
@@ -114,11 +96,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1661824092,
-        "narHash": "sha256-nSWLWytlXbeLrx5A+r5Pso7CvVrX5EgmIIXW/EXvPHQ=",
+        "lastModified": 1664286632,
+        "narHash": "sha256-fKENvLanhmBENlIbmDAVB8SKSbwdLLBYKu6B7oJ0rLc=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "5bd66dc6cd967033489c69d486402b75d338eeb6",
+        "rev": "6dc8a43f397c92afbc3f771385ac803d96d5eeb5",
         "type": "github"
       },
       "original": {
@@ -129,7 +111,7 @@
     },
     "naersk": {
       "inputs": {
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs"
       },
       "locked": {
         "lastModified": 1635444951,
@@ -147,17 +129,6 @@
     },
     "nixpkgs": {
       "locked": {
-        "narHash": "sha256-8nQx02tTzgYO21BP/dy5BCRopE8OwE8Drsw98j+Qoaw=",
-        "path": "/nix/store/a33ann70s2kqn8q1h4vv4il56i0lk60g-source",
-        "type": "path"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
-      }
-    },
-    "nixpkgs_2": {
-      "locked": {
         "lastModified": 1635481254,
         "narHash": "sha256-tyVpgjeNhzCP2bBdIgFOkTtwDJWO/bKp59V5ctfonyg=",
         "owner": "NixOS",
@@ -170,7 +141,7 @@
         "type": "indirect"
       }
     },
-    "nixpkgs_3": {
+    "nixpkgs_2": {
       "locked": {
         "lastModified": 1635336330,
         "narHash": "sha256-EPrCZTmuOEY1KLjUCu7rXCBxNemggIFJMDdfEqXQKGo=",
@@ -185,13 +156,13 @@
         "type": "indirect"
       }
     },
-    "nixpkgs_4": {
+    "nixpkgs_3": {
       "locked": {
-        "lastModified": 1661720780,
-        "narHash": "sha256-AJNGyaB2eKZAYaPNjBZOzap87yL+F9ZLaFzzMkvega0=",
+        "lastModified": 1664281702,
+        "narHash": "sha256-haixZ4TJLu1Dciow54wrHrHvlGDVr5sW6MTeAV/ZLuI=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "a63021a330d8d33d862a8e29924b42d73037dd37",
+        "rev": "7e52b35fe98481a279d89f9c145f8076d049d2b9",
         "type": "github"
       },
       "original": {
@@ -204,10 +175,9 @@
     "root": {
       "inputs": {
         "apple-nerd-fonts": "apple-nerd-fonts",
-        "awsvpnclient": "awsvpnclient",
         "eww": "eww",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs_4",
+        "nixpkgs": "nixpkgs_3",
         "secrets": "secrets",
         "spotifyd": "spotifyd",
         "whitesur": "whitesur"
@@ -265,11 +235,11 @@
     },
     "utils": {
       "locked": {
-        "lastModified": 1653893745,
-        "narHash": "sha256-0jntwV3Z8//YwuOjzhV2sgJJPt+HY6KhU7VZUL0fKZQ=",
+        "lastModified": 1659877975,
+        "narHash": "sha256-zllb8aq3YO3h8B/U0/J1WBgAL8EX5yWf5pMj3G0NAmc=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "1ed9fb1935d260de5fe1c2f7ee0ebaae17ed2fa1",
+        "rev": "c0e246b9b83f637f4681389ecabcb2681b4f3af0",
         "type": "github"
       },
       "original": {

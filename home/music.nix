@@ -12,7 +12,7 @@
       no_audio_cache = false;
       cache_path = ".cache/spotifyd";
       max_cache_size = 1000000000;
-      initial_volume = "65";
+      initial_volume = "70";
       volume_normalization = true;
       autoplay = false;
       device_type = "computer";

@@ -36,7 +36,6 @@
     usbutils
 
     teams
-    awsvpnclient
 
     pavucontrol
     gucharmap

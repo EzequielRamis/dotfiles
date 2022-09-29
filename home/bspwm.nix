@@ -74,7 +74,7 @@ in {
   services.sxhkd = {
     enable = true;
     keybindings = mkHotkeyChain {
-      "alt + {_,shift + }Tab" = "bspc node -f {next,prev}.leaf.local";
+      "alt + {_,shift + }Tab" = "bspc node -f {next,prev}.leaf.local.!sticky";
       Print = "flameshot gui";
       "shift + Print" = "flameshot full -c";
 

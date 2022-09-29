@@ -26,7 +26,6 @@
     eww.url = "github:EzequielRamis/eww/css";
     secrets.url = "git+ssh://git@github.com/EzequielRamis/secrets.git";
     secrets.flake = false;
-    awsvpnclient.url = "github:ymatsiuk/awsvpnclient";
   };
 
   outputs = { self, home-manager, nixpkgs, ... }@inputs:
@@ -63,7 +62,6 @@
               withPulseAudio = true;
             };
           })
-          inputs.awsvpnclient.overlay
         ];
       };
 
