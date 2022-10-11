@@ -28,9 +28,7 @@
     (discord.override { nss = nss_latest; })
     jstest-gtk
     linuxConsoleTools
-    lutris
-    wine
-    winetricks
+    bottles
     calibre
     libmtp
     usbutils

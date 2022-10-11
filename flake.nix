@@ -61,6 +61,11 @@
               withMpris = true;
               withPulseAudio = true;
             };
+            wine = prev.wine.override {
+              vulkanSupport = true;
+              openglSupport = true;
+            };
+            bottles = my.bottles;
           })
         ];
       };
