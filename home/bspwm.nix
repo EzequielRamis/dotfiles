@@ -39,6 +39,7 @@ in {
     };
     rules = {
       Emacs.state = "tiled";
+      Zathura.state = "tiled";
       "*:*:Picture-in-Picture".state = "floating";
       "*:jetbrains-clion:splash".state = "floating";
     };
