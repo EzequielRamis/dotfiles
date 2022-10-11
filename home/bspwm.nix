@@ -167,7 +167,7 @@ in {
             u = ''
               rofit -show emoji -emoji-format "\{emoji\}" -modi emoji -theme emoji'';
             f = "firefox";
-            e = "emacsclient -c -a '' -e '(fix-workspace-mod)'";
+            e = "emacsclient -c -a ''";
             w = "fehbg random";
             t = "che theme toggle";
             m = "pcmanfm";

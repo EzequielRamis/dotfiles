@@ -5,7 +5,7 @@ let emacsDir = "$HOME/.emacs.d";
 in {
   programs.emacs = {
     enable = true;
-    extraPackages = epkgs: [ epkgs.vterm ];
+    extraPackages = epkgs: [ epkgs.vterm epkgs.pdf-tools ];
   };
   services.emacs = {
     enable = false;
