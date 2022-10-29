@@ -38,38 +38,48 @@ in pkgs.python3Packages.buildPythonApplication rec {
     ninja
     pkg-config
     wrapGAppsHook
-    gettext
-    appstream-glib
-    desktop-file-utils
-  ];
-
-  buildInputs = with pkgs; [
-    gdk-pixbuf
-    glib
     gobject-introspection
-    gsettings-desktop-schemas
-    gspell
-    gtk4
-    gtksourceview4
-    libhandy
-    libnotify
-    webkitgtk
-    gnome.adwaita-icon-theme
   ];
 
-  propagatedBuildInputs = with pkgs.python3Packages;
-    [
-      pyyaml
-      pytoml
-      requests
-      pycairo
-      pygobject3
+  propagatedBuildInputs = with pkgs;
+    with python3Packages; [
+      # nix rant
+      libadwaita
+      gtksourceview5
+      #others
+      gdk-pixbuf
+      gspell
+      libhandy
+      libnotify
+      webkitgtk
+      gnome.adwaita-icon-theme
       lxml
       dbus-python
       gst-python
       liblarch
-      patool
-      markdown
+      pciutils
+      mangohud
+      openldap
+      pkgsi686Linux.openldap
+
+      # https://github.com/bottlesdevs/Bottles/blob/main/com.usebottles.bottles.dev.yml python modules
+      pillow
+      pyyaml
+      urllib3
+      chardet
+      certifi
+      idna
+      pefile
+      # https://github.com/bottlesdevs/Bottles/blob/main/com.usebottles.bottles.dev.yml tools
+      vmtouch
+      vulkan-tools
+      xorg.xdpyinfo
+      # https://github.com/bottlesdevs/Bottles/blob/main/com.usebottles.bottles.dev.yml libraries
+      rpcsvc-proto
+      perl534Packages.ParseYapp
+      imagemagick
+      blueprint-compiler
+      # https://github.com/bottlesdevs/Bottles/blob/main/com.usebottles.bottles.dev.yml bottles components
       (buildPythonPackage rec {
         pname = "icoextract";
         version = "0.1.4";
@@ -90,24 +100,27 @@ in pkgs.python3Packages.buildPythonApplication rec {
         propagatedBuildInputs = [ orjson ];
         doCheck = false;
       })
-    ] ++ (with pkgs; [
-      steam-run
-      xdg-utils
-      pciutils
+      # https://github.com/bottlesdevs/Bottles/blob/main/snapcraft.yaml build-packages
+      gettext
+      glib
+      appstream-glib
+      desktop-file-utils
+      gsettings-desktop-schemas
+      pytoml
+      requests
+      gtk4
+      # https://github.com/bottlesdevs/Bottles/blob/main/snapcraft.yaml stage-packages
+      pygobject3
+      pycairo
+      markdown
+      gamemode
+      gamemode # programs.gamemode.enable
+      freetype
       cabextract
       wineWowPackages.stableFull
-      freetype
       p7zip
-      gamemode # programs.gamemode.enable
-      mangohud
-      libadwaita
-      gtksourceview5
-      xorg.xdpyinfo
-      openldap
-      pkgsi686Linux.openldap
-      blueprint-compiler
-    ]);
-
+      patool
+    ];
   format = "other";
   strictDeps =
     false; # broken with gobject-introspection setup hook, see https://github.com/NixOS/nixpkgs/issues/56943

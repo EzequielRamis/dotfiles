@@ -4,7 +4,7 @@ pkgs.stdenv.mkDerivation rec {
   name = "apple-nerd-fonts";
   src = inputs.apple-nerd-fonts;
 
-  buildInputs = [ pkgs.rsync ];
+  nativeBuildInputs = [ pkgs.rsync ];
 
   installPhase = ''
     mkdir -p $out/share/fonts/apple-nerd

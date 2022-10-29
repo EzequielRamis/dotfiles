@@ -42,6 +42,8 @@ in {
       Zathura.state = "tiled";
       "*:*:Picture-in-Picture".state = "floating";
       "*:jetbrains-clion:splash".state = "floating";
+      "origin.exe".state = "floating";
+      "explorer.exe".hidden = true;
     };
     monitors = { HDMI-0 = map toString (lib.lists.range 1 desks'); };
     extraConfig = ''
@@ -106,7 +108,7 @@ in {
         b = "bspc node @parent -B";
         g = "bspc node @parent -E";
         "{q,e}" = "bspc node @parent -F {horizontal,vertical}";
-        "{w,a,s,d}" = "bspc node -f {north,west,south,east}.leaf";
+        "{w,a,s,d}" = "bspc node -f {north,west,south,east}.leaf.local.!sticky";
         "{j,k}" = "bspc node {last.descendant_of,@parent} -f";
         "${desks}" = "bspc desktop -f ${desks}";
 

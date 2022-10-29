@@ -24,17 +24,13 @@
     obs-studio
     vlc
 
-    steam
-    (discord.override { nss = nss_latest; })
-    jstest-gtk
-    linuxConsoleTools
-    bottles
     calibre
     libmtp
     usbutils
 
     teams
 
+    youtube-dl
     pavucontrol
     gucharmap
     fontforge-gtk
