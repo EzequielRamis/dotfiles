@@ -1,6 +1,7 @@
 { pkgs, lib, ... }: {
   home.keyboard = {
-    layout = "es";
+    layout = "us";
+    variant = "altgr-intl";
     options = [ "caps:super" ];
   };
   xsession = {

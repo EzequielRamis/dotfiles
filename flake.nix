@@ -18,14 +18,18 @@
       url =
         "github:vinceliuice/WhiteSur-gtk-theme/3dca2b10d0a24bd111119c3eb94df512d7e067f5";
     };
-    spotifyd = {
-      flake = false;
-      url = "github:Spotifyd/spotifyd/7146f64a819590a16de9991de74f8bc2fea9c2ac";
-    };
     # my fork
     eww.url = "github:EzequielRamis/eww/css";
     secrets.url = "git+ssh://git@github.com/EzequielRamis/secrets.git";
     secrets.flake = false;
+    firefox-scripts = {
+      flake = false;
+      url = "github:xiaoxiaoflood/firefox-scripts";
+    };
+    interception-k2k = {
+      flake = false;
+      url = "github:zsugabubus/interception-k2k";
+    };
   };
 
   outputs = { self, home-manager, nixpkgs, ... }@inputs:
@@ -56,22 +60,17 @@
                 inherit (lib) my;
               });
             unstable = mkPkgs { };
-            eww = inputs.eww.defaultPackage."${system}";
-            spotifyd = my.spotifyd.override {
-              withMpris = true;
-              withPulseAudio = true;
-            };
+            eww = inputs.eww.packages.${system}.default;
             wine = prev.wine.override {
               vulkanSupport = true;
               openglSupport = true;
             };
-            bottles = my.bottles;
           })
         ];
       };
 
       extraSpecialArgs = {
-        inherit pkgs system hostname username secrets;
+        inherit pkgs system hostname username secrets inputs;
         inherit (lib) my;
       };
 
@@ -92,7 +91,7 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               users.${username} = {
-                home.stateVersion = "18.09";
+                home.stateVersion = "23.05";
                 programs.home-manager.enable = true;
                 imports = lib.my.importFrom ./home;
               };

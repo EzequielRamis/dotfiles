@@ -17,18 +17,21 @@
 
     chromium
     jetbrains.clion
+    tor-browser-bundle-bin
 
     qrencode
     openrgb
     piper
     obs-studio
     vlc
+    stremio
 
     calibre
     libmtp
     usbutils
 
     teams
+    tdesktop
 
     youtube-dl
     pavucontrol

@@ -31,6 +31,10 @@ bindkey '^[[1;5D'  backward-word
 bindkey '^[[1;5C'  forward-word
 bindkey '^[[1;5B'  backward-word
 bindkey '^[[1;5A'  forward-word
-bindkey '^H'       backward-kill-word
+# bindkey '^H'       backward-kill-word
+bindkey '^[^?' backward-kill-word
+
+bindkey '^[[B' down-line-or-beginning-search
+bindkey '^[[A' up-line-or-beginning-search
 
 eval "$(direnv hook zsh)"

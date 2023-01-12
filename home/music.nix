@@ -4,6 +4,10 @@
   services.playerctld.enable = true;
   services.spotifyd = {
     enable = true;
+    package = pkgs.spotifyd.override {
+      withMpris = true;
+      withPulseAudio = true;
+    };
     settings.global = {
       inherit (secrets.spotify) username password;
       use_mpris = true;

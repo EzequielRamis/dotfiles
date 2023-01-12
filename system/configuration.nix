@@ -13,12 +13,12 @@
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "cm-idris2-pkgs.cachix.org-1:YB2oJSEsD5oMJjAESxolC2GQtE6B5I6jkWhte2gtXjk="
-    ] ++ secrets.trusted-public-keys;
+    ];
     settings.substituters = [
       "https://cache.nixos.org"
       "https://nix-community.cachix.org"
       "https://cm-idris2-pkgs.cachix.org"
-    ] ++ secrets.substituters;
+    ];
   };
   nixpkgs.config.allowUnfree = true;
 
@@ -37,6 +37,7 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
+  i18n.supportedLocales = [ "en_US.UTF-8/UTF-8" "es_AR.UTF-8/UTF-8" ];
   console = {
     font = "Lat2-Terminus16";
     keyMap = "es";
@@ -67,6 +68,7 @@
 
     xserver = {
       enable = true;
+      exportConfiguration = true;
       resolutions = [{
         x = 1920;
         y = 1080;
@@ -105,6 +107,22 @@
 
     gnome.at-spi2-core.enable = true;
     gnome.gnome-keyring.enable = true;
+
+    # gaming
+    samba = {
+      enable = true;
+      enableWinbindd = true;
+    };
+
+    interception-tools = {
+      enable = true;
+      udevmonConfig = ''
+        - JOB: "${pkgs.interception-tools}/bin/intercept -g ${secrets.keyboard} | ${pkgs.my.interceptions}/opt/interception/interceptions | ${pkgs.interception-tools}/bin/uinput -d ${secrets.keyboard}"
+          DEVICE:
+            EVENTS:
+              EV_KEY: [KEY_CAPSLOCK]
+      '';
+    };
   } // secrets.services;
 
   fonts = {
@@ -113,6 +131,10 @@
       twitter-color-emoji
       emacs-all-the-icons-fonts
       my.apple-nerd-fonts
+      cm_unicode
+      bakoma_ttf
+      lmmath
+      lmodern
     ];
     fontconfig = {
       defaultFonts = {

@@ -2,6 +2,8 @@
   home.sessionVariables = {
     TERMINAL = "kitty";
     BROWSER = "firefox";
+    # https://github.com/NixOS/nixpkgs/issues/194929
+    NIX_CC = "/dev/null";
   };
   # xdg.desktopEntries.Lutris = {
   #   type = "Application";

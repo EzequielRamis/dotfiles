@@ -2,4 +2,5 @@
 
 {
   home.sessionPath = [ "$HOME/.dotfiles/bin" ];
+  home.extraActivationPath = with pkgs; [ git unzip ];
 }

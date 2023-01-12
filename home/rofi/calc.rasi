@@ -1,0 +1,60 @@
+* {
+    background-color: transparent;
+    text-color: @t-text;
+    margin: 0;
+    padding: 0;
+}
+
+window {
+    background-color: @t-bg;
+    border: 1px;
+    border-color: @t-border;
+    border-radius: 8px;
+    width: 21em;
+    height: 10em;
+}
+
+mainbox {
+    children: [inputbar, message];
+    background-color: @t-bg;
+}
+
+message {
+    padding: 0.75em 1.25em;
+}
+
+inputbar {
+    children: [ entry ];
+    background-color: @t-fg;
+    border: 0 0 1px 0;
+    border-color: @t-border;
+    width: 30em;
+}
+
+entry {
+    placeholder: "Calculate...";
+    placeholder-color: @t-prompt;
+    padding: 0.75em 1.25em;
+}
+
+listview {
+    lines: 3;
+    margin: 0.5em 0 0.75em;
+}
+
+element {
+    padding: 0.5em 1em;
+    margin: 0 0.75em;
+}
+
+element.selected {
+    background-color: @t-select;
+    border: 1px;
+    border-color: @t-border;
+    border-radius: 8px;
+}
+
+element-text {
+    highlight: bold;
+    font: "SF Pro Text Medium 16px";
+}

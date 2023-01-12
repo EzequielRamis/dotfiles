@@ -1,0 +1,9 @@
+/* Vim overlay {{{ */
+#define KEY_SUPER KEY_CAPSLOCK
+{ .keys = { KEY_SUPER, KEY_H          }, TO_KEY(KEY_LEFT),   DOWN_IFF_ALL_DOWN(2) },
+{ .keys = { KEY_SUPER, KEY_J          }, TO_KEY(KEY_DOWN),   DOWN_IFF_ALL_DOWN(2) },
+{ .keys = { KEY_SUPER, KEY_K          }, TO_KEY(KEY_UP),     DOWN_IFF_ALL_DOWN(2) },
+{ .keys = { KEY_SUPER, KEY_L          }, TO_KEY(KEY_RIGHT),  DOWN_IFF_ALL_DOWN(2) },
+{ .keys = { KEY_SUPER, KEY_BACKSPACE  }, TO_KEY(KEY_DELETE), DOWN_IFF_ALL_DOWN(2) },
+#undef KEY_SUPER
+/* }}} */

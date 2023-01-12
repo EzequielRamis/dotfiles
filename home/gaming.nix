@@ -2,7 +2,7 @@
 
 {
   programs.mangohud.enable = true;
-  programs.mangohud.enableSessionWide = true;
+  programs.mangohud.enableSessionWide = false;
   home.packages = with pkgs; [
     steam
     (discord.override { nss = nss_latest; })

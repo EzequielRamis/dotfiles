@@ -93,8 +93,8 @@ in {
       "shift + XF86AudioPlay" =
         "spt pb --transfer=Daemon; playerctl -p spotifyd play";
       "shift + XF86AudioMute" = "systemctl --user restart spotifyd";
-      "shift + XF86AudioRaiseVolume" = "playerctl -p spotifyd next";
-      "shift + XF86AudioLowerVolume" = "playerctl -p spotifyd previous";
+      XF86AudioNext = "playerctl -p spotifyd next";
+      XF86AudioPrev = "playerctl -p spotifyd previous";
 
       super = plus {
         # reload sxhkd
@@ -109,7 +109,7 @@ in {
         g = "bspc node @parent -E";
         "{q,e}" = "bspc node @parent -F {horizontal,vertical}";
         "{w,a,s,d}" = "bspc node -f {north,west,south,east}.leaf.local.!sticky";
-        "{j,k}" = "bspc node {last.descendant_of,@parent} -f";
+        "{period,comma}" = "bspc node {last.descendant_of,@parent} -f";
         "${desks}" = "bspc desktop -f ${desks}";
 
         shift = plus {
@@ -169,6 +169,8 @@ in {
               rofit -show p -modi "p:rofi-power --choices=shutdown/reboot/logout" -theme power'';
             u = ''
               rofit -show emoji -emoji-format "\{emoji\}" -modi emoji -theme emoji'';
+            n = ''
+              LC_NUMERIC="es_AR.UTF-8" rofit -show calc -modi calc -no-show-match -no-sort -no-history -lines 0 -calc-command "echo -n '\{result\}' | xclip" -theme calc'';
             f = "firefox";
             e = "emacsclient -c -a ''";
             w = "fehbg random";
@@ -179,4 +181,7 @@ in {
       };
     };
   };
+  xdg.configFile."qalculate/qalc.cfg".text = ''
+    digit_grouping=2
+  '';
 }

@@ -27,17 +27,19 @@ in {
     # org
     texlive.combined.scheme-medium
     (python39.withPackages (ps: with ps; [ jupyter grip ]))
+    nodejs
     nodePackages.vscode-langservers-extracted
     nodePackages.prettier
+    nodePackages.typescript-language-server
+    nodePackages."@astrojs/language-server"
+    sumneko-lua-language-server
   ];
 
-  home.activation = {
-    doom-clone = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      if [ ! -d ${emacsDir} ]; then
-        git clone https://github.com/hlissner/doom-emacs.git ${emacsDir}
-      fi
-    '';
-  };
+  home.activation.doom-clone = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    if [ ! -d ${emacsDir} ]; then
+      git clone https://github.com/hlissner/doom-emacs.git ${emacsDir}
+    fi
+  '';
 
   xdg.dataFile."dotfiles/mypalette.el".text = ''
     ${lib.strings.concatStrings (lib.attrsets.mapAttrsToList (name: value: ''
