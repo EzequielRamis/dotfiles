@@ -54,7 +54,7 @@
   # rgb and mouse
   hardware.i2c.enable = true;
 
-  hardware.xpadneo.enable = true;
+  hardware.xone.enable = true;
 
   hardware.sane = {
     enable = true;

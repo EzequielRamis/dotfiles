@@ -1,0 +1,78 @@
+@-moz-document url-prefix("https://www.linkedin.com")
+{
+  /* revelo */
+  .jobs-search-results__list-item:has(a[href*="74525644"]) {
+    display: none !important;
+  }
+  .jobs-search-results__list-item:has(a[href*="revelodotcom"]) {
+    display: none !important;
+  }
+  .jobs-job-board-list__item:has(a[href*="74525644"]) {
+    display: none !important;
+  }
+  .jobs-job-board-list__item:has(a[href*="revelodotcom"]) {
+    display: none !important;
+  }
+  /* turing */
+  .jobs-search-results__list-item:has(a[href*="18846814"]) {
+    display: none !important;
+  }
+  .jobs-search-results__list-item:has(a[href*="turingcom"]) {
+    display: none !important;
+  }
+  .jobs-job-board-list__item:has(a[href*="18846814"]) {
+    display: none !important;
+  }
+  .jobs-job-board-list__item:has(a[href*="turingcom"]) {
+    display: none !important;
+  }
+  /* listopro */
+  .jobs-search-results__list-item:has(a[href*="25058244"]) {
+    display: none !important;
+  }
+  .jobs-search-results__list-item:has(a[href*="listopro"]) {
+    display: none !important;
+  }
+  .jobs-job-board-list__item:has(a[href*="25058244"]) {
+    display: none !important;
+  }
+  .jobs-job-board-list__item:has(a[href*="listopro"]) {
+    display: none !important;
+  }
+  /* accenture */
+  .jobs-search-results__list-item:has(a[href*="10337185"]) {
+    display: none !important;
+  }
+  .jobs-search-results__list-item:has(a[href*="accenture"]) {
+    display: none !important;
+  }
+  .jobs-job-board-list__item:has(a[href*="10337185"]) {
+    display: none !important;
+  }
+  .jobs-job-board-list__item:has(a[href*="accenture"]) {
+    display: none !important;
+  }
+  /* ibm */
+  .jobs-search-results__list-item:has(a[href*="1009"]) {
+    display: none !important;
+  }
+  .jobs-search-results__list-item:has(a[href*="ibm"]) {
+    display: none !important;
+  }
+  .jobs-job-board-list__item:has(a[href*="1009"]) {
+    display: none !important;
+  }
+  .jobs-job-board-list__item:has(a[href*="ibm"]) {
+    display: none !important;
+  }
+}
+
+@-moz-document url-prefix("https://developers.vtex.com")
+{
+  .css-s1gqqd {
+    flex: 1 !important;
+  }
+  .css-13pucpj {
+    width: 100% !important;
+  }
+}

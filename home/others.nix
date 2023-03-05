@@ -13,6 +13,7 @@
     service-wrapper
 
     feh
+    zip
     unzip
 
     chromium

@@ -31,7 +31,6 @@ in {
     nodePackages.vscode-langservers-extracted
     nodePackages.prettier
     nodePackages.typescript-language-server
-    nodePackages."@astrojs/language-server"
     sumneko-lua-language-server
   ];
 

@@ -15,7 +15,7 @@
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         "svg.context-properties.content.enabled" = true;
         "layout.css.color-mix.enabled" = true;
-        "gfx.webrender.all" = true;
+        "gfx.x11-egl.force-enabled" = true;
         "webgl.force-enabled" = true;
         "webgl.msaa-force" = true;
         "extensions.pocket.enabled" = false;
@@ -34,8 +34,10 @@
         "browser.cache.offline.enable" = false;
         "browser.cache.memory.enable" = true;
         "browser.cache.memory.capacity" = 512000;
+        "layout.css.has-selector.enabled" = true;
       };
       userChrome = builtins.readFile ./userChrome.css;
+      userContent = builtins.readFile ./userContent.css;
     };
   };
 
