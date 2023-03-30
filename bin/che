@@ -108,7 +108,7 @@ case "$1" in
         pushd ~/.dotfiles
         nix flake lock --update-input secrets
         git add .
-        nixos-rebuild switch --verbose --use-remote-sudo --flake .#
+        sudo nixos-rebuild switch --verbose --flake .#
         popd;;
     update)
         case "$2" in
@@ -118,7 +118,7 @@ case "$1" in
                 pushd ~/.dotfiles
                 git add .
                 nix flake update
-                nixos-rebuild switch --verbose --use-remote-sudo --flake .#
+                sudo nixos-rebuild switch --verbose --flake .#
                 popd;;
             emacs)
                 doom -! upgrade;;

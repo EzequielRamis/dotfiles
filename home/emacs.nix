@@ -26,7 +26,7 @@ in {
     pandoc
     # org
     texlive.combined.scheme-medium
-    (python39.withPackages (ps: with ps; [ jupyter grip ]))
+    (python39.withPackages (ps: with ps; [ grip ]))
     nodejs
     nodePackages.vscode-langservers-extracted
     nodePackages.prettier

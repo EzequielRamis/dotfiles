@@ -16,7 +16,7 @@
     zip
     unzip
 
-    chromium
+    google-chrome
     jetbrains.clion
     tor-browser-bundle-bin
 
