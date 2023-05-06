@@ -15,6 +15,7 @@
     feh
     zip
     unzip
+    ffmpeg
 
     google-chrome
     jetbrains.clion
@@ -26,6 +27,7 @@
     obs-studio
     vlc
     stremio
+    droidcam
 
     calibre
     libmtp

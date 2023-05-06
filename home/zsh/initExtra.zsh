@@ -38,3 +38,5 @@ bindkey '^[[B' down-line-or-beginning-search
 bindkey '^[[A' up-line-or-beginning-search
 
 eval "$(direnv hook zsh)"
+
+export DIRENV_LOG_FORMAT=
