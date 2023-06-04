@@ -107,6 +107,7 @@ in {
         x = "bspc node -c";
         b = "bspc node @parent -B";
         g = "bspc node @parent -E";
+        o = "overflow";
         "{q,e}" = "bspc node @parent -F {horizontal,vertical}";
         "{w,a,s,d}" = "bspc node -f {north,west,south,east}.leaf.local.!sticky";
         "{period,comma}" = "bspc node {last.descendant_of,@parent} -f";

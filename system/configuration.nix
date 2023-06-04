@@ -45,16 +45,19 @@
 
   hardware.opengl.enable = true;
   hardware.opengl.driSupport32Bit = true;
+  hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ libva ];
+  hardware.opengl.setLdLibraryPath = true;
 
   # Enable sound.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
   hardware.pulseaudio.support32Bit = true;
+  hardware.bluetooth.enable = true;
 
   # rgb and mouse
   hardware.i2c.enable = true;
 
-  hardware.xone.enable = true;
+  hardware.xone.enable = false;
 
   hardware.sane = {
     enable = true;
@@ -123,6 +126,7 @@
               EV_KEY: [KEY_CAPSLOCK]
       '';
     };
+    blueman.enable = true;
   } // secrets.services;
 
   fonts = {

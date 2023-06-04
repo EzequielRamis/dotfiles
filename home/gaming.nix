@@ -9,6 +9,7 @@
     jstest-gtk
     linuxConsoleTools
     bottles
+    lutris
   ];
   home.sessionVariables = {
     VK_ICD_FILENAMES =

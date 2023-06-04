@@ -1,0 +1,25 @@
+#!/bin/sh
+
+focused=$(bspc query -N -n focused.floating)
+w=$(wattr w $focused)
+h=$(wattr h $focused)
+x=$(wattr x $focused)
+y=$(wattr y $focused)
+
+if [ $x -lt 0 ]; then
+    x=-2
+fi
+
+if [ $((x+w)) -gt 1920 ]; then
+    x=$((1918-w))
+fi
+
+if [ $y -lt 0 ]; then
+    y=-2
+fi
+
+if [ $((y+h)) -gt 1080 ]; then
+    y=$((1078-h))
+fi
+
+wtp $x $y $w $h $focused

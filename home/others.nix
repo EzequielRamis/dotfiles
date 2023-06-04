@@ -11,6 +11,7 @@
     xdotool
     xclip
     service-wrapper
+    wmutils-core
 
     feh
     zip
@@ -24,7 +25,6 @@
     qrencode
     openrgb
     piper
-    obs-studio
     vlc
     stremio
     droidcam

@@ -11,10 +11,10 @@
       openrgb -p None.orp
 
       xsettingsd -c ~/.xsettingsd-light.conf &
-      kitty +kitten themes --reload-in=all --config-file-name ~/.config/kitty/mytheme.conf Mylight
+      kitty +kitten themes --reload-in=all --config-file-name mytheme.conf Mylight
 
       # cursor speed
-      xset r rate 400 40
+      xset r rate 400 50
       # mouse acceleration
       xset m 0 0
       # screen saver off (not working)

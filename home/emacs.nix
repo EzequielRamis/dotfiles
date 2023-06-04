@@ -8,8 +8,12 @@ in {
     extraPackages = epkgs: [ epkgs.vterm epkgs.pdf-tools ];
   };
   services.emacs = {
-    enable = false;
+    enable = true;
     defaultEditor = true;
+    client = {
+      enable = true;
+      arguments = [ "-c -a ''" ];
+    };
   };
 
   home.sessionVariables.DOOMDIR = "~/.doom.d";
