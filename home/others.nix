@@ -12,6 +12,9 @@
     xclip
     service-wrapper
     wmutils-core
+    tesseract
+
+    nodePackages.yalc
 
     feh
     zip
@@ -28,6 +31,7 @@
     vlc
     stremio
     droidcam
+    xournalpp
 
     calibre
     libmtp

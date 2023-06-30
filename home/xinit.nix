@@ -22,6 +22,19 @@
       xset s off
       xsetroot -cursor_name left_ptr
 
+      xsetwacom set "Wacom Intuos5 touch S Finger touch" Touch off
+      xsetwacom set "Wacom Intuos5 touch S Pen stylus" Rotate half
+      xsetwacom set "Wacom Intuos5 touch S Pen stylus" Mode Relative
+      xsetwacom set "Wacom Intuos5 touch S Pen stylus" Area 0 0 62992 35433
+      xsetwacom set "Wacom Intuos5 touch S Pen stylus" CursorProximity 63
+      xsetwacom set "Wacom Intuos5 touch S Pen eraser" Rotate half
+      xsetwacom set "Wacom Intuos5 touch S Pen eraser" Mode Relative
+      xsetwacom set "Wacom Intuos5 touch S Pen eraser" Area 0 0 62992 35433
+      xsetwacom set "Wacom Intuos5 touch S Pen eraser" CursorProximity 63
+
+      xsetwacom set "Wacom Intuos5 touch S Pad pad" Button 3 key "ctrl z"
+      xsetwacom set "Wacom Intuos5 touch S Pad pad" Button 2 key "ctrl y"
+
       ls ~/Pictures/Wallpapers/Light -1 | shuf -n1 > /tmp/current_wallpaper.txt
       feh --bg-fill --no-fehbg ~/Pictures/Wallpapers/Light/"$(cat /tmp/current_wallpaper.txt)" &
 

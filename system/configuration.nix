@@ -94,6 +94,7 @@
           start = "";
         }];
       };
+      wacom.enable = true;
     };
 
     ratbagd.enable = true;

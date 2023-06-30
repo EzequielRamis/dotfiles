@@ -134,6 +134,8 @@ in {
               bspc node @parent/second -z left   +${step} 0  \
               }'';
           "{1-9}" = "bspc node @parent -r 0.{1-9}";
+          t =
+            "flameshot gui --raw | tesseract stdin stdout | xclip -in -selection clipboard; notify-send Tesseract 'Copied to clipboard'";
         };
 
         alt = plus {
