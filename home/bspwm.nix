@@ -92,7 +92,7 @@ in {
       "alt + XF86AudioPlay" = "audio_device_toggle";
       "shift + XF86AudioPlay" =
         "spt pb --transfer=Daemon; playerctl -p spotifyd play";
-      "shift + XF86AudioMute" = "systemctl --user restart spotifyd";
+      "shift + XF86AudioMute" = "pactl set-source-mute @DEFAULT_SOURCE@ toggle";
       XF86AudioNext = "playerctl -p spotifyd next";
       XF86AudioPrev = "playerctl -p spotifyd previous";
 

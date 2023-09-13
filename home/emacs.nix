@@ -30,12 +30,9 @@ in {
     pandoc
     # org
     texlive.combined.scheme-medium
-    (python39.withPackages (ps: with ps; [ grip ]))
-    nodejs
-    nodePackages.vscode-langservers-extracted
-    nodePackages.prettier
-    nodePackages.typescript-language-server
+    (python3.withPackages (p: with p; [ grip ]))
     sumneko-lua-language-server
+    # nodePackages.pyright
   ];
 
   home.activation.doom-clone = lib.hm.dag.entryAfter [ "writeBoundary" ] ''

@@ -5,6 +5,7 @@
     jq
     jless
     fzf
+    vscode
 
     xorg.xev
     xdo # for devour
@@ -14,12 +15,17 @@
     wmutils-core
     tesseract
 
-    nodePackages.yalc
+    nodejs
+    nodePackages.pnpm
+    nodePackages.vscode-langservers-extracted
+    nodePackages.prettier
+    nodePackages.typescript-language-server
 
     feh
     zip
     unzip
     ffmpeg
+    mpv
 
     google-chrome
     jetbrains.clion
@@ -37,7 +43,6 @@
     libmtp
     usbutils
 
-    teams
     tdesktop
 
     youtube-dl

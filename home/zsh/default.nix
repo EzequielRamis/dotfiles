@@ -2,7 +2,7 @@
   programs.zsh = {
     enable = true;
     enableAutosuggestions = true;
-    enableSyntaxHighlighting = true;
+    syntaxHighlighting.enable = true;
     enableCompletion = true;
     autocd = true;
     defaultKeymap = "viins";
@@ -16,6 +16,7 @@
       clear = ''printf "\033[2J\033[3J\033[1;1H"'';
       lutris = "WEBKIT_DISABLE_COMPOSITING_MODE=1 lutris";
       neofetch = "fix_neofetch";
+      n = "pnpm";
     };
   };
 }

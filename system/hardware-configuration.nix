@@ -9,7 +9,8 @@
   boot.initrd.availableKernelModules =
     [ "xhci_pci" "ahci" "nvme" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" "i2c-dev" "i2c-piix4" "v4l2loopback" ];
+  boot.kernelModules =
+    [ "kvm-intel" "i2c-dev" "i2c-piix4" "v4l2loopback" "snd-aloop" ];
   boot.extraModulePackages = with config.boot.kernelPackages;
     [ v4l2loopback.out ];
 

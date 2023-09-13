@@ -10,6 +10,7 @@
     linuxConsoleTools
     bottles
     lutris
+    prismlauncher
   ];
   home.sessionVariables = {
     VK_ICD_FILENAMES =

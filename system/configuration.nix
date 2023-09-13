@@ -61,13 +61,15 @@
 
   hardware.sane = {
     enable = true;
-    extraBackends = [ pkgs.hplipWithPlugin ];
+    extraBackends = [ pkgs.sane-airscan ];
   };
 
   services = {
     # Enable CUPS to print documents.
     printing.enable = true;
-    printing.drivers = [ pkgs.hplipWithPlugin ];
+    printing.drivers = [ pkgs.gutenprint pkgs.gutenprintBin ];
+    avahi.enable = true;
+    avahi.nssmdns = true;
 
     xserver = {
       enable = true;
@@ -131,7 +133,7 @@
   } // secrets.services;
 
   fonts = {
-    fonts = with pkgs; [
+    packages = with pkgs; [
       fira-code
       twitter-color-emoji
       emacs-all-the-icons-fonts
@@ -165,6 +167,7 @@
       "i2c"
       "audio"
       "scanner"
+      "lp"
     ]; # Enable ‘sudo’ for the user.
     initialPassword = "";
   };
