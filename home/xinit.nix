@@ -17,6 +17,8 @@
       xset r rate 400 50
       # mouse acceleration
       xset m 0 0
+      # disable third button emulation
+      xinput set-prop 14 297 0
       # screen saver off (not working)
       xset -dpms
       xset s off

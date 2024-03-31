@@ -5,7 +5,8 @@
     jq
     jless
     fzf
-    vscode
+    vscode.fhs
+    nix-alien
 
     xorg.xev
     xdo # for devour
@@ -25,11 +26,11 @@
     zip
     unzip
     ffmpeg
-    mpv
 
     google-chrome
     jetbrains.clion
     tor-browser-bundle-bin
+    qbittorrent
 
     qrencode
     openrgb
@@ -38,6 +39,7 @@
     stremio
     droidcam
     xournalpp
+    nodePackages.yalc
 
     calibre
     libmtp

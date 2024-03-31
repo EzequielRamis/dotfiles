@@ -4,13 +4,16 @@
   programs.mangohud.enable = true;
   programs.mangohud.enableSessionWide = false;
   home.packages = with pkgs; [
-    steam
+    wineWowPackages.stable
+    winetricks
+    # (steam.override { extraPkgs = (pkgs: with pkgs; [ gamemode ]); })
     (discord.override { nss = nss_latest; })
     jstest-gtk
     linuxConsoleTools
     bottles
-    lutris
+    (lutris.override { extraLibraries = pkgs: [ pkgs.jansson ]; })
     prismlauncher
+    # rpcs3
   ];
   home.sessionVariables = {
     VK_ICD_FILENAMES =

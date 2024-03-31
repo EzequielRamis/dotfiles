@@ -57,8 +57,6 @@
   # rgb and mouse
   hardware.i2c.enable = true;
 
-  hardware.xone.enable = false;
-
   hardware.sane = {
     enable = true;
     extraBackends = [ pkgs.sane-airscan ];
@@ -69,7 +67,7 @@
     printing.enable = true;
     printing.drivers = [ pkgs.gutenprint pkgs.gutenprintBin ];
     avahi.enable = true;
-    avahi.nssmdns = true;
+    avahi.nssmdns4 = true;
 
     xserver = {
       enable = true;
@@ -158,6 +156,8 @@
     };
   };
 
+  virtualisation.docker.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${username} = {
     isNormalUser = true;
@@ -168,6 +168,8 @@
       "audio"
       "scanner"
       "lp"
+      "docker"
+      "gamemode"
     ]; # Enable ‘sudo’ for the user.
     initialPassword = "";
   };
@@ -182,7 +184,7 @@
 
   programs.gnupg.agent = {
     enable = true;
-    pinentryFlavor = "tty";
+    pinentryPackage = null;
   };
 
   # fixes gtk
@@ -190,8 +192,31 @@
 
   programs.gamemode.enable = true;
 
+  programs.steam = {
+    enable = true;
+    package =
+      pkgs.steam.override { extraPkgs = (pkgs: with pkgs; [ gamemode ]); };
+  };
+
   programs.droidcam.enable = true;
   programs.adb.enable = true;
+
+  programs.nix-ld.enable = true;
+
+  # security.pam.loginLimits = [
+  #   {
+  #     domain = "*";
+  #     type = "hard";
+  #     item = "memlock";
+  #     value = "unlimited";
+  #   }
+  #   {
+  #     domain = "*";
+  #     type = "soft";
+  #     item = "memlock";
+  #     value = "unlimited";
+  #   }
+  # ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

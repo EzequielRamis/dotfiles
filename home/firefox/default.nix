@@ -35,6 +35,9 @@
         "browser.cache.memory.enable" = true;
         "browser.cache.memory.capacity" = 512000;
         "layout.css.has-selector.enabled" = true;
+        "media.hardware-video-decoding.enabled" = true;
+        "media.hardware-video-decoding.force-enabled" = true;
+        "ui.key.menuAccessKeyFocuses" = false;
       };
       userChrome = builtins.readFile ./userChrome.css;
       userContent = builtins.readFile ./userContent.css;

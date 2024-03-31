@@ -1,10 +1,10 @@
 { config, pkgs, lib, ... }: {
   programs.zsh = {
     enable = true;
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     enableCompletion = true;
-    autocd = true;
+    autocd = false;
     defaultKeymap = "viins";
     dotDir = ".config/zsh";
     initExtraFirst = builtins.readFile ./initExtraFirst.zsh;

@@ -2,7 +2,7 @@
   programs.git = {
     enable = true;
     userName = "Ezequiel Ramis";
-    userEmail = "ezequielramis.hello@gmail.com";
+    userEmail = "ezequiel@ramis.ar";
     signing = {
       key = "5B1D02EC58BED67B";
       signByDefault = false;
@@ -20,4 +20,5 @@
     };
     delta.enable = true;
   };
+  services.gpg-agent.enable = true;
 }

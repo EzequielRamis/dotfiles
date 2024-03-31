@@ -142,3 +142,21 @@ menuseparator {
   background-color: unset !important;
   color: unset !important;
 }
+
+#navigator-toolbox-background {
+  background: none !important;
+}
+
+#navigator-toolbox-background:-moz-window-inactive {
+  background: none !important;
+}
+
+#navigator-toolbox:not(:-moz-lwtheme) {
+  background-color: unset !important;
+  color: unset !important;
+}
+
+#navigator-toolbox:not(:-moz-lwtheme):-moz-window-inactive {
+  background-color: unset !important;
+  color: unset !important;
+}

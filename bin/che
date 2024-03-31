@@ -106,7 +106,7 @@ case "$1" in
         esac;;
     sync)
         pushd ~/.dotfiles
-        nix flake lock --update-input secrets
+        nix flake update secrets
         git add .
         sudo nixos-rebuild switch --verbose --flake .#
         popd;;
@@ -123,8 +123,7 @@ case "$1" in
             emacs)
                 doom -! upgrade;;
             all)
-                che update nix
-                che update emacs;;
+                che update nix && che update emacs;;
             ''|help)
                 printf "$update_help";;
             *)

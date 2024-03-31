@@ -30,6 +30,7 @@
       flake = false;
       url = "github:zsugabubus/interception-k2k";
     };
+    nix-alien.url = "github:thiagokokada/nix-alien";
   };
 
   outputs = { self, home-manager, nixpkgs, ... }@inputs:
@@ -48,6 +49,7 @@
       mkPkgs = o:
         import nixpkgs ({
           config.allowUnfree = true;
+          config.permittedInsecurePackages = [ "openssl-1.1.1w" ];
           localSystem = { inherit system; };
         } // o);
 
@@ -65,6 +67,7 @@
               vulkanSupport = true;
               openglSupport = true;
             };
+            nix-alien = inputs.nix-alien.packages.${system}.default;
           })
         ];
       };

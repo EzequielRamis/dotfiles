@@ -18,13 +18,13 @@ let
   desks' = 4;
   desks = "{1-${toString desks'}}";
   top_padding = 32;
+  window_gap = 16;
   t = my.palette;
 in {
   xsession.windowManager.bspwm = {
     enable = true;
     settings = {
-      inherit top_padding;
-      window_gap = 16;
+      inherit top_padding window_gap;
       border_width = 2;
       split_ratio = 0.5;
       gapless_monocle = false;
@@ -44,6 +44,10 @@ in {
       "*:jetbrains-clion:splash".state = "floating";
       "origin.exe".state = "floating";
       "explorer.exe".hidden = true;
+      "eadesktop.exe".private = true;
+      "eadesktop.exe".state = "floating";
+      "eadesktop.exe".center = true;
+      "steam".follow = false;
     };
     monitors = { HDMI-0 = map toString (lib.lists.range 1 desks'); };
     extraConfig = ''
@@ -162,6 +166,15 @@ in {
             s = "bspc node -s last.marked";
             d = "bspc node -p cancel; bspc node -g marked=off";
             "${desks}" = "bspc node -d ${desks} -f";
+            f = ''
+              {\
+                eww close bar; bspc config top_padding 0; bspc config window_gap 0; systemctl --user stop picom,\
+                systemctl --user start picom; bspc config window_gap ${
+                  toString window_gap
+                }; bspc config top_padding ${
+                  toString top_padding
+                }; eww open bar\
+                }'';
           };
         };
 
@@ -173,7 +186,7 @@ in {
             u = ''
               rofit -show emoji -emoji-format "\{emoji\}" -modi emoji -theme emoji'';
             n = ''
-              LC_NUMERIC="es_AR.UTF-8" rofit -show calc -modi calc -no-show-match -no-sort -no-history -lines 0 -calc-command "echo -n '\{result\}' | xclip" -theme calc'';
+              rofit -show calc -modi calc -no-show-match -no-sort -automatic-save-to-history -theme calc -calc-command "echo -n \'\{result\}\' | xclip -selection clipboard"'';
             f = "firefox";
             e = "emacsclient -c -a ''";
             w = "fehbg random";

@@ -1,4 +1,26 @@
 zstyle ':vcs_info:git*' formats "%b"
+typeset -g -A key
+
+key[Ctrl-Left]=$'^[[1;5D'
+key[Ctrl-Right]=$'^[[1;5C'
+key[Ctrl-Delete]=$'^[[3;5~'
+key[Ctrl-Backspace]=$'^H'
+
+[[ -n "${key[Up]}"             ]] && bindkey -- "${key[Up]}"              up-line-or-beginning-search
+[[ -n "${key[Down]}"           ]] && bindkey -- "${key[Down]}"            down-line-or-beginning-search
+[[ -n "${key[Delete]}"         ]] && bindkey -- "${key[Delete]}"          delete-char
+[[ -n "${key[Ctrl-Left]}"      ]] && bindkey -- "${key[Ctrl-Left]}"       backward-word
+[[ -n "${key[Ctrl-Right]}"     ]] && bindkey -- "${key[Ctrl-Right]}"      forward-word
+[[ -n "${key[Ctrl-Delete]}"    ]] && bindkey -- "${key[Ctrl-Delete]}"     kill-word
+[[ -n "${key[Ctrl-Backspace]}" ]] && bindkey -- "${key[Ctrl-Backspace]}"  backward-kill-word
+
+if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
+    autoload -Uz add-zle-hook-widget
+    function zle_application_mode_start { echoti smkx }
+    function zle_application_mode_stop { echoti rmkx }
+    add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
+    add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
+fi
 
 precmd () {
     vcs_info
@@ -19,23 +41,6 @@ precmd () {
 
     PROMPT=$'\n'$PROMPTL${(pl:PROMPTW:: :)}$PROMPTR$'\n'"%Bλ.%b "
 }
-
-bindkey '^[[2~' overwrite-mode
-bindkey '^[[3~' delete-char
-bindkey '^[[H'  beginning-of-line
-bindkey '^[[F'  end-of-line
-bindkey '^[[5~' history-beginning-search-backward
-bindkey '^[[6~' history-beginning-search-forward
-
-bindkey '^[[1;5D'  backward-word
-bindkey '^[[1;5C'  forward-word
-bindkey '^[[1;5B'  backward-word
-bindkey '^[[1;5A'  forward-word
-# bindkey '^H'       backward-kill-word
-bindkey '^[^?' backward-kill-word
-
-bindkey '^[[B' down-line-or-beginning-search
-bindkey '^[[A' up-line-or-beginning-search
 
 eval "$(direnv hook zsh)"
 

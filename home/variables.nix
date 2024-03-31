@@ -1,4 +1,4 @@
-{ ... }: {
+{ pkgs, lib, username, ... }: {
   home.sessionVariables = {
     TERMINAL = "kitty";
     BROWSER = "firefox";
@@ -9,6 +9,8 @@
     SDL_JOYSTICK_DEVICE =
       "/dev/input/by-id/usb-Microsoft_Controller_7EED8D604973-joystick";
     NIXPKGS_ALLOW_UNFREE = 1;
+    LD_LIBRARY_PATH =
+      "${lib.makeLibraryPath (with pkgs; [ openssl_1_1 ])}:$LD_LIBRARY_PATH";
   };
   # xdg.desktopEntries.Lutris = {
   #   type = "Application";
