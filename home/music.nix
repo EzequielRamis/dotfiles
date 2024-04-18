@@ -1,4 +1,4 @@
-{ config, lib, pkgs, my, ... }:
+{ config, lib, pkgs, my, secrets, ... }:
 
 {
   services.playerctld.enable = true;

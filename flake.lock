@@ -265,6 +265,7 @@
         "interception-k2k": "interception-k2k",
         "nix-alien": "nix-alien",
         "nixpkgs": "nixpkgs_3",
+        "secrets": "secrets",
         "whitesur": "whitesur"
       }
     },
@@ -288,6 +289,22 @@
         "owner": "oxalica",
         "repo": "rust-overlay",
         "type": "github"
+      }
+    },
+    "secrets": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1673415234,
+        "narHash": "sha256-aT/jseJDId+lQv88JZ5qc+MjzLsyrru47UlZBJPkVkw=",
+        "ref": "refs/heads/main",
+        "rev": "363e8c4f8acb3700e94515abecb7adb128c23663",
+        "revCount": 7,
+        "type": "git",
+        "url": "ssh://git@github.com/EzequielRamis/secrets.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/EzequielRamis/secrets.git"
       }
     },
     "systems": {
