@@ -28,7 +28,7 @@
     ffmpeg
 
     google-chrome
-    jetbrains.clion
+    # jetbrains.clion
     tor-browser-bundle-bin
     qbittorrent
 

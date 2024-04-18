@@ -1,9 +1,9 @@
-{ config, lib, pkgs, secrets, my, ... }:
+{ config, lib, pkgs, my, ... }:
 
 {
   services.playerctld.enable = true;
   services.spotifyd = {
-    enable = true;
+    enable = false;
     package = pkgs.spotifyd.override {
       withMpris = true;
       withPulseAudio = true;

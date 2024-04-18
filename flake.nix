@@ -73,7 +73,8 @@
       };
 
       extraSpecialArgs = {
-        inherit pkgs system hostname username secrets inputs;
+        inherit pkgs system hostname username inputs;
+        inherit secrets;
         inherit (lib) my;
       };
 
