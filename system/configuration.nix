@@ -85,9 +85,6 @@
       gdk-pixbuf.modulePackages = [ pkgs.librsvg ];
       displayManager = {
         lightdm.enable = true;
-        autoLogin.enable = true;
-        autoLogin.user = username;
-        defaultSession = "none+fake";
         session = [{
           name = "fake";
           manage = "window";
@@ -95,6 +92,11 @@
         }];
       };
       wacom.enable = true;
+    };
+    displayManager = {
+      defaultSession = "none+fake";
+      autoLogin.enable = true;
+      autoLogin.user = username;
     };
 
     ratbagd.enable = true;

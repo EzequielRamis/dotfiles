@@ -8,7 +8,7 @@ in {
     extraPackages = epkgs: [ epkgs.vterm epkgs.pdf-tools ];
   };
   services.emacs = {
-    enable = true;
+    enable = false;
     defaultEditor = true;
     client = {
       enable = true;
@@ -21,7 +21,7 @@ in {
   home.packages = with pkgs; [
     fd
     ripgrep
-    nixfmt
+    nixfmt-classic
     cmake
     gnumake
     gcc
