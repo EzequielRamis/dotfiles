@@ -13,6 +13,7 @@
     [ "kvm-intel" "i2c-dev" "i2c-piix4" "v4l2loopback" "snd-aloop" ];
   boot.extraModulePackages = with config.boot.kernelPackages;
     [ v4l2loopback.out ];
+  boot.kernelParams = [ "nvme_core.default_ps_max_latency_us=0" "pcie_aspm=off" ];
 
   # Set initial kernel module settings
   boot.extraModprobeConfig = ''
