@@ -160,3 +160,19 @@ menuseparator {
   background-color: unset !important;
   color: unset !important;
 }
+
+#navigator-toolbox {
+  background-color: color-mix(
+    in srgb,
+    var(--toolbar-bgcolor) 70%,
+    transparent
+  ) !important;
+}
+
+body {
+  background: unset !important;
+}
+
+html {
+  background: unset !important;
+}

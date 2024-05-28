@@ -2,7 +2,7 @@
   imports = [ ./hardware-configuration.nix ];
 
   nix = {
-    package = pkgs.nixUnstable;
+    package = pkgs.nixVersions.latest;
     # the keep-* options are set due to nix-direnv
     extraOptions = ''
       experimental-features = nix-command flakes
