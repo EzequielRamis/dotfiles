@@ -34,6 +34,7 @@
   time.timeZone = "America/Argentina/Buenos_Aires";
 
   networking.networkmanager.enable = true;
+  networking.firewall.enable = false;
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -77,10 +78,12 @@
         y = 1080;
       }];
       videoDrivers = [ "nvidia" ];
+      # NVreg_EnableGpuFirmware=0 removes stuttering using xorg
       screenSection = ''
         Option         "metamodes" "nvidia-auto-select +0+0 {ForceFullCompositionPipeline=On}"
         Option         "AllowIndirectGLXProtocol" "off"
         Option         "TripleBuffer" "on"
+        Option         "NVreg_EnableGpuFirmware" "0"
       '';
       gdk-pixbuf.modulePackages = [ pkgs.librsvg ];
       displayManager = {

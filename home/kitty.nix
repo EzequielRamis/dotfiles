@@ -14,18 +14,6 @@ in {
       include = "mytheme.conf";
       cursor_text_color = "background";
     };
-    keybindings = {
-      "ctrl+shift+equal" = "change_font_size all +1.0";
-      "ctrl+shift+plus" = "change_font_size all +1.0";
-      "ctrl+shift+kp_add" = "change_font_size all +1.0";
-      "cmd+plus" = "change_font_size all +1.0";
-      "cmd+equal" = "change_font_size all +1.0";
-      "shift+cmd+equal" = "change_font_size all +1.0";
-      "ctrl+shift+minus" = "change_font_size all -1.0";
-      "ctrl+shift+kp_subtract" = "change_font_size all -1.0";
-      "cmd+minus" = "change_font_size all -1.0";
-      "shift+cmd+minus" = "change_font_size all -1.0";
-    };
   };
   xdg.configFile."kitty/themes/mydark.conf".text = ''
     # mydark theme

@@ -17,10 +17,6 @@
     tesseract
 
     nodejs
-    nodePackages.pnpm
-    nodePackages.vscode-langservers-extracted
-    nodePackages.prettier
-    nodePackages.typescript-language-server
 
     feh
     zip
@@ -47,7 +43,7 @@
 
     tdesktop
 
-    youtube-dl
+    yt-dlp
     pavucontrol
     gucharmap
     fontforge-gtk

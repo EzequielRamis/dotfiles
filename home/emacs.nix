@@ -5,7 +5,11 @@ let emacsDir = "$HOME/.emacs.d";
 in {
   programs.emacs = {
     enable = true;
-    extraPackages = epkgs: [ epkgs.vterm epkgs.pdf-tools ];
+    extraPackages = epkgs: [
+      epkgs.vterm
+      epkgs.pdf-tools
+      epkgs.treesit-grammars.with-all-grammars
+    ];
   };
   services.emacs = {
     enable = false;
