@@ -47,7 +47,7 @@
     pavucontrol
     gucharmap
     fontforge-gtk
-    gnome.simple-scan
+    simple-scan
 
     # candy
     cmatrix

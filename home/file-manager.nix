@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ pcmanfm gnome.file-roller ];
+  home.packages = with pkgs; [ pcmanfm file-roller ];
   xdg.dataFile."file-manager/actions/wallpaper.desktop".text = ''
     [Desktop Entry]
     Type=Action

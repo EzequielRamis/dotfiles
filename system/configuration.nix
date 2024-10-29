@@ -44,16 +44,17 @@
     keyMap = "es";
   };
 
-  hardware.opengl.enable = true;
-  hardware.opengl.driSupport32Bit = true;
-  hardware.opengl.extraPackages32 = with pkgs.pkgsi686Linux; [ libva ];
-  hardware.opengl.setLdLibraryPath = true;
+  hardware.graphics.enable = true;
+  hardware.graphics.enable32Bit = true;
+  hardware.graphics.extraPackages32 = with pkgs.pkgsi686Linux; [ libva ];
+  environment.sessionVariables.LD_LIBRARY_PATH = [ "/run/opengl-driver/lib" ];
 
   # Enable sound.
-  sound.enable = true;
   hardware.pulseaudio.enable = true;
   hardware.pulseaudio.support32Bit = true;
   hardware.bluetooth.enable = true;
+
+  hardware.nvidia.open = false;
 
   # rgb and mouse
   hardware.i2c.enable = true;
@@ -64,6 +65,7 @@
   };
 
   services = {
+    pipewire.enable = false;
     # Enable CUPS to print documents.
     printing.enable = true;
     printing.drivers = [ pkgs.gutenprint pkgs.gutenprintBin ];
@@ -85,7 +87,7 @@
         Option         "TripleBuffer" "on"
         Option         "NVreg_EnableGpuFirmware" "0"
       '';
-      gdk-pixbuf.modulePackages = [ pkgs.librsvg ];
+
       displayManager = {
         lightdm.enable = true;
         session = [{
@@ -120,7 +122,7 @@
     # gaming
     samba = {
       enable = true;
-      enableWinbindd = true;
+      winbindd.enable = true;
     };
 
     interception-tools = {
@@ -178,6 +180,8 @@
     ]; # Enable ‘sudo’ for the user.
     initialPassword = "";
   };
+
+  programs.gdk-pixbuf.modulePackages = [ pkgs.librsvg ];
 
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;

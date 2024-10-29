@@ -6,5 +6,6 @@
     mime.enable = true;
     userDirs.enable = true;
     userDirs.createDirectories = true;
+    portal.config = { common = { default = [ "gtk" ]; }; };
   };
 }

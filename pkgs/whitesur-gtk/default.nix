@@ -4,13 +4,7 @@ pkgs.stdenv.mkDerivation rec {
   name = "whitesur-gtk";
   src = inputs.whitesur;
 
-  nativeBuildInputs = with pkgs; [
-    glib
-    gnome.gnome-shell
-    libxml2
-    sassc
-    util-linux
-  ];
+  nativeBuildInputs = with pkgs; [ glib gnome-shell libxml2 sassc util-linux ];
 
   buildInputs = [
     pkgs.gnome-themes-extra # adwaita engine for Gtk2
