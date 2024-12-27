@@ -40,6 +40,7 @@
     calibre
     libmtp
     usbutils
+    libreoffice
 
     tdesktop
 

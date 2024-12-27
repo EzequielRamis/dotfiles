@@ -176,3 +176,11 @@ body {
 html {
   background: unset !important;
 }
+
+#toolbar-menubar {
+  display: none;
+}
+
+#urlbar[breakout] {
+  top: 67.42px !important;
+}

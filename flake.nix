@@ -28,7 +28,8 @@
     };
     interception-k2k = {
       flake = false;
-      url = "github:zsugabubus/interception-k2k";
+      url =
+        "github:zsugabubus/interception-k2k/259a549b1e215c47f0d243e9e5f484ce490b61e6";
     };
     nix-alien.url = "github:thiagokokada/nix-alien";
   };

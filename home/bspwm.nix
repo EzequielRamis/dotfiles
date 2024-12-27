@@ -168,8 +168,8 @@ in {
             "${desks}" = "bspc node -d ${desks} -f";
             f = ''
               {\
-                eww close bar; bspc config top_padding 0; bspc config window_gap 0; systemctl --user stop picom,\
-                systemctl --user start picom; bspc config window_gap ${
+                eww close bar; bspc config top_padding 0; bspc config window_gap 0,\
+                bspc config window_gap ${
                   toString window_gap
                 }; bspc config top_padding ${
                   toString top_padding
