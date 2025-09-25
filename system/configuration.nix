@@ -49,9 +49,6 @@
   hardware.graphics.extraPackages32 = with pkgs.pkgsi686Linux; [ libva ];
   environment.sessionVariables.LD_LIBRARY_PATH = [ "/run/opengl-driver/lib" ];
 
-  # Enable sound.
-  hardware.pulseaudio.enable = true;
-  hardware.pulseaudio.support32Bit = true;
   hardware.bluetooth.enable = true;
 
   hardware.nvidia.open = false;
@@ -135,6 +132,9 @@
       '';
     };
     blueman.enable = true;
+    # Enable sound.
+    pulseaudio.enable = true;
+    pulseaudio.support32Bit = true;
   } // secrets.services;
 
   fonts = {
@@ -147,6 +147,8 @@
       bakoma_ttf
       lmmath
       lmodern
+      corefonts
+      google-fonts
     ];
     fontconfig = {
       defaultFonts = {
@@ -164,6 +166,8 @@
   };
 
   virtualisation.docker.enable = true;
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "${username}" ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${username} = {
@@ -177,6 +181,7 @@
       "lp"
       "docker"
       "gamemode"
+      "kvm"
     ]; # Enable ‘sudo’ for the user.
     initialPassword = "";
   };
@@ -189,7 +194,16 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [ neovim curl wget git ];
+  environment.systemPackages = with pkgs; [
+    neovim
+    curl
+    wget
+    git
+    man-pages
+    man-pages-posix
+  ];
+
+  documentation.dev.enable = true;
 
   programs.gnupg.agent = {
     enable = true;

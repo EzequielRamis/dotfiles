@@ -57,7 +57,7 @@ dev_help="\
   ${n}Development helpers.
 
   ${b}Commands:${n}
-    sync ${u}PATH${n}\tSync flake and .direnv
+    init \tCreate a Nix flake template inside a new project
     help\tPrint this help list
 "
 
@@ -88,17 +88,11 @@ not_found () {
 case "$1" in
     dev)
         case "$2" in
-            sync)
-                case "$3" in
-                    '')
-                        nix shell
-                        rm -rf .direnv
-                        pushd ..
-                        popd;;
-                    *)
-                        pushd "$3" || exit
-                        che dev sync;;
-                esac;;
+            init)
+                cp ~/.dotfiles/bin/template/.envrc ./
+                cp ~/.dotfiles/bin/template/flake.nix ./
+                git add .
+                ;;
             ''|help)
                 printf "$dev_help";;
             *)
@@ -150,13 +144,15 @@ case "$1" in
                 xsettingsd -c ~/.xsettingsd-light.conf &
                 emacsclient -e "(sync-theme-light)" &> /dev/null
                 kitty +kitten themes --reload-in=all --config-file-name mytheme.conf Mylight
-                ~/.config/bspwm/light;;
+                ~/.config/bspwm/light
+                pkill -USR1 -f kitty;;
             dark)
                 fehbg theme
                 xsettingsd -c ~/.xsettingsd-dark.conf &
                 emacsclient -e "(sync-theme-dark)" &> /dev/null
                 kitty +kitten themes --reload-in=all --config-file-name mytheme.conf Mydark
-                ~/.config/bspwm/dark;;
+                ~/.config/bspwm/dark
+                pkill -USR1 -f kitty;;
             *)
                 printf "$theme_help";;
         esac;;

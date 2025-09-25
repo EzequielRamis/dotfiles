@@ -1,4 +1,6 @@
 { config, pkgs, lib, username, inputs, ... }: {
+  services.psd.enable = true;
+  services.psd.browsers = [ "firefox" ];
   programs.firefox = {
     enable = true;
     # WIP

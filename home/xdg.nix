@@ -6,6 +6,10 @@
     mime.enable = true;
     userDirs.enable = true;
     userDirs.createDirectories = true;
-    portal.config = { common = { default = [ "gtk" ]; }; };
+    portal = {
+      enable = false;
+      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+      config.common.default = [ "gtk" ];
+    };
   };
 }

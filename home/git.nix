@@ -1,4 +1,5 @@
 { config, pkgs, lib, ... }: {
+  home.packages = with pkgs; [ pinentry ];
   programs.git = {
     enable = true;
     userName = "Ezequiel Ramis";
@@ -21,4 +22,7 @@
     delta.enable = true;
   };
   services.gpg-agent.enable = true;
+  services.gpg-agent.extraConfig = ''
+    allow-emacs-pinentry
+  '';
 }

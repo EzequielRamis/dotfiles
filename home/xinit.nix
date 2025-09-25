@@ -8,8 +8,6 @@
     enable = true;
     numlock.enable = true;
     initExtra = ''
-      openrgb -p None.orp
-
       xsettingsd -c ~/.xsettingsd-light.conf &
       kitty +kitten themes --reload-in=all --config-file-name mytheme.conf Mylight
 
@@ -43,6 +41,7 @@
       eww open bar &
       pcmanfm -d &
       dunst &
+      openrgb -p None.orp &
     '';
   };
   home.pointerCursor = {

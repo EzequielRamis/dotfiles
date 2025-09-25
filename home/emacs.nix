@@ -34,7 +34,7 @@ in {
     pandoc
     # org
     texlive.combined.scheme-medium
-    (python3.withPackages (p: with p; [ grip ]))
+    # (python3.withPackages (p: with p; [ grip ]))
     sumneko-lua-language-server
     # nodePackages.pyright
   ];

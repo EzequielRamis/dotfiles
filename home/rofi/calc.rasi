@@ -10,7 +10,7 @@ window {
     border: 1px;
     border-color: @t-border;
     border-radius: 8px;
-    width: 21em;
+    width: 40em;
     height: 10em;
 }
 

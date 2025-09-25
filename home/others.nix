@@ -7,6 +7,12 @@
     fzf
     vscode.fhs
     nix-alien
+    entr
+    file
+
+    ripgrep
+    sqlite
+    wordnet
 
     xorg.xev
     xdo # for devour
@@ -36,6 +42,7 @@
     droidcam
     xournalpp
     nodePackages.yalc
+    copilot-language-server
 
     calibre
     libmtp
