@@ -41,7 +41,7 @@
       eww open bar &
       pcmanfm -d &
       dunst &
-      openrgb -p None.orp &
+      nohup openrgb -p None.orp &
     '';
   };
   home.pointerCursor = {

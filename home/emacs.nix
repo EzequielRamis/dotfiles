@@ -35,7 +35,7 @@ in {
     # org
     texlive.combined.scheme-medium
     # (python3.withPackages (p: with p; [ grip ]))
-    sumneko-lua-language-server
+    lua-language-server
     # nodePackages.pyright
   ];
 

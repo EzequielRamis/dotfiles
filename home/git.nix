@@ -1,5 +1,5 @@
 { config, pkgs, lib, ... }: {
-  home.packages = with pkgs; [ pinentry ];
+  home.packages = with pkgs; [ pinentry-tty ];
   programs.git = {
     enable = true;
     userName = "Ezequiel Ramis";

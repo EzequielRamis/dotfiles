@@ -20,7 +20,8 @@ help="\
 
   ${b}Commands:${n}
     dev\t\tDevelopment helpers
-    sync\tSync NixOS' configuration
+    doctor\tBuild NixOS' configuration to see potential warnings/errors
+    sync\tBuild and switch NixOS' configuration
     update\tUpdate the system with latest features
     gc\t\tClean up the system and delete older generations
     theme\tSystem's theme settings
@@ -98,6 +99,12 @@ case "$1" in
             *)
                 not_found "$2";;
         esac;;
+    doctor)
+        pushd ~/.dotfiles
+        nix flake update secrets
+        git add .
+        sudo nixos-rebuild dry-build --verbose --flake .#
+        popd;;
     sync)
         pushd ~/.dotfiles
         nix flake update secrets

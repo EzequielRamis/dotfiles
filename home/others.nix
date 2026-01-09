@@ -31,15 +31,16 @@
 
     google-chrome
     # jetbrains.clion
-    tor-browser-bundle-bin
+    tor-browser
     qbittorrent
 
     qrencode
     openrgb
     piper
     vlc
-    stremio
-    droidcam
+    # stremio qtengine deprecated
+    zoom-us
+
     xournalpp
     nodePackages.yalc
     copilot-language-server
@@ -49,7 +50,7 @@
     usbutils
     libreoffice
 
-    tdesktop
+    telegram-desktop
 
     yt-dlp
     pavucontrol
