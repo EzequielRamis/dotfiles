@@ -6,9 +6,8 @@
     enableCompletion = true;
     autocd = false;
     defaultKeymap = "viins";
-    dotDir = ".config/zsh";
-    initExtraFirst = builtins.readFile ./initExtraFirst.zsh;
-    initExtra = builtins.readFile ./initExtra.zsh;
+    dotDir = "${config.xdg.configHome}/zsh";
+    initContent = builtins.readFile ./initContent.zsh;
     shellAliases = {
       cat = "bat";
       e = ''devour emacsclient -c -a \"\"'';
@@ -17,6 +16,7 @@
       lutris = "WEBKIT_DISABLE_COMPOSITING_MODE=1 lutris";
       neofetch = "fix_neofetch";
       n = "pnpm";
+      s = "kitten ssh";
     };
   };
 }

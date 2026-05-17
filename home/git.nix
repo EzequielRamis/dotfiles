@@ -2,8 +2,7 @@
   home.packages = with pkgs; [ pinentry-tty ];
   programs.git = {
     enable = true;
-    userName = "Ezequiel Ramis";
-    userEmail = "ezequiel@ramis.ar";
+    lfs.enable = true;
     signing = {
       key = "5B1D02EC58BED67B";
       signByDefault = false;
@@ -12,15 +11,18 @@
       condition = "gitdir:~/Desktop/Orga2/";
       path = "~/Desktop/Orga2/.gitconfig";
     }];
-    extraConfig = {
+    settings = {
+      user.name = "Ezequiel Ramis";
+      user.email = "ezequiel@ramis.ar";
       core = {
         editor = "nvim";
         autocrlf = "input";
       };
       diff.algorithm = "histogram";
     };
-    delta.enable = true;
   };
+  programs.delta.enable = true;
+  programs.delta.enableGitIntegration = true;
   services.gpg-agent.enable = true;
   services.gpg-agent.extraConfig = ''
     allow-emacs-pinentry

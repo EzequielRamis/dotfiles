@@ -1,4 +1,12 @@
-{ pkgs, lib, hostname, username, secrets, ... }: {
+{
+  pkgs,
+  lib,
+  hostname,
+  username,
+  secrets,
+  ...
+}:
+{
   imports = [ ./hardware-configuration.nix ];
 
   nix = {
@@ -25,7 +33,7 @@
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "nodev";
   boot.loader.grub.efiSupport = true;
-  boot.loader.grub.gfxmodeEfi = "1920x1080";
+  boot.loader.grub.gfxmodeEfi = "3840x2160";
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "${hostname}"; # Define your hostname.
@@ -38,7 +46,10 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-  i18n.supportedLocales = [ "en_US.UTF-8/UTF-8" "es_AR.UTF-8/UTF-8" ];
+  i18n.supportedLocales = [
+    "en_US.UTF-8/UTF-8"
+    "es_AR.UTF-8/UTF-8"
+  ];
   console = {
     font = "Lat2-Terminus16";
     keyMap = "es";
@@ -61,21 +72,36 @@
     extraBackends = [ pkgs.sane-airscan ];
   };
 
+  environment.variables = {
+    GDK_SCALE = "2"; # default 1 I think
+    GDK_DPI_SCALE = "0.75"; # default 1 I think
+    _JAVA_OPTIONS = "-Dsun.java2d.uiScale=1.5"; # default 1 I think
+    QT_AUTO_SCREEN_SCALE_FACTOR = "1.5";
+    XCURSOR_SIZE = "24"; # default 16 I think
+  };
+
   services = {
     pipewire.enable = false;
     # Enable CUPS to print documents.
     printing.enable = true;
-    printing.drivers = [ pkgs.gutenprint pkgs.gutenprintBin ];
+    printing.drivers = [
+      pkgs.gutenprint
+      pkgs.gutenprintBin
+    ];
     avahi.enable = true;
     avahi.nssmdns4 = true;
 
     xserver = {
       enable = true;
       exportConfiguration = true;
-      resolutions = [{
-        x = 1920;
-        y = 1080;
-      }];
+      resolutions = [
+        {
+          x = 3840;
+          y = 2160;
+        }
+      ];
+      dpi = 144;
+
       videoDrivers = [ "nvidia" ];
       # NVreg_EnableGpuFirmware=0 removes stuttering using xorg
       screenSection = ''
@@ -87,11 +113,13 @@
 
       displayManager = {
         lightdm.enable = true;
-        session = [{
-          name = "fake";
-          manage = "window";
-          start = "";
-        }];
+        session = [
+          {
+            name = "fake";
+            manage = "window";
+            start = "";
+          }
+        ];
       };
       wacom.enable = true;
     };
@@ -135,7 +163,8 @@
     # Enable sound.
     pulseaudio.enable = true;
     pulseaudio.support32Bit = true;
-  } // secrets.services;
+  }
+  // secrets.services;
 
   fonts = {
     packages = with pkgs; [
@@ -153,14 +182,20 @@
     fontconfig = {
       defaultFonts = {
         emoji = [ "Twitter Color Emoji" ];
-        monospace = [ "LigaSF Mono Nerd Font" "FiraCode" ];
+        monospace = [
+          "LigaSF Mono Nerd Font"
+          "FiraCode"
+        ];
         serif = [
           "New York Small"
           "New York Medium"
           "New York Large"
           "New York Extra Large"
         ];
-        sansSerif = [ "SF Pro Text" "SF Pro Display" ];
+        sansSerif = [
+          "SF Pro Text"
+          "SF Pro Display"
+        ];
       };
     };
   };
@@ -217,12 +252,8 @@
 
   programs.steam = {
     enable = true;
-    package =
-      pkgs.steam.override { extraPkgs = (pkgs: with pkgs; [ gamemode ]); };
+    package = pkgs.steam.override { extraPkgs = (pkgs: with pkgs; [ gamemode ]); };
   };
-
-  programs.droidcam.enable = true;
-  programs.adb.enable = true;
 
   programs.nix-ld.enable = true;
 

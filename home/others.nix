@@ -9,12 +9,13 @@
     nix-alien
     entr
     file
+    qalculate-gtk
 
     ripgrep
     sqlite
     wordnet
 
-    xorg.xev
+    xev
     xdo # for devour
     xdotool
     xclip
@@ -30,9 +31,14 @@
     ffmpeg
 
     google-chrome
+    helium
     # jetbrains.clion
+    jetbrains-toolbox
+    slack
     tor-browser
     qbittorrent
+    pcsx2
+    dolphin-emu
 
     qrencode
     openrgb
@@ -40,6 +46,7 @@
     vlc
     # stremio qtengine deprecated
     zoom-us
+    teams-for-linux
 
     xournalpp
     nodePackages.yalc

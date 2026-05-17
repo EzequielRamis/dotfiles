@@ -25,7 +25,7 @@ in {
   home.packages = with pkgs; [
     fd
     ripgrep
-    nixfmt-classic
+    nixfmt
     cmake
     gnumake
     gcc

@@ -4,7 +4,7 @@
   programs.mangohud.enable = true;
   programs.mangohud.enableSessionWide = false;
   home.packages = with pkgs; [
-    wineWowPackages.stable
+    wineWow64Packages.stable
     winetricks
     # (steam.override { extraPkgs = (pkgs: with pkgs; [ gamemode ]); })
     (discord.override { nss = nss_latest; })

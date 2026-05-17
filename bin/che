@@ -114,7 +114,7 @@ case "$1" in
     update)
         case "$2" in
             flake)
-                nix flake update ~/.dotfiles;;
+                nix flake update --flake ~/.dotfiles;;
             nix)
                 pushd ~/.dotfiles
                 git add .

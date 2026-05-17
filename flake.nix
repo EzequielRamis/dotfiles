@@ -32,6 +32,10 @@
         "github:zsugabubus/interception-k2k/259a549b1e215c47f0d243e9e5f484ce490b61e6";
     };
     nix-alien.url = "github:thiagokokada/nix-alien";
+    helium = {
+      url = "github:AlvaroParker/helium-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, home-manager, nixpkgs, ... }@inputs:
@@ -64,6 +68,7 @@
               });
             unstable = mkPkgs { };
             eww = inputs.eww.packages.${system}.default;
+            helium = inputs.helium.packages.${system}.default;
             wine = prev.wine.override {
               vulkanSupport = true;
               openglSupport = true;

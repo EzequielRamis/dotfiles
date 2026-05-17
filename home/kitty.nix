@@ -1,10 +1,18 @@
-{ config, pkgs, lib, my, ... }:
-let t = my.palette;
-in {
+{
+  config,
+  pkgs,
+  lib,
+  my,
+  ...
+}:
+let
+  t = my.palette;
+in
+{
   programs.kitty = {
     enable = true;
     font.name = "mono";
-    font.size = 16;
+    font.size = 24;
     settings = {
       confirm_os_window_close = 0;
       enable_audio_bell = true;

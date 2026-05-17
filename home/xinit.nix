@@ -1,4 +1,5 @@
-{ pkgs, lib, ... }: {
+{ pkgs, lib, ... }:
+{
   home.keyboard = {
     layout = "us";
     variant = "altgr-intl";
@@ -47,7 +48,7 @@
   home.pointerCursor = {
     name = "capitaine-cursors-white";
     package = pkgs.capitaine-cursors;
-    size = 30;
+    size = 45;
     x11.enable = true;
   };
 }
