@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   xdg = {
@@ -7,7 +12,7 @@
     userDirs.enable = true;
     userDirs.createDirectories = true;
     portal = {
-      enable = false;
+      enable = true;
       extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
       config.common.default = [ "gtk" ];
     };

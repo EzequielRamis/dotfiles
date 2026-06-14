@@ -147,18 +147,12 @@ case "$1" in
                 else che theme dark
                 fi;;
             light)
-                fehbg theme
-                xsettingsd -c ~/.xsettingsd-light.conf &
+                dconf write /org/gnome/desktop/interface/color-scheme '"prefer-light"'
                 emacsclient -e "(sync-theme-light)" &> /dev/null
-                kitty +kitten themes --reload-in=all --config-file-name mytheme.conf Mylight
-                ~/.config/bspwm/light
                 pkill -USR1 -f kitty;;
             dark)
-                fehbg theme
-                xsettingsd -c ~/.xsettingsd-dark.conf &
+                dconf write /org/gnome/desktop/interface/color-scheme '"prefer-dark"'
                 emacsclient -e "(sync-theme-dark)" &> /dev/null
-                kitty +kitten themes --reload-in=all --config-file-name mytheme.conf Mydark
-                ~/.config/bspwm/dark
                 pkill -USR1 -f kitty;;
             *)
                 printf "$theme_help";;

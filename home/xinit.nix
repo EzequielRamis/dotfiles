@@ -6,7 +6,7 @@
     options = [ "caps:super" ];
   };
   xsession = {
-    enable = true;
+    enable = false;
     numlock.enable = true;
     initExtra = ''
       xsettingsd -c ~/.xsettingsd-light.conf &
@@ -49,6 +49,5 @@
     name = "capitaine-cursors-white";
     package = pkgs.capitaine-cursors;
     size = 45;
-    x11.enable = true;
   };
 }

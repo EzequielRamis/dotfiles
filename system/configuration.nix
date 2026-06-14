@@ -63,6 +63,7 @@
   hardware.bluetooth.enable = true;
 
   hardware.nvidia.open = false;
+  hardware.nvidia.branch = "legacy_580";
 
   # rgb and mouse
   hardware.i2c.enable = true;
@@ -73,15 +74,25 @@
   };
 
   environment.variables = {
-    GDK_SCALE = "2"; # default 1 I think
-    GDK_DPI_SCALE = "0.75"; # default 1 I think
-    _JAVA_OPTIONS = "-Dsun.java2d.uiScale=1.5"; # default 1 I think
-    QT_AUTO_SCREEN_SCALE_FACTOR = "1.5";
-    XCURSOR_SIZE = "24"; # default 16 I think
+    NIXOS_OZONE_WL = "1";
   };
 
+  programs.hyprland = {
+    enable = true;
+    withUWSM = true;
+    xwayland.enable = true;
+  };
+
+  security.rtkit.enable = true;
   services = {
-    pipewire.enable = false;
+    xserver.videoDrivers = [ "nvidia" ];
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      wireplumber.enable = true;
+    };
     # Enable CUPS to print documents.
     printing.enable = true;
     printing.drivers = [
@@ -90,44 +101,6 @@
     ];
     avahi.enable = true;
     avahi.nssmdns4 = true;
-
-    xserver = {
-      enable = true;
-      exportConfiguration = true;
-      resolutions = [
-        {
-          x = 3840;
-          y = 2160;
-        }
-      ];
-      dpi = 144;
-
-      videoDrivers = [ "nvidia" ];
-      # NVreg_EnableGpuFirmware=0 removes stuttering using xorg
-      screenSection = ''
-        Option         "metamodes" "nvidia-auto-select +0+0 {ForceFullCompositionPipeline=On}"
-        Option         "AllowIndirectGLXProtocol" "off"
-        Option         "TripleBuffer" "on"
-        Option         "NVreg_EnableGpuFirmware" "0"
-      '';
-
-      displayManager = {
-        lightdm.enable = true;
-        session = [
-          {
-            name = "fake";
-            manage = "window";
-            start = "";
-          }
-        ];
-      };
-      wacom.enable = true;
-    };
-    displayManager = {
-      defaultSession = "none+fake";
-      autoLogin.enable = true;
-      autoLogin.user = username;
-    };
 
     ratbagd.enable = true;
 
@@ -150,21 +123,42 @@
       winbindd.enable = true;
     };
 
-    interception-tools = {
-      enable = true;
-      udevmonConfig = ''
-        - JOB: "${pkgs.interception-tools}/bin/intercept -g ${secrets.keyboard} | ${pkgs.my.interceptions}/opt/interception/interceptions | ${pkgs.interception-tools}/bin/uinput -d ${secrets.keyboard}"
-          DEVICE:
-            EVENTS:
-              EV_KEY: [KEY_CAPSLOCK]
-      '';
-    };
     blueman.enable = true;
-    # Enable sound.
-    pulseaudio.enable = true;
-    pulseaudio.support32Bit = true;
+
+    keyd = {
+      enable = true;
+      keyboards = {
+        default = {
+          ids = [ "*" ];
+          settings = {
+            main = {
+              capslock = "layer(capslock)";
+            };
+            "capslock:M" = {
+              h = "left";
+              j = "down";
+              k = "up";
+              l = "right";
+              backspace = "delete";
+            };
+          };
+        };
+      };
+    };
+
+    # Dead simple TTY-based auto-login setup for Hyprland
+    xserver.displayManager.lightdm.enable = false; # Disable default display manager (ensure no other DMs are enabled)
+    getty.autologinUser = "${username}"; # Auto-login user on boot
   }
   // secrets.services;
+
+  # Dead simple TTY-based auto-login setup for Hyprland
+  environment.loginShellInit = ''
+    # Launch Hyprland on TTY1, return to TTY when exiting
+    if [ "$(tty)" = "/dev/tty1" ]; then
+      start-hyprland 
+    fi
+  '';
 
   fonts = {
     packages = with pkgs; [
@@ -217,6 +211,8 @@
       "docker"
       "gamemode"
       "kvm"
+      "input"
+      "media"
     ]; # Enable ‘sudo’ for the user.
     initialPassword = "";
   };
@@ -225,7 +221,11 @@
 
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
-  environment.pathsToLink = [ "/share/zsh" ];
+  environment.pathsToLink = [
+    "/share/zsh"
+    "/share/applications"
+    "/share/xdg-desktop-portal"
+  ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -256,6 +256,8 @@
   };
 
   programs.nix-ld.enable = true;
+
+  programs.ydotool.enable = true;
 
   # security.pam.loginLimits = [
   #   {

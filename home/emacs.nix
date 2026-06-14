@@ -1,8 +1,16 @@
 # For now the best way to manage doom emacs is to only use bin/doom and nix the
 # least possible
-{ config, lib, pkgs, my, ... }:
-let emacsDir = "$HOME/.emacs.d";
-in {
+{
+  config,
+  lib,
+  pkgs,
+  my,
+  ...
+}:
+let
+  emacsDir = "$HOME/.emacs.d";
+in
+{
   programs.emacs = {
     enable = true;
     extraPackages = epkgs: [
@@ -36,7 +44,6 @@ in {
     texlive.combined.scheme-medium
     # (python3.withPackages (p: with p; [ grip ]))
     lua-language-server
-    # nodePackages.pyright
   ];
 
   home.activation.doom-clone = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
@@ -46,9 +53,11 @@ in {
   '';
 
   xdg.dataFile."dotfiles/mypalette.el".text = ''
-    ${lib.strings.concatStrings (lib.attrsets.mapAttrsToList (name: value: ''
-      (defconst palette${name} "${value}")
-    '') my.palette)}
+    ${lib.strings.concatStrings (
+      lib.attrsets.mapAttrsToList (name: value: ''
+        (defconst palette${name} "${value}")
+      '') my.palette
+    )}
 
     (provide 'mypalette)
   '';

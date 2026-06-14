@@ -12,15 +12,19 @@ in
   programs.kitty = {
     enable = true;
     font.name = "mono";
-    font.size = 24;
+    font.size = 16;
     settings = {
       confirm_os_window_close = 0;
       enable_audio_bell = true;
       allow_remote_control = true;
       window_padding_width = "16";
-      background_opacity = "0.8";
-      include = "mytheme.conf";
+      background_opacity = "1";
       cursor_text_color = "background";
+    };
+    autoThemeFiles = {
+      light = "GitHub_Light";
+      dark = "GitHub_Dark";
+      noPreference = "GitHub_Dark";
     };
   };
   xdg.configFile."kitty/themes/mydark.conf".text = ''

@@ -1,6 +1,12 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
+  services.handy.enable = true;
   home.packages = with pkgs; [
     jq
     jless
@@ -15,13 +21,11 @@
     sqlite
     wordnet
 
-    xev
-    xdo # for devour
-    xdotool
-    xclip
     service-wrapper
     wmutils-core
     tesseract
+    wl-clipboard
+    wtype
 
     nodejs
 
@@ -35,32 +39,32 @@
     # jetbrains.clion
     jetbrains-toolbox
     slack
+    teams-for-linux
     tor-browser
-    qbittorrent
     pcsx2
     dolphin-emu
 
     qrencode
     openrgb
     piper
-    vlc
-    # stremio qtengine deprecated
+    mpv
     zoom-us
     teams-for-linux
 
     xournalpp
-    nodePackages.yalc
+    yalc
     copilot-language-server
 
     calibre
     libmtp
     usbutils
     libreoffice
+    blender
 
     telegram-desktop
 
     yt-dlp
-    pavucontrol
+    pwvucontrol
     gucharmap
     fontforge-gtk
     simple-scan

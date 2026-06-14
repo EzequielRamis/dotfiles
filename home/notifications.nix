@@ -1,4 +1,10 @@
-{ config, lib, pkgs, my, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  my,
+  ...
+}:
 
 {
   home.packages = with pkgs; [ libnotify ];

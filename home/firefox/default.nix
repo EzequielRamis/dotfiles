@@ -45,19 +45,4 @@
       userContent = builtins.readFile ./userContent.css;
     };
   };
-
-  # WIP
-  home.activation.firefox-scripts = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    cd $HOME/.mozilla/firefox/${username}/chrome
-    if [ ! -d ./firefox-scripts ]; then
-      git clone https://github.com/xiaoxiaoflood/firefox-scripts.git
-    else
-      pushd ./firefox-scripts
-      git pull
-      popd
-    fi
-    unzip -o firefox-scripts/utils.zip
-    cd firefox-scripts/chrome
-    cp enterSelects.uc.js rebuild_userChrome.uc.js ../..
-  '';
 }

@@ -1,13 +1,30 @@
-{ config, lib, pkgs, my, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  my,
+  ...
+}:
 let
-  mkHotkeyChain = set:
+  mkHotkeyChain =
+    set:
     with lib.attrsets;
     with lib.strings;
-    listToAttrs (map (c: {
-      name = elemAt c 0;
-      value = elemAt c 1;
-    }) (collect isList
-      (mapAttrsRecursive (path: value: [ (concatStrings path) value ]) set)));
+    listToAttrs (
+      map
+        (c: {
+          name = elemAt c 0;
+          value = elemAt c 1;
+        })
+        (
+          collect isList (
+            mapAttrsRecursive (path: value: [
+              (concatStrings path)
+              value
+            ]) set
+          )
+        )
+    );
   prefix = c: with lib.attrsets; mapAttrs' (n: v: nameValuePair "${c}${n}" v);
   plus = prefix " + ";
   chord = prefix " ; ";
@@ -20,9 +37,10 @@ let
   top_padding = 32;
   window_gap = 16;
   t = my.palette;
-in {
+in
+{
   xsession.windowManager.bspwm = {
-    enable = true;
+    enable = false;
     settings = {
       inherit top_padding window_gap;
       border_width = 2;
@@ -49,7 +67,9 @@ in {
       "eadesktop.exe".center = true;
       "steam".follow = false;
     };
-    monitors = { HDMI-0 = map toString (lib.lists.range 1 desks'); };
+    monitors = {
+      HDMI-0 = map toString (lib.lists.range 1 desks');
+    };
     extraConfig = ''
       bspc desktop -l monocle
 
@@ -64,46 +84,33 @@ in {
       done &
     '';
   };
-  xdg.configFile."bspwm/dark".executable = true;
-  xdg.configFile."bspwm/dark".text = ''
-    bspc config normal_border_color '${t."0A"}'
-    bspc config focused_border_color '${t."65"}'
-    bspc config active_border_color '${t."15"}'
-    bspc config presel_feedback_color '${t."64"}'
-  '';
-  xdg.configFile."bspwm/light".executable = true;
-  xdg.configFile."bspwm/light".text = ''
-    bspc config normal_border_color '${t."05"}'
-    bspc config focused_border_color '${t."66"}'
-    bspc config active_border_color '${t."16"}'
-    bspc config presel_feedback_color '${t."66"}'
-  '';
+  # xdg.configFile."bspwm/dark".executable = true;
+  # xdg.configFile."bspwm/dark".text = ''
+  #   bspc config normal_border_color '${t."0A"}'
+  #   bspc config focused_border_color '${t."65"}'
+  #   bspc config active_border_color '${t."15"}'
+  #   bspc config presel_feedback_color '${t."64"}'
+  # '';
+  # xdg.configFile."bspwm/light".executable = true;
+  # xdg.configFile."bspwm/light".text = ''
+  #   bspc config normal_border_color '${t."05"}'
+  #   bspc config focused_border_color '${t."66"}'
+  #   bspc config active_border_color '${t."16"}'
+  #   bspc config presel_feedback_color '${t."66"}'
+  # '';
   services.sxhkd = {
-    enable = true;
+    enable = false;
     keybindings = mkHotkeyChain {
       "alt + {_,shift + }Tab" = "bspc node -f {next,prev}.leaf.local.!sticky";
       Print = "flameshot gui";
       "shift + Print" = "flameshot full -c";
 
-      # sound
-      XF86AudioMute = "pactl set-sink-mute @DEFAULT_SINK@ toggle";
-      XF86AudioRaiseVolume = "pactl set-sink-volume @DEFAULT_SINK@ +2%";
-      XF86AudioLowerVolume = "pactl set-sink-volume @DEFAULT_SINK@ -2%";
-
-      XF86AudioPlay = "playerctl -p spotifyd play-pause";
-
       # headset/speakers toggle
       "alt + XF86AudioPlay" = "audio_device_toggle";
-      "shift + XF86AudioPlay" =
-        "spt pb --transfer=Daemon; playerctl -p spotifyd play";
+      "shift + XF86AudioPlay" = "spt pb --transfer=Daemon; playerctl -p spotifyd play";
       "shift + XF86AudioMute" = "pactl set-source-mute @DEFAULT_SOURCE@ toggle";
-      XF86AudioNext = "playerctl -p spotifyd next";
-      XF86AudioPrev = "playerctl -p spotifyd previous";
 
       super = plus {
-        # reload sxhkd
-        Escape = "pkill -USR1 -x sxhkd; bspc wm -r";
-        Return = "$TERMINAL";
         f = "bspc desktop -l next";
         m = "bspc node @/first -f";
         t = "bspc node -t {floating,tiled}";
@@ -138,8 +145,7 @@ in {
               bspc node @parent/second -z left   +${step} 0  \
               }'';
           "{1-9}" = "bspc node @parent -r 0.{1-9}";
-          t =
-            "flameshot gui --raw | tesseract -l spa+eng stdin stdout | xclip -in -selection clipboard; notify-send Tesseract 'Copied to clipboard'";
+          t = "flameshot gui --raw | tesseract -l spa+eng stdin stdout | xclip -in -selection clipboard; notify-send Tesseract 'Copied to clipboard'";
         };
 
         alt = plus {
@@ -169,11 +175,7 @@ in {
             f = ''
               {\
                 eww close bar; bspc config top_padding 0; bspc config window_gap 0,\
-                bspc config window_gap ${
-                  toString window_gap
-                }; bspc config top_padding ${
-                  toString top_padding
-                }; eww open bar\
+                bspc config window_gap ${toString window_gap}; bspc config top_padding ${toString top_padding}; eww open bar\
                 }'';
           };
         };
@@ -181,14 +183,6 @@ in {
         space = chord {
           "{_,super + }" = none {
             space = "rofit -show drun";
-            q = ''
-              rofit -show p -modi "p:rofi-power --choices=shutdown/reboot/logout" -theme power'';
-            u = ''
-              rofit -show emoji -emoji-format "\{emoji\}" -modi emoji -theme emoji'';
-            n = ''
-              rofit -show calc -modi calc -no-show-match -no-sort -automatic-save-to-history -theme calc -calc-command "echo -n \'\{result\}\' | xclip -selection clipboard"'';
-            f = "firefox";
-            e = "emacsclient -c -a ''";
             w = "fehbg random";
             t = "che theme toggle";
             m = "pcmanfm";
